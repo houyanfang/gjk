@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+			.picker-items-col
+			{
+				width: 40%;
+			}
+		</style>
+		<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+		<link rel="stylesheet" href="../css/alert.css" />
+		<link rel="stylesheet" href="../css/personal.css" />
+		<link rel="stylesheet" href="../css/validate.css" />
+	</head>
+
+	<body class="hasNav" style="overflow: scroll;">
+		
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				<div class="pull-right">
+					<a  href="javascript:void();"></a>
+				</div>
+				<div role="navtitle">
+					个人信息
+				</div>
+			</div>
+		</div>
+		
+		<div role="identification" class="identification">
+			<div class="upload-box">
+				<form id="myform">
+					<div class="cardinformation-form border-btm">
+						<div class="container-fluid">
+							<div class="row">
+								<input class="pull-left card-label" type="text" placeholder="头像" readonly="" />
+								<div class="pull-right mypic">
+									<img />
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="cardinformation-form border-btm">
+						<div class="container-fluid">
+							<div class="row">
+								<input class="pull-left card-label" type="text" placeholder="昵称" readonly="" />
+								<input class="pull-right text-right card-input text-color padrt15" type="text" name="nickName" placeholder="" value=""/>
+							</div>
+						</div>
+					</div>
+					
+					<div class="cardinformation-form border-btm">
+						<div class="container-fluid">
+							<div class="row" id="mobileNum">
+								<input class="pull-left card-label" type="text" placeholder="手机号码" readonly="" />
+								<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+								<input class="pull-right text-right card-input" type="text" name="mobile" placeholder="" value="" readonly=""/>
+							</div>
+						</div>
+					</div>
+					
+					<div class="cardinformation-form border-btm">
+						<div class="container-fluid">
+							<div class="row">
+								<input class="pull-left card-label" type="text" placeholder="性别" readonly="" />
+								<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+								<input class="pull-right text-right card-input" type="text" id="sex" name="sex"  placeholder=""/>
+							</div>
+						</div>
+					</div>
+					
+					<div class="cardinformation-form border-btm">
+						<div class="container-fluid">
+							<div class="row">
+								<input class="pull-left card-label" type="text" placeholder="年龄" readonly="" />
+								<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+								<input class="pull-right text-right card-input" type="text" name="age" placeholder=""  readonly=""/>
+							</div>
+						</div>
+					</div>
+					
+					<div class="cardinformation-form border-btm">
+						<div class="container-fluid">
+							<div class="row">
+								<input class="pull-left card-label" type="text" placeholder="居住地" readonly="" />
+								<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+								<input class="pull-right text-right card-input text-color"  type="text" id="address-picker" placeholder="请选择居住地" value=""/>
+							</div>
+						</div>
+					</div>
+					
+					<div class="cardinformation-form border-btm">
+						<div class="container-fluid">
+							<div class="row pharmacy">
+								<input class="pull-left card-label" type="text" placeholder="购药药店" readonly="" />
+								<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+							</div>
+						</div>
+					</div>
+					<div class="cardinformation-form border-btm">
+						<div class="container-fluid">
+							<div class="row my-indenfy">
+								<input class="pull-left card-label" type="text" placeholder="我的身份" readonly=""  />
+								<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+								<input class="pull-right text-right card-input" type="text"  id="myIdentity" placeholder="选择疾病身份" value=""/>
+							</div>
+						</div>
+					</div>
+					<div class="cardinformation-form">
+						<div class="container-fluid">
+							<div class="row med-record"   id="myPres">
+								<input class="pull-left card-label" type="text" style="width: 70px;" placeholder="购药凭证"  readonly=""/>
+								<span style="font-size: 12px;color:#999;display:inline-block;padding-top: 18px;">(处方/病例/结算单/小票)</span>
+								<i class="pull-right inlink glyphicon glyphicon-menu-right" ></i>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			<div>
+				<div class="identification-form-submit">
+					<a class="circular" >完成</a>
+				</div>
+			</div>
+		</div>
+		<div id="addBox" class="hide">
+
+		</div>
+		<div class="min hide">
+			<p><input type="number" name="" id="" class="mobile-number" placeholder="请输入手机号码" style="width: 55%;" /><button class="gain countdown-time" style="width: 45%;">获取验证码</button></p>
+			<p><input type="number" name="celltxt" id="" placeholder="请输入验证码" /></p>
+			<!--<p class="tip-panel"></p>-->
+			<p class="btnPhone"><button class="removeadd">取消</button><button class="orange">绑定</button></p>
+		</div>
+		<!--提醒弹出层-->
+		<div id="reminder">
+		    <div class="reminderBody">
+		        <div class="reminderContext">
+		            <div><span id="msg"></span></div>
+		        </div>
+		    </div>
+		</div>
+		<!--年龄-->
+		<div class="Email_alert">
+			<div class="Email_alertMain">
+				<div class="Email_alertMain_top">请输入您的年龄</div>
+				<div class="Email_alertMain_cen"><input type="number" class="age-box" value=""/></div>
+				<div class="Email_alertMain_bot">
+					<div class="Email_alertMain_botLe text-gray">取消</div>
+					<div class="Email_alertMain_botRi text-yellow">确定</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div class="me-loading">
+	    	<img  src="../img/loading.gif" />
+	    </div>
+	    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+		
+		<script src="../js/underscore.js"></script>
+		<script src="../js/cookie.js"></script>	
+		<script src="../js/gjk.js"></script>
+		<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>	
+		<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/zepto.touch.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/selfinfor.js" charset="UTF-8"></script>
+	</body>
+
+</html>
+
+

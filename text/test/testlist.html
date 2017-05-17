@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style type="text/css">
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @-o-viewport {
+            width: device-width;
+        }
+
+        @viewport {
+            width: device-width;
+        }
+    </style>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script>
+        // Copyright 2014-2015 Twitter, Inc.
+        // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    '@-ms-viewport{width:auto!important}'
+                )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/swiper-3.4.2.min.css"/>
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <link rel="stylesheet" href="../css/personal.css"/>
+    <link rel="stylesheet" href="../css/date.css"/>
+    <link rel="stylesheet" href="../css/mui.min.css"/>
+    <link rel="stylesheet" href="../css/mui.picker.min.css"/>
+    <link rel="stylesheet" href="../css/mui.poppicker.css"/>
+</head>
+
+<body class="hasNav">
+
+<div role="navigation" class="navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="pull-left">
+            <a role="backlink" class="glyphicon glyphicon-menu-left prev"></a>
+        </div>
+        <div class="pull-right">
+            <a href="javascript:void();"></a>
+        </div>
+        <div role="navtitle">
+            健康测试
+        </div>
+    </div>
+</div>
+<!--<input  class="beginTime"  />-->
+<div id="datePlugin"></div>
+<div class="test-list-item-next">
+    <a href="javascript:;" class="next-button swiper-button-next hide">下一步</a>
+</div>
+<div class="">
+    <a href="javascript:;" class="orange yesBtn hide">完成</a>
+</div>
+<div role="testlist" class="swiper-container">
+    <div class="swiper-wrapper" style="height: 1000px;"></div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="../js/swiper-3.4.2.min.js"></script>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+<script src="../js/underscore.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/gjk.js"></script>
+<script src="../js/date.js"></script>
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.picker.min.js"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.beginTime').date();
+
+    });
+    Array.prototype.contains = function (obj) {
+        var i = this.length;
+        while (i--) {
+            if (this[i] === obj) {
+                return true;
+            }
+        }
+        return false;
+    }
+    var mySwiper = new Swiper('.swiper-container', {
+        nextButton: '.swiper-button-next',
+        prevButton: ".prev",
+        observer: true,
+        observeParents: true,
+        loop: false
+    });
+    (function ($, $1) {
+        //选项点击
+        var indes = 1;
+        $(".swiper-button-next").on("click", function () {
+            indes++;
+            console.log(indes)
+        })
+
+        getlist()
+
+        function list(obj, num, type) {
+            var arr = ["z", "q", "h", "l", "hu"];
+
+            $(obj).each(function () {
+                var _sum = $(this)[0].optionValue;
+                if ($(this)[0].optionValue.length <= 1) {
+                    var sum = _sum.substring(0, 1)
+                } else {
+                    var sum = _sum.substring(0, 2)
+                }
+
+                var __num = Math.floor(Math.random() * 4);
+                if (type == 2) {
+                    var stt = "";
+                    stt += '<div class="test-list-itemtext" ssq="' + $(this)[0].toQuestionNo + '">' +
+                        '<div class="container-fluid">' +
+                        '<div class="row" data-id="' + $(this)[0].optionKey + '">' +
+                        '<div class="pull-left test-type ' + arr[__num] + '">' + sum + '</div>' +
+                        '<div class="pull-left test-txt">' + $(this)[0].optionValue + '</div>' +
+                        '<div class="pull-right checked nochecked"></div>' +
+                        '</div></div></div>';
+                    $(".swiper-slide").eq(num).find('.test-list-item-content').append(stt)
+                } else {
+                    var stt = "";
+                    stt += '<div class="test-list-itemtext"  ssq="' + $(this)[0].toQuestionNo + '">' +
+                        '<div class="container-fluid">' +
+                        '<div class="row" data-id="' + $(this)[0].optionKey + '">' +
+                        '<div class="pull-left test-type z">' + sum + '</div>' +
+                        '<div class="pull-left test-txt">' + $(this)[0].optionValue + '</div>' +
+                        '<div class="pull-right checked addchecked"></div>' +
+                        '</div></div></div>';
+                    $(".swiper-slide").eq(num).find('.test-list-item-content').append(stt)
+                }
+
+            })
+        }
+
+        var _num = 0;
+        var objes = {};
+        var _insarr = [];
+        var _str = "";
+
+        function getlist() {
+            var _url = "healthyTest/findAllHealthyQuestion";
+            var _data = {};
+            var _success = function (obj) {
+                console.log(obj);
+                if (obj.success == true) {
+                    var data = obj.data;
+                    $(data).each(function (i) {
+                        var arrs = data[i].questionNo.split("K")
+                        var keys = "jk" + arrs[1];
+                        objes[keys] = "";
+                        var str = "";
+                        var sum = i * 1 + 1;
+                        if (data[i].isDisable == 1) {
+                            str += '<div class="swiper-slide  swiper-no-swiping" style="width:375px;" id="' + data[i].questionNo + '" strnum="' + $(this)[0].questionNo + '" >' +
+                                '<div class="test-list-item">' +
+                                '<div class="test-list-item-title">' + $(this)[0].questionNo + ":" + $(this)[0].questionCount + '</div>' +
+                                '<div class="test-list-item-content">' +
+                                '</div>' +
+                                '</div>' +
+                                ' </div>';
+                        } else {
+                            str += '<div class="swiper-slide swiper-no-swiping hide" style="width:375px;" id="' + data[i].questionNo + '" >' +
+                                '<div class="test-list-item">' +
+                                '<div class="test-list-item-title">' + $(this)[0].questionNo + ":" + $(this)[0].questionCount + '</div>' +
+                                '<div class="test-list-item-content">' +
+                                '</div>' +
+                                '</div>' +
+                                ' </div>';
+                        }
+                        mySwiper.appendSlide(str)
+                        list($(this)[0].optionList, i, $(this)[0].questionType);
+
+                    })
+                    console.log(data[0].questionNo)
+                    var _inn = "";
+                    //选项点击  TODO 第15次点击有点问题
+                    $("body").on("click", ".row", function () {
+                        console.log(objes)
+                        mySwiper.update()
+                        _inn = $(this).parents(".swiper-slide").index();
+                        var _in = $(this).parents(".swiper-slide").attr("strnum")
+                        var _ins = $(this).parents(".test-list-itemtext").index() + 1;
+                        var len = $(this).parents(".test-list-itemtext").parent().find(".test-list-itemtext").length;
+                        console.log(_ins);
+                        if (_ins == len) {
+                            return
+                        }
+                        if (_insarr.indexOf(_ins) == -1) {
+                            _insarr.push(_ins)
+                        } else {
+                            _insarr.splice(_insarr.indexOf(_ins), 1)
+                        }
+                        if ($(this).find(".checked").hasClass("addchecked")) {
+                            $(this).find(".checked").removeClass("addchecked").addClass("test-checkbox");
+                            $(this).parents(".test-list-itemtext").siblings().find(".checked").removeClass("test-checkbox").addClass("addchecked");
+                            getAttr(this)
+                            _num = 1;
+                        } else {
+                            $1(this).parents(".swiper-slide").find(".row:last").find(".checked").removeClass("test-checkbox").addClass("nochecked")
+                            if ($(this).find(".checked").hasClass("nochecked")) {
+                                $(this).find(".checked").removeClass("nochecked").removeClass("addchecked").addClass("test-checkbox");
+                                _num++
+                                getAttr(this)
+                            } else {
+                                $(this).find(".checked").addClass("nochecked").removeClass("test-checkbox").removeClass("addchecked")
+                                _num--
+                                getAttr(this)
+                            }
+                        }
+                        isNum(_num)
+                        var _stt = "jk" + (data[_inn].questionNo.split("K"))[1];
+                        objes[_stt] = _insarr.join();
+                        console.log(_insarr)
+                    })
+                    $1(".swiper-slide:last").on("click", ".row", function () {
+                        $(this).find(".checked").addClass("test-checkbox");
+                        $(".next-button").addClass("hide")
+                        $(".yesBtn").removeClass("hide")
+                    })
+                    //判断关联
+                    function getAttr(name) {
+
+                        var str = $(name).parents(".test-list-itemtext").attr("ssq");
+                        var arr = str.split(",")
+
+                        if (str != undefined) {
+
+                            $.each(arr, function (key, val) {
+                                $(name).parents(".test-list-itemtext").siblings().on("click", function () {
+                                    $(stt).addClass("hide")
+                                })
+                                if (val != undefined) {
+
+                                    var stt = "#" + val;
+                                    if ($(stt).hasClass("hide")) {
+                                        $(stt).removeClass("hide")
+                                    } else {
+                                        $(stt).addClass("hide")
+                                    }
+                                }
+                            })
+                        }
+                    }
+
+                    //无点击
+                    $1(".swiper-slide").on("click", ".row:last", function () {
+                        var _inn = $(this).parents(".swiper-slide").index();
+                        var _stt = "jk" + (data[_inn].questionNo.split("K"))[1];
+                        $(this).find(".checked").addClass("test-checkbox")
+                        _insarr.length = 0;
+                        _num = 1;
+                        isNum(_num)
+                        if ($(this).parents(".test-list-itemtext").siblings().find(".checked").hasClass("addchecked")) {
+                            $(this).parents(".test-list-itemtext").siblings().find(".checked").removeClass("test-checkbox").removeClass("nochecked").addClass("addchecked")
+                        } else {
+                            $(this).parents(".test-list-itemtext").siblings().find(".checked").removeClass("test-checkbox").addClass("nochecked")
+                        }
+//                        objes[data[_inn].questionNo] = "0";
+                        objes[_stt] = "0";
+
+                    })
+
+                    //判断当前页面是否有已经被选择的选项
+                    function isNum(num) {
+                        if (num <= 0) {
+                            $(".next-button").addClass("hide")
+                        } else {
+                            $(".next-button").removeClass("hide")
+                            $(".next-button").on("click", function () {
+                                num = 0;
+                                _insarr = [];
+                                if (num <= 0) {
+                                    $(".next-button").addClass("hide")
+                                }
+
+                            })
+                        }
+                    }
+
+                }
+
+                //判断是否有复诊计划
+                $(".swiper-slide").eq(15).find(".test-list-itemtext").on("click", function () {
+                    var timestamp = Date.parse(new Date())
+                    var times = format(timestamp, "yyyy-MM-dd")
+                    var str = "jk" + 16;
+                    if ($(this).index() == 0) {
+
+                        $(this).parent().css({"position": "relative"});
+                        if ($(this).parent().find("div").hasClass("addTime")) {
+                            $(this).parent().find(".addTime").remove()
+                        } else {
+                            $(this).parent().append('<div class="test-list-itemtext addTime"><div>请选择您的复诊时间</div><span class="beginTime" >' + times + '</span><i class="pull-right inlink glyphicon glyphicon-menu-right"></i></div>');
+                        }
+
+                        objes[str] = $(".beginTime").text()
+                    } else {
+                        $(this).parent().find(".addTime").remove()
+                        objes[str] = "0"
+                    }
+                    $1('.beginTime').date();
+                    $("body").on("touchend click", "#dateconfirm", function () {
+                        objes[str] = $(".beginTime").text()
+                    })
+                })
+
+                //吸烟
+                $(".swiper-slide").eq(9).find(".test-list-itemtext").on("click", function () {
+                    $(".mui-poppicker").remove()
+                    var str = "jk0" + 9;
+                    if ($(this).index() == 0) {
+                        $(this).parent().css({"position": "relative"});
+                        if ($(this).parent().find("div").hasClass("mork")) {
+                            $(this).parent().find(".mork").remove()
+                        } else {
+                            var picker = new mui.PopPicker();
+                            $(this).parent().append('<div class="test-list-itemtext mork"><div>8.1您平均每天抽多少支？</div><span class="morks" >0支</span><i class="pull-right inlink glyphicon glyphicon-menu-right"></i></div>');
+                            $("body .morks").on("click", function () {
+                                $(".mui-poppicker").css({"z-index": "999999"})
+                                $(".mui-btn").addClass("onebtn")
+                                $(".mui-btn").css({"z-index": "9999999"})
+                                picker.setData([{
+                                    value: "first",
+                                    text: "0支"
+                                }, {
+                                    value: "second",
+                                    text: "1-5支"
+                                }, {
+                                    value: "third",
+                                    text: "5-10支"
+                                }, {
+                                    value: "fourth",
+                                    text: "10-20支"
+                                }, {
+                                    value: "fifth",
+                                    text: "20支以上"
+                                }])
+                                picker.show()
+                            })
+                            //TODO 抽烟选择数量点击确定按钮
+                            $1('body').unbind('click');
+                            $1('body').on('touchend click', '.mui-poppicker-header .mui-btn.mui-poppicker-btn-ok.onebtn', function () {
+                                $(".mui-backdrop").remove();
+                                $(".highlight").addClass("txts");
+                                $(".morks").html($(".txts").text());
+                                $(".mui-poppicker").removeClass("mui-active");
+                                var _strone = "";
+                                switch ($(".txts").text()) {
+                                    case "0支":
+                                        _strone = "1";
+                                        break;
+                                    case "1-5支":
+                                        _strone = "2";
+                                        break;
+                                    case "5-10支":
+                                        _strone = "3";
+                                        break;
+                                    case "10-20支":
+                                        _strone = "4";
+                                        break;
+                                    case "20支以上":
+                                        _strone = "5";
+                                        break;
+                                }
+                                objes[str] = _strone;
+                            })
+                        }
+                    } else {
+                        $(this).parent().find(".mork").remove()
+                        objes[str] = "0"
+                    }
+                })
+
+                //饮酒
+                $(".swiper-slide").eq(10).find(".test-list-itemtext").on("click", function () {
+                    $(".mui-poppicker").remove()
+                    var str = "jk" + 10;
+                    if ($(this).index() == 0) {
+                        $(this).parent().css({"position": "relative"});
+                        if ($(this).parent().find("div").hasClass("liquor")) {
+                            $(this).parent().find(".liquor").remove()
+                        } else {
+                            var picker = new mui.PopPicker();
+                            $(this).parent().append('<div class="test-list-itemtext liquor"><div>8.1您平均每周饮酒几次？</div><span class="liquors" >1次</span><i class="pull-right inlink glyphicon glyphicon-menu-right"></i></div>');
+                            //TODO 饮酒点击确定按钮
+                            $1('body').unbind('click');
+                            $("body").on("touchend click", ".liquors", function () {
+                                $(".mui-picker").addClass("addOne")
+                                $("body").on("click", ".mui-btn", function () {
+
+                                    $(".mui-poppicker").css({"z-index": "999999"})
+                                    $(".mui-backdrop").remove()
+                                    var strs = $(".highlight").text();
+                                    $(".liquors").html(strs)
+                                    $(".mui-poppicker").removeClass("mui-active");
+                                    var _strone = "";
+                                    switch (strs) {
+                                        case "1次":
+                                            _strone = "1";
+                                            break;
+                                        case "2次":
+                                            _strone = "2";
+                                            break;
+                                        case "3次":
+                                            _strone = "3";
+                                            break;
+                                        case "4次":
+                                            _strone = "4";
+                                            break;
+                                        case "5次":
+                                            _strone = "5";
+                                            break;
+                                        case "6次":
+                                            _strone = "6";
+                                            break;
+                                        case "7次":
+                                            _strone = "7";
+                                            break;
+                                        case "7次以上":
+                                            _strone = "8";
+                                            break
+                                    }
+                                    objes[str] = _strone;
+                                })
+                                picker.setData([{
+                                    value: "first",
+                                    text: "1次"
+                                }, {
+                                    value: "second",
+                                    text: "2次"
+                                }, {
+                                    value: "third",
+                                    text: "3次"
+                                }, {
+                                    value: "fourth",
+                                    text: "4次"
+                                }, {
+                                    value: "fifth",
+                                    text: "5次"
+                                }, {
+                                    value: "fifth",
+                                    text: "6次"
+                                }, {
+                                    value: "fifth",
+                                    text: "7次"
+                                }, {
+                                    value: "fifth",
+                                    text: "7次以上"
+                                }])
+                                picker.show()
+                            })
+                        }
+                    } else {
+                        $(this).parent().find(".liquor").remove()
+                        objes[str] = "0"
+                    }
+
+                })
+
+            };
+            var _error = function (obj) {
+                alert(obj.message);
+            };
+            $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+            }, "POST", "myhome");
+        }
+
+        function objstr(name) {
+            if (_insarr.length <= 0) {
+                objes[name] = "0";
+            } else {
+                objes[name] = _insarr.join();
+            }
+
+        }
+
+        var message = getmessage()
+
+        function getmessage() {
+            var messageobj = new Object();
+            var _url = "mskluser/userInfos";
+            var _data = {};
+            var _success = function (obj) {
+                if (obj.data.sex == "男") {
+                    messageobj.sex = "1"
+                } else {
+                    messageobj.sex = "2"
+                }
+                var _messstr;
+                if (obj.data.remark) {
+                    _messstr = obj.data.remark.split(",");
+                } else {
+                    _messstr = "";
+                }
+                switch (_messstr[0]) {
+                    case "慢性HBV携带者":
+                        messageobj.diseaseType = "1";
+                        break;
+                    case "HBeAg阳性慢性乙型肝炎（大三阳）":
+                        messageobj.diseaseType = "2";
+                        break;
+                    case "HBeAg阴性慢性乙型肝炎 （小三阳或小二阳）":
+                        messageobj.diseaseType = "3";
+                        break;
+                    case "乙型肝炎肝硬化代偿期":
+                        messageobj.diseaseType = "4";
+                        break;
+                    case "乙型肝炎肝硬化失代偿期":
+                        messageobj.diseaseType = "5";
+                        break;
+                }
+                switch (_messstr[1]) {
+                    case "3个月以内":
+                        messageobj.diseaseDate = "1";
+                        break;
+                    case "3个月以上，一年以内":
+                        messageobj.diseaseDate = "2";
+                        break;
+                    case "一年以上，三年以内":
+                        messageobj.diseaseDate = "3";
+                        break;
+                }
+                message.age = obj.data.age;
+            };
+
+            var _error = function (obj) {
+                console.log(obj)
+            };
+            $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+            }, "POST", "testlist");
+            return messageobj;
+        }
+
+        //选项关联
+        $("a.yesBtn").unbind("click");
+        $("body").on("click", ".yesBtn", function () {
+            $.each(objes, function (key, val) {
+                if (val.length <= 0) {
+                    objes[key] = "0"
+                }
+            });
+            console.log(message);
+            objes.age = message.age;
+//            objes.diseaseDate = message.diseaseDate;
+//            objes.diseaseType = message.diseaseType;
+            objes.diseaseDate = "1";
+            objes.diseaseType = "2";
+            objes.sex = message.sex;
+//            console.log(objes);
+            var _data = objes;
+//            var _data = {};
+//            for (var item in objes) {
+//                _data['"' + item + '"'] = objes[item]
+//            }
+            var _url = "healthyTest/healthyReport";
+            console.log(_data)
+            var _success = function (obj) {
+                console.log(obj)
+                window.sessionStorage.setItem("list", JSON.stringify(obj));
+                window.location.href = "testloadding.html";
+                return false;
+            };
+
+            var _error = function (obj) {
+                console.log(obj);
+            };
+            $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+            }, "POST", "healthyReport");
+        })
+        function format(time, format) {
+            var t = new Date(time);
+            var tf = function (i) {
+                return (i < 10 ? '0' : '') + i
+            };
+            return format.replace(/yyyy|MM|dd/g, function (a) {
+                switch (a) {
+                    case 'yyyy':
+                        return tf(t.getFullYear());
+                        break;
+                    case 'MM':
+                        return tf(t.getMonth() + 1);
+                        break;
+                    case 'dd':
+                        return tf(t.getDate());
+                        break;
+                }
+            })
+        }
+
+    })(Zepto, jQuery)
+
+
+</script>
+</body>
+
+</html>

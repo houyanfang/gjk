@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">
+			(function(w,d){
+				function setREM() {
+					var __h = d.documentElement, __b = d.body;
+					__w = __h.clientWidth || __b.clientWidth;
+					var __f = __w / 18.75;
+					__h.style.fontSize = __f + 'px';
+				}
+				setREM()
+				w.onresize = function() {
+					setTimeout(function(){
+						setREM()
+					},100)
+				}
+			})(window, window.document)
+		</script>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+	</head>
+
+	<body class="hasNav">
+
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				
+				<div role="navtitle">
+					我的积分
+				</div>
+			</div>
+		</div>
+        
+        <div class="points-title">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="font14 text-white align-center">
+				    	积分余额
+				    </div>
+				    <div class="font40 text-white align-center integralnum">
+				    	0
+				    </div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 align-center">
+						<div class="white-border-btn" style="margin-left: 18px;">
+							<span class="addintegral">赚取积分</span>
+							<span style="font-size: 18px;">></span>
+						</div>
+					</div>
+					<div class="col-xs-6 align-center">
+						<div class="white-border-btn" style="margin-left: 18px;">
+							<span class="integralshop">积分商城</span>
+							<span style="font-size: 18px;">></span>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        <div class="point-gray-bg">积分明细</div>
+        <div class="point-white-bg" style="min-height: 400px;">
+        	<ul class="messageList">
+        		
+        		
+        	</ul>
+        </div>
+        
+		
+		
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+			<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+			<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+			<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+			<script src="../js/fx.js"></script>
+				<script src="../js/zepto.scroll.js"></script>
+			<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../js/cookie.js"></script>
+			<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+			<script src="../js/base.js"></script>
+			<script type="text/javascript">
+				(function($) {
+					
+					function getData() {
+						var _url = "account";
+						var _data = {};
+						var _success = function(obj) {
+							console.log(obj);
+							if(obj.success==true){
+								$(".integralnum").html(obj.data.userIntegrate);
+							}
+						};
+						var _error = function(obj) {
+							console.log(obj.message);
+						};
+						$.gjk.ajax.postAjax(_url, _data, _success, _error, function() {}, "POST", "mypoint");
+						
+						
+						var __url = "mskluser/findAllIntegralRecord";
+						var _success = function(obj) {
+							console.log(obj);
+							console.log(obj.data);
+							if(obj.success==true){
+								var listName="";
+								console.log(obj)
+								$.each(obj.data,function(key,val){
+									console.log(val.transIntegrateType)
+									switch(val.transIntegrateType){
+										case "1":
+										listName="签到获取";
+										break;
+										case "2":
+										listName="全部计划执行";
+										break;
+										case "3":
+										listName="手机号绑定";
+										break;
+										case "4":
+										listName="疾病类型绑定";
+										break;
+										case "5":
+										listName="处方照片上传";
+										break;
+										case "6":
+										listName="兑换商品";
+										break;
+								}
+									var num="";
+									if(val.transIntegrateType!=6){
+										num='<div class="pull-right lineht text-yellow">+'+val.transIntegrateNum+'</div>'
+									}else{
+										num='<div class="pull-right lineht text-gray">-'+val.transIntegrateNum+'</div>'
+									};
+									var str="";
+									str+='<li class="border-btm">'+
+        										'<div class="container-fluid">'+
+        										'<div class="row">'+
+	        									'<div class="pull-left">'+
+	        										'<p>'+listName+'</p>'+
+	        										'<p class="text-gray">'+new Date(val.createDate).toLocaleString()+'</p>'+
+	        									'</div>'+num+'</div>'+
+        										'</div>'+
+        									'</li>';
+        							console.log(str)
+        						$(".messageList").append(str)
+								})
+							}
+						};
+						var _error = function(obj) {
+							console.log(obj.message);
+						};
+						$.gjk.ajax.postAjax(__url, _data, _success, _error, function() {}, "POST", "mypoint");
+						
+					}
+
+					$(".addintegral").on("click",function(){
+						window.location.href = $.gjk.path_url + "self/earnpoint.html";
+					})
+					$(".integralshop").on("click",function(){
+						window.location.href = $.gjk.path_url + "self/pointsmall.html";
+					})
+					getData()
+				})(Zepto)
+			</script>
+	</body>
+
+</html>

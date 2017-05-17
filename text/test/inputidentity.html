@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style type="text/css">
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @-o-viewport {
+            width: device-width;
+        }
+
+        @viewport {
+            width: device-width;
+        }
+    </style>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script>
+        // Copyright 2014-2015 Twitter, Inc.
+        // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    '@-ms-viewport{width:auto!important}'
+                )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <link rel="stylesheet" href="../css/addplan.css"/>
+</head>
+
+<body class="hasNav">
+
+<div role="navigation" class="navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="pull-left">
+            <a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+        </div>
+        <div class="pull-right">
+        </div>
+        <div role="navtitle">
+            补全身份
+        </div>
+    </div>
+</div>
+
+<div role="identity-form" class="identity-form-view">
+    <div class="identity-form-field">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="pull-left identity-form-label">
+                    性别
+                </div>
+                <div class="pull-right inlink glyphicon glyphicon-menu-right"></div>
+                <div class="pull-right identity-form-input">
+                    <input type="text" placeholder="男" id="userResult4"/>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="identity-form-field">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="pull-left identity-form-label">
+                    年龄
+                </div>
+                <div class=" "></div>
+                <div class="pull-right identity-form-input">
+                    <input type="text" placeholder="请输入年龄" style="padding-right: 25px;" id="age"/>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="identity-form-h1">
+        疾病身份
+    </div>
+    <div class="identity-form-field">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="pull-right inlink glyphicon glyphicon-menu-right"></div>
+                <div class="pull-left identity-form-input" style="width: 80%;">
+                    <input class="text-left" type="text" placeholder="请您选择疾病身份" id="userResult3" style="width:100%;"/>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="identity-form-submit">
+        <a href="###" id="end">完成</a>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+<script src="../js/underscore.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/gjk.js"></script>
+<script type="text/javascript">
+    (function ($) {
+        var _arr = [];
+        getms()
+        $("#age").on("focus", function () {
+            $("#age").val("")
+        })
+
+        //点击完成
+        $("#end").on("click", function () {
+            if ($("#age").val().length <= 0) {
+                alert("请输入年龄")
+            } else if ($("#userResult3").val().length <= 0) {
+                alert("请选择疾病信息")
+            } else {
+
+                var st = $("#userResult3").val().split(" ");
+                console.log(sum.userDiseaseName)
+                var _url = "mydisease/svarUserDiseases";
+                var _data = {
+                    "diseaseId": sum.diseaseId,
+                    "userDiseaseName": "",
+                    "userDiseaseDate": st[1],
+                    "userDiseaseId": sum.userDiseaseId,
+                    "remark":sum.userDiseaseName,
+                    "pid":""
+                };
+                var _success = function (obj) {
+                    console.log(obj);
+                    if (obj.success == true) {
+//                        alert(1)
+                        senduserInfo();
+                    }
+                };
+
+                var _error = function (obj) {
+                    console.log(obj)
+                };
+                $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+                }, "POST", "myhome");
+
+                function senduserInfo() {
+                    var __url = "mskluser/addOrUpdateUserExtInfoNew";
+                    var _sex = $("#userResult4").val();
+                    var _age = $("#age").val();
+                    var __data = {
+                        "photo": sum.photo,
+                        "nickName": sum.nickName,
+                        "sex": _sex,
+                        "age": _age,
+                        "comeFrom": sum.comefrom,
+                        "mobile": sum.mobile,
+                        "email": "",
+                        "token": $.gjk.isHasToken(),
+                        "userQq": ""
+                    };
+                    var __success = function (obj) {
+                        console.log(obj);
+                        if (obj.success == true) {
+//                            window.location.href = $.gjk.path_url + "test/testlist.html"
+                        }
+                    };
+
+                    $.gjk.ajax.request(__url, __data, __success, _error, function () {
+                    }, "POST", "inputidentity");
+                }
+            }
+        })
+
+
+        //获取疾病列表
+        function getms() {
+            var _url = "disease/findDiseaseByType/";
+            var _data = {};
+            var _success = function (obj) {
+                if (obj.success == true) {
+                    $.each(obj.data, function (key, val) {
+                        _arr.push(val.userDiseaseName)
+                    });
+                }
+            };
+
+            var _error = function (obj) {
+                alert(obj.message);
+            };
+            $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+            }, "POST", "myhome");
+        }
+
+        //获取个人信息
+        var sum = new Object();
+        var _url = "mskluser/userInfos";
+        var _data = {};
+        var _success = function (obj) {
+            if (obj.success == true) {
+                sum.diseaseId = obj.data.diseaseId;
+                sum.userDiseaseName = obj.data.disease;
+                sum.userDiseaseId = obj.data.userDiseaseId;
+                sum.photo = obj.data.photo;
+                sum.nickName = obj.data.nickName;
+                sum.comefrom = obj.data.comeFrom;
+                sum.mobile = obj.data.mobile;
+
+                if (obj.data.sex != undefined) {
+                    $("#userResult4").val(obj.data.sex)
+                }
+                if (obj.data.remark != undefined) {
+                    var str = obj.data.remark
+                    var arr = str.split(",")
+                    $("#userResult3").val(arr[0] + " " + arr[1])
+                }
+                if (obj.data.age != undefined) {
+                    $("#age").val(obj.data.age)
+                }
+            }
+        };
+
+        var _error = function (obj) {
+            alert(obj.message);
+        };
+        $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+        }, "POST", "myhome");
+
+
+        $('#userResult4').picker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+						  <button class="button button-link pull-left close-picker">取消</button>\
+						  <button class="button button-link pull-right close-picker">确定</button>\
+						  <h1 class="title">选择性别</h1>\
+						  </header>',
+            cols: [{
+                textAlign: 'center',
+                values: ["男", "女"]
+                //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+            }
+            ],
+            formatValue: function (p, v, d) {
+                return (d[0]);
+            }
+        })
+
+
+        $('#userResult3').picker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+						  <button class="button button-link pull-left close-picker">取消</button>\
+						  <button class="button button-link pull-right close-picker">确定</button>\
+						  <h1 class="title">选择性别</h1>\
+						  </header>',
+            cols: [{
+                textAlign: 'center',
+                values: _arr
+                //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+            },
+                {
+                    textAlign: 'center',
+                    values: ["3个月以内", "3个月以上，一年以内", "一年以上，三年以内"]
+                    //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+                }
+            ],
+            formatValue: function (p, v, d) {
+                return (d[0] + " " + d[1]);
+            }
+        });
+    })(Zepto)
+
+</script>
+</body>
+
+</html>

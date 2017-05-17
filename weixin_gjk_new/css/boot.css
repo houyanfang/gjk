@@ -1,0 +1,113 @@
+/* Box-sizing resets
+ *
+ * 为了避免 Bootstrap 设置的全局盒模型所带来的影响，可以重置单个页面元素或覆盖整个区域的盒模型。
+ * 你有两种选择：覆盖单个页面元素或重置整个区域。它们都可以通过纯 CSS 或 LESS 代码的形式实现。
+ */
+
+/* Option 1A: 通过 CSS 代码覆盖单个页面元素的盒模型 */
+.element {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+/* Option 2A: 通过 CSS 代码重置整个区域 */
+.reset-box-sizing,
+.reset-box-sizing *,
+.reset-box-sizing *:before,
+.reset-box-sizing *:after {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+html, body {
+	font-family: "微软雅黑";
+	-webkit-font-smoothing: antialiased; /*chrome、safari*/
+	-moz-osx-font-smoothing: grayscale;/*firefox*/
+}
+.tip-warn {
+	margin: 9px 0 5px;
+	font-size:14px;
+	color: #999;
+	overflow: hidden;
+}
+
+.tip-warn:before {
+	content: ' ';
+	float: left;
+	width: 6px;
+	height: 20px;
+	margin: 2px 6px 0 15px;
+	vertical-align: middle;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	-o-border-radius: 6px;
+	border-radius:6px;
+	background: #fea70f;
+}
+
+.tip-warn span {
+	float: left;
+	width: 90%;
+}
+#gjk-nav {
+	/*padding: 0 .75rem;*/
+	background-color: #FEA70F;
+}
+
+#gjk-nav .title {
+	color: #FFF;
+}
+
+#gjk-nav .icon,
+#gjk-nav .button {
+	color: #FFF;
+}
+
+#gjk-nav .button {
+	border: 1px solid #FFF;
+}
+
+.gjk-nav-top {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+}
+
+.gjk-nav-static {
+	position: static;
+}
+
+.gjk-nav-transparent {
+	background: transparent!important;
+}
+.prh10{
+	padding-right: 10px;
+}
+
+
+@font-face {font-family: "iconfont";
+	src: url('../font/indexIcon/iconfont.eot?t=1492050792560'); /* IE9*/
+	src: url('../font/indexIcon/iconfont.eot?t=1492050792560#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	url('../font/indexIcon/iconfont.woff?t=1492050792560') format('woff'), /* chrome, firefox */
+	url('../font/indexIcon/iconfont.ttf?t=1492050792560') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+	url('../font/indexIcon/iconfont.svg?t=1492050792560#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+	font-family:"iconfont" !important;
+	font-size:25px;
+	font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-right: 10px;
+	margin-left: -10px;
+	color: #cccccc;
+}
+
+.icon-tianjia:before { content: "\e748"; }
+
+.icon-guanli:before { content: "\e624"; }

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+		<link rel="stylesheet" href="../css/validate.css" />
+	</head>
+
+	<body class="hasNav hasFoot fullscreen">
+		
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				<div class="pull-right">
+					<a  href="javascript:void();"></a>
+				</div>
+				<div role="navtitle">
+					修改提现密码
+				</div>
+			</div>
+		</div>
+		
+		<div role="identification" class="identification">
+				
+			<div class="identification-form-view">
+			    <form action="?" method="get" id="test_form" class="form">
+			    	<fieldset class="identification-form-submit">
+			    		<div class="identification-form-submit">
+							<input type="password" id="oldpwd" class="field-text form-control form-text old-password"  data-required="true" data-descriptions="oldpwd" data-describedby="oldpwd-description"    placeholder="请输入原提现密码"/>
+							<div id="oldpwd-description" class="tip-text"></div>
+			    		</div>
+						
+						<div class="identification-form-submit">
+							<input type="password" id="pwd2" class="field-text form-control form-text new-password" placeholder="请输入提现新密码" data-required="true" data-descriptions="password" data-describedby="password-description"  data-conditional="pwd2"/>
+							<div id="password-description" class="tip-text"></div>  
+						</div>
+						<div class="identification-form-submit">
+							<input type="password" id="confirmpwd2" class="field-text form-control form-text confirm-password" placeholder="请确认提现新密码" data-required="true" data-descriptions="confirmpassword" data-conditional="confirmpwd2" data-describedby="confirmpassword-description"/>
+							<div id="confirmpassword-description" class="tip-text"></div>  
+						</div>
+						<div class="identification-form-submit">
+							<input type="submit"  class="zbtn zbtn-primary zbtn-full zbtn-lg circular submit" value="完成" />
+						</div>
+			    	</fieldset>
+			    </form>
+				
+				
+				<div class="text-right modify-text margin10">
+					<a  href="getpwd.html" class="text-yellow">重置提现密码</a>
+				</div>
+			</div>
+		</div>
+		<div id="longModel">
+		    <div class="modelBody">
+		        <div class="modelContext">
+		            <p>提现失败，请重新输入！</p>
+		        </div>
+		        <div class="modelFooter">
+		            <a href="javascript:;" class="btnRes">取消</a>
+		            <a href="javascript:;" class="btnOk">确定</a>
+		        </div>
+		    </div>
+		</div>
+		
+		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+		<script src="../js/zepto-mvalidate.js"></script>
+		<script src="../js/underscore.js"></script>
+		<script src="../js/cookie.js"></script>	
+		<script src="../js/gjk.js"></script>
+		<script src="../js/form-validate.js"></script>
+		<script>
+			$(function(){
+				$(".submit").click(function(){
+					var oldPassword = $(".old-password").val();
+					var newPassword = $(".new-password").val();
+					var confirmPassword = $(".confirm-password").val();
+//					if(!oldPassword)
+//					{
+//						$('#oldpwd-description').text("");
+//					}
+//					if(!newPassword){}
+//					if(!confirmPassword){}
+//					if(newPassword != confirmPassword)
+//					{
+//						//$('#confirmpassword-description').text("两次输入密码不一致.");
+//						//return;
+//					}
+					
+					var _url = "userTrade/tradePassword/update";
+					var _data = {"userTradePwd": oldPassword, "newUserTradePwd": confirmPassword, "userTradePwdStrength": "2"};
+					
+					var _success = function(obj){
+						if(obj.success == true){
+				            var enterUrl = $.gjk.path_url;
+				            window.location.href = enterUrl + 'self/myaccount.html';
+						}
+						if(!!oldPassword&& newPassword===confirmPassword &&obj.success===false){
+							$('#oldpwd-description').text(obj.message);
+						}
+					};
+					var _complete = function(){
+						$('.me-loading').hide();
+					};
+					var _error = function(){
+//						alert(obj.message);
+					};
+					$.gjk.ajax.postAjax(_url,_data,_success,_error,_complete,"POST","modifypwd");
+				});
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,58 @@
+  <div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="msklIntegralFrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+	        	<label>商品名称：</label><select name="productName" class="input" >
+							           </select>
+	         	<label>疾病身份 :</label><select name="userDiseaseName" class="input" >
+					            </select>
+					            
+	          	<label>订单号码：</label><input  type="text" placeholder="订单号码" name="orderNo" class="input" />
+	         	<label>兑换状态:</label><select name="orderStatus" class="input" >
+				            		<option value='' >全部</option>
+					            	<option value='1' >未发货</option>
+					            	<option value='2' >已发货</option>
+					            	<option value='3' >已签收</option>
+					            </select>
+            </li>
+	        <li>
+	    		<label>注册时间： </label><input type="text" placeholder="起始时间" name="startTime" class="input" />
+	        		-- <input type="text" placeholder="结束时间" name="endTime" class="input" />
+      		 
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklIntegralSearch" > 搜索</a>
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    
+    <table class="table table-hover text-center  table-bordered">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="8">
+	    	<span style="padding-left:10px;float:left">积分记录：共<span class="sum">0</span>条</span>
+		</td>
+    </tr> 
+      <tr>
+        <th>订单号</th>
+        <th>商品名称</th>       
+        <th>昵称</th>       
+        <th>手机号</th>       
+        <th>所在地区</th>
+        <th>兑换日期</th>
+        <th>疾病身份类型</th>
+        <th>兑换状态</th>
+      </tr> 
+		<tbody  class="msklIntegrallist"></tbody>    
+      <tr>
+        <td colspan="8"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+  </div>
+
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/operate/integral.js"></script>
+<script type="text/javascript">
+Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+$('.suffererDIV').integral({init:"init"});
+</script>

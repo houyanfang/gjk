@@ -1,0 +1,650 @@
+<div class="tab  border-main suffererInfoDIV" data-toggle="click">
+	<div class="tab-head">
+		<ul class="tab-nav">
+			 <li class="active"><a href="#baseinfo">基本信息</a></li> 
+		     <li><a href="#account">账户</a></li> 
+		     <li><a id="integralinfo" href="#integral">积分</a></li> 
+		     <li><a href="#healthy">健康评估</a></li> 
+		     <li><a id="planPage" href="#plan">计划管理</a></li> 
+		     <li><a href="#assessment">周评估</a></li> 
+		     <li><a id="newsinfor" href="#news">消息</a></li> 
+		     <li><a id="promotion" href="#activity">活动</a></li> 
+		     <li><a id="moodrecordinfor" href="#moodrecord">心情记录</a></li> 
+		     <li><a href="#supervisor">监督人</a></li> 
+		     <li><a href="#adress">收货地址</a></li> 
+		</ul>
+	</div>
+	<div class="tab-body tab-body-bordered">
+		<div class="tab-panel active" id="baseinfo">
+		
+		
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label>用户名：<span class="user_name"></span></label>
+		                <label>昵称：<span class="user_nick_name"></span></label>
+			      		<label>性别：<span class="gender"></span></label>
+			    		<label>年龄：<span class="user_age"></span> </label>
+			    		<label>手机号：<span class="mobile"></span> </label>
+		            </li>
+			        <li>
+			    		<label>E_mail：<span class="email"></span> </label>
+			          	<label>邀请码：<span class="invitation_code"></span></label>
+			      		<label>疾病身份：<span class="med_record_type"></span></label>
+			    		<label>身份证是否通过：<span class="cardStatus"></span> </label>
+		            </li>
+			        <li>
+			    		<label class="label320">身份证号码： <span class="user_identi_card"></span></label>
+			    		<label class="label320">居住地址： <span class="user_comefrom"></span></label>
+		            </li>
+			        <li>
+			    		<label>身份证照片： </label>
+			    		<div class="view idcard">
+				    		<img src="" width="128" height="128" class="img-border border-blue radius" />
+			                <div class="mask">
+			                  		  审核中
+			                </div>
+						</div>
+		            </li>
+			        <li class="cfimg">
+		            </li>
+			     </ul>
+		     </div>
+  		</div>
+  
+  
+  
+		</div>
+		<div class="tab-panel" id="account">
+			
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label>账户余额：<span class="avalaible_amount"></span>元</label>
+		            </li>
+			        <li>
+			    		<label>银行卡列表： </label>
+			    		<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>是否审核</th>       
+						        <th>银行卡号</th>
+						        <th>开户银行</th>       
+						        <th>开户地区</th>       
+						        <th>开户行名称</th>       
+						      </tr> 
+								<tbody class="banklist">
+								</tbody>    
+						    </table>
+		            </li>
+		            <li>
+			    		<label>银行卡操作记录： </label>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>操作日期</th>
+						        <th>记录说明</th>       
+						        <th>操作金额</th>       
+						        <th>账户实时余额</th>       
+						      </tr> 
+								<tbody class="bankrecordlist">
+								</tbody>    
+						    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+		
+
+
+
+		</div>
+		<div class="tab-panel" id="integral">
+			
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_search" style="padding-left:10px;">
+			        <li>
+			          	<label>积分余量：<span class="userIntegrate"></span>积分</label>
+		            </li>
+		            <li>
+            			<table class="table table-hover text-center  table-bordered">
+					      <tr>
+					        <th>操作日期</th>
+					        <th>操作类型</th>       
+					        <th>操作积分数量</th>       
+					        <th>积分余额</th>       
+					        <th>兑换商品</th>       
+					        <th>商品兑换状态</th>       
+					      </tr> 
+							<tbody class="intelist">
+							</tbody> 
+							<tr>
+						        <td colspan="6"><div class="pagelist" id="pagination"></div></td>
+						    </tr>
+					    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+
+		</div>
+		<div class="tab-panel" id="healthy">
+			
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label>评估次数：0次</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>评估时间</th>
+						        <th>查看状态</th>       
+						        <th>报告详细信息</th>       
+						        <th>问卷详细</th>       
+						      </tr> 
+								<tbody>
+									<tr>
+									<td>21222</td>
+									<td>21222</td>
+									<td>
+										<div class="button-group dialogs" data-toggle="click" data-target="#healthy_info_record" data-mask="1" data-width="70%">
+						    				<a data-id='serId' class="show-user button border-main" href="javascript:void(0)"><span class="icon-bars"></span> 详细</a>
+						    			</div>
+									</td>
+									<td>
+										<div class="button-group dialogs" data-toggle="click" data-target="#healthy_info" data-mask="1" data-width="70%">
+						    				<a data-id='serId' class="show-user button border-main" href="javascript:void(0)"><span class="icon-bars"></span> 详细</a>
+						    			</div>
+									</td>
+									</tr>
+								</tbody>    
+						    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+
+		</div>
+		<div class="tab-panel" id="plan">
+			
+				
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label>健康计划：0条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>计划状态</th>
+						        <th>计划类型</th>       
+						        <th>开始时间</th>       
+						        <th>结束时间</th>       
+						        <th>计划次数/总次数</th>       
+						        <th>记录详情</th>       
+						      </tr> 
+								<tbody class="plan_tr">
+									<tr>
+									<td>进行中</td>
+									<td>饮食</td>
+									<td>2017-03-04</td>
+									<td>2017-07-04</td>
+									<td>2/19</td>
+									<td>
+									</td>
+									</tr>
+								</tbody> 
+								<tr>
+							        <td colspan="6"><div class="pagelist" id="plan_pagination"></div></td>
+							        
+						      </tr>   
+						    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+		</div>
+		<div class="tab-panel" id="assessment">
+			
+
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label>周报告：</label><label>0条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>本周开始时间--结束时间</th>
+						        <th>周数</th>       
+						        <th>查看状态</th>       
+						        <th>报告详细信息</th>       
+						      </tr> 
+								<tbody>
+									<tr>
+									<td>2017-03-04--2017-03-031</td>
+									<td>3</td>
+									<td>是</td>
+									<td>
+										<div class="button-group dialogs" data-toggle="click" data-target="#healthy_info_record" data-mask="1" data-width="70%">
+						    				<a data-id='serId' class="show-user button border-main" href="javascript:void(0)"><span class="icon-bars"></span> 详细</a>
+						    			</div>
+									</td>
+									</tr>
+								</tbody>    
+						    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+		</div>
+		<div class="tab-panel" id="news">
+			
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label class="label320">消息记录：<span class="newsSum">0</span>条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered leaveout">
+						      <tr>
+						        <th>发送时间</th>
+						        <th>内容类型</th>       
+						        <th>标题</th>       
+						        <th>消息内容</th>       
+						        <th>是否已读</th>       
+						        <th>查看时间</th>       
+						      </tr> 
+								<tbody class="newslist">
+									
+								</tbody>    
+								<tr>
+							        <td colspan="6"><div class="pagelist" id="pagination1"></div></td>
+							      </tr>
+						    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+			
+
+		</div>
+		<div class="tab-panel" id="activity">
+			
+			
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label class="label320">共参见活动：<span class="promotionSum">0</span>条</label>
+			          	<label class="label320">进行中：<span class="promotionRun">0</span>条</label>
+			          	<label class="label320">已完成：<span class="promotionOver">0</span>条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>活动名称</th>       
+						        <th>报名时间</th>
+						        <th>活动状态</th>       
+						        <th>活动详情</th>       
+						      </tr> 
+								<tbody class="promotionlist">
+									
+								</tbody>    
+								<tr>
+							        <td colspan="4"><div class="pagelist" id="pagination3"></div></td>
+							    </tr>
+						    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+
+		</div>
+		<div class="tab-panel" id="moodrecord">
+			
+			
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label class="label320">心情记录：：<span class="moodSum">0</span>条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>记录时间</th>
+						        <th>心情类型</th>       
+						        <th>心情内容详情</th>       
+						      </tr> 
+								<tbody class="moodlist">
+								</tbody>    
+								<tr>
+							        <td colspan="6"><div class="pagelist" id="pagination2"></div></td>
+							    </tr>
+						    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+		</div>
+		<div class="tab-panel" id="supervisor">
+			
+
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label>用户名：<span class="overseer"></span></label>
+		            </li>
+			        <li>
+			          	<label  class="label320">手机号码：<span class="overseerMobile"></span></label>
+		            </li>
+			        <li>
+			    		<label>关系：<span class="kindred"></span> </label>
+		            </li>
+			        <li>
+			    		<div class="view">
+				    		<img src="" width="128" height="128" class="img-border border-blue radius" />
+						</div>
+		            </li>
+			     </ul>
+		     </div>
+  		</div>
+
+
+		</div>
+		<div class="tab-panel" id="adress">
+			
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label class="label320">地址记录：：<span class="adressSum">0</span>条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>收件人姓名</th>
+						        <th>手机号码</th>       
+						        <th>地区（省市区）</th>       
+						        <th>详细地址</th>       
+						      </tr> 
+								<tbody class="adresslist">
+								</tbody> 
+						    </table>
+		            
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+
+		</div>
+	
+	
+	
+	</div>
+</div>
+
+
+
+
+
+<div id="healthy_info">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong>问卷详情</strong>
+		</div>
+		<div class="dialog-body">
+			   
+			   
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label>.您是否有以下并发症？   □上消化道出血   □脾亢   □肝性脑病   □肝肾综合征</label>
+			          	<label>.您是否有以下并发症？   □上消化道出血   □脾亢   □肝性脑病   □肝肾综合征</label>
+			          	<label>.您是否有以下并发症？   □上消化道出血   □脾亢   □肝性脑病   □肝肾综合征</label>
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+			
+		</div>
+	</div>
+</div>
+
+
+
+<div  class="dialogs" data-toggle="click" data-target="#plan_info" data-mask="1" data-width="70%" id="plan_info">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong class="plan_type"></strong>
+		</div>
+		<div class="dialog-body">
+			   
+			   
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+		      
+			      <ul class="search heard_text plan_info  deit_ hidden" style="padding-left:10px;">
+			        <li>
+			          	<label>饮食记录：共<span class="diet_sum"></span>条</label>
+			          	<label>按时记录：共<span class="diet_sum1"></span>条</label>
+			          	<label>补签：共<span class="diet_sum2"></span>条</label>
+			          	<label>未记录：共<span class="diet_sum3"></span>条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>记录日期</th>
+						        <th>用餐类型</th>       
+						        <th>用餐种类</th>       
+						        <th>记录状态</th>       
+						      </tr> 
+								<tbody class="diet_plan_tr" >
+								</tbody>  
+								<tr>
+							        <td colspan="4"><div class="pagelist" id="diet_pagination"></div></td>
+							      </tr>  
+						    </table>
+		            </li>
+			     </ul>
+			     
+			      <ul class="search heard_text plan_info  treat_ hidden" style="padding-left:10px;">
+			        <li>
+			          	<label>服药记录：共<span class="diet_sum"></span>条</label>
+			          	<label>按时记录：共<span class="diet_sum1"></span>条</label>
+			          	<label>补签：共<span class="diet_sum2"></span>条</label>
+			          	<label>未记录：共<span class="diet_sum3"></span>条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>记录日期</th>
+						        <th>药品名称</th>       
+						        <th>通用名称</th>       
+						        <th>厂商名称</th>       
+						        <th>每次服用</th>       
+						        <th>记录状态</th>       
+						      </tr> 
+								<tbody class="diet_plan_tr" >
+								</tbody>  
+								<tr>
+							        <td colspan="6"><div class="pagelist" id="treat_pagination"></div></td>
+							      </tr>  
+						    </table>
+		            </li>
+			     </ul>
+			     <ul class="search heard_text plan_info  abstinence_ hidden" style="padding-left:10px;">
+			        <li>
+			          	<label>戒酒记录：共<span class="diet_sum"></span>条</label>
+			          	<label>按时记录：共<span class="diet_sum1"></span>条</label>
+			          	<label>补签：共<span class="diet_sum2"></span>条</label>
+			          	<label>未记录：共<span class="diet_sum3"></span>条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>记录日期</th>
+						        <th>种类</th>       
+						        <th>饮酒量</th>       
+						        <th>记录状态</th>       
+						      </tr> 
+								<tbody class="diet_plan_tr" >
+								</tbody>  
+								<tr>
+							        <td colspan="4"><div class="pagelist" id="abstinence_pagination"></div></td>
+							      </tr>  
+						    </table>
+		            </li>
+			     </ul>
+			     <ul class="search heard_text plan_info smok_ hidden" style="padding-left:10px;">
+			        <li>
+			          	<!-- <label>戒烟记录：共<span class="diet_sum"></span>条</label> -->
+			          	<label>按时记录：共<span class="diet_sum1"></span>条</label>
+			          	<label>补签：共<span class="diet_sum2"></span>条</label>
+			          	<!-- <label>未记录：共<span class="diet_sum3"></span>条</label> -->
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>记录日期</th>
+						        <th>是否抽烟</th>       
+						        <th>数量</th>       
+						        <th>记录状态</th>       
+						      </tr> 
+								<tbody class="diet_plan_tr" >
+								</tbody>  
+								<tr>
+							        <td colspan="4"><div class="pagelist" id="smok_pagination"></div></td>
+							      </tr>  
+						    </table>
+		            </li>
+			     </ul>
+			     <ul class="search heard_text plan_info rest_ hidden" style="padding-left:10px;">
+			        <li>
+			          	<label>作息记录：共<span class="diet_sum"></span>条</label>
+			          	<label>按时记录：共<span class="diet_sum1"></span>条</label>
+			          	<label>补签：共<span class="diet_sum2"></span>条</label>
+			          	<label>未记录：共<span class="diet_sum3"></span>条</label>
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>记录日期</th>
+						        <th>作息类型</th>       
+						        <th>作息时间</th>       
+						        <th>记录状态</th>       
+						      </tr> 
+								<tbody class="diet_plan_tr" >
+								</tbody>  
+								<tr>
+							        <td colspan="4"><div class="pagelist" id="rest_pagination"></div></td>
+							      </tr>  
+						    </table>
+		            </li>
+			     </ul>
+			     <ul class="search heard_text plan_info sport_ hidden" style="padding-left:10px;">
+			        <li>
+			          	<!-- <label>运动记录：共<span class="diet_sum"></span>条</label> -->
+			          	<label>按时记录：共<span class="diet_sum1"></span>条</label>
+			          	<label>补签：共<span class="diet_sum2"></span>条</label>
+			          	<!-- <label>未记录：共<span class="diet_sum3"></span>条</label> -->
+		            </li>
+		            <li>
+		            	<table class="table table-hover text-center  table-bordered">
+						      <tr>
+						        <th>记录日期</th>
+						        <th>运动类型</th>       
+						        <th>运动时长</th>       
+						        <th>记录状态</th>       
+						      </tr> 
+								<tbody class="diet_plan_tr" >
+								</tbody>  
+								<tr>
+							        <td colspan="4"><div class="pagelist" id="sport_pagination"></div></td>
+							      </tr>  
+						    </table>
+		            </li>
+			     </ul>
+			     
+			     
+			     
+		     </div>
+		   </div>
+			
+
+
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div id="healthy_info_record">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong>健康测试报告</strong>
+		</div>
+		<div class="dialog-body">
+			   
+			   
+			<div class="panel admin-panel">
+		      <div class="padding border-bottom">
+			      <ul class="search heard_text" style="padding-left:10px;">
+			        <li>
+			          	<label>健康测试报告：</label><label>日期：2017-02-02</label>
+		            </li>
+			     </ul>
+		     </div>
+		   </div>
+
+
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pintuer.js" ></script>
+<script type="text/javascript" src="js/pagejs/sufferer.js"></script>
+<script type="text/javascript">
+	$('.suffererInfoDIV').sufferer({});
+</script>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!--<link rel="shortcut icon" href="/favicon.ico">-->
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <link rel="stylesheet" href="../css/addplan.css"/>
+    <link rel="stylesheet" href="../css/finishplan.css"/>
+</head>
+
+<body class="hasNav">
+<div role="navigation" class="navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="pull-left">
+            <a role="backlink" class="glyphicon glyphicon-menu-left" id="goBackPackPlan" href="javascript:;"></a>
+        </div>
+
+        <div role="navtitle">
+            查看计划
+        </div>
+    </div>
+</div>
+<div class="page-group">
+    <div class="page page-current" style="top:44px;">
+
+        <div class="content" style="padding-bottom: 35px">
+            <div class="gjk-plan-list">
+                <div class="gjk-plan-list-inner" id="allList">
+                    <ul class="gjk-plan-list-view" id="planList"></ul>
+                    <ul class="gjk-plan-list-view" id="planList2"></ul>
+                    <div class="hasNoPlanList" id="hasNoPlanList" style="display: none">
+                        <img src="../img/adno.png">
+                        <div class="calendar-list-empty">
+                            <a href="plusplans.html" class="circular">添加健康计划</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="planListItemsHtml" style="display: none;">
+
+    <!--用药计划-->
+    <li class="gjk-plan-list-view-item drugList">
+        <a class="gjk-plan-list-view-head drug-color" href="#">
+            <h3 class="plan-list-view-head-name  icon-drug iconfont-plan">
+                <span class="plan-list-view-head-name-content">服药计划</span>
+                <span>(</span>
+                <span class="plan-list-view-head-name-drug">阿司匹林...</span>
+                <span>)</span>
+            </h3>
+            <span class="plan-list-view-head-status">已完成</span>
+        </a>
+        <div class="gjk-plan-list-view-body" data-state="" data-index="" data-id="">
+            <div class="plan-list-view-body-content">
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>药品名称:</label>
+                        <span class="yellowfont">阿司匹林(阿司匹)</span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>开始日期:</label>
+                        <span class="startTime">2016-11-11</span>
+                    </div>
+                    <div class="plan-list-view-body-field">
+                        <label>每次用量:</label>
+                        <span class="dose">1片</span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>结束时间:</label>
+                        <span class="endTime">2016-11-11</span>
+                    </div>
+
+                    <div class="plan-list-view-body-field">
+                        <label>每日次数:</label>
+                        <span class="dailyTimes">3次</span>
+                    </div>
+
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-table">
+                        <div class="plan-list-view-table-field">
+                            <label>提醒时间:</label>
+                        </div>
+                        <div class="plan-list-view-table-block">
+                            <!--<div class="plan-list-view-body-row">-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime1"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime2"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime3"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="plan-list-view-body-row">-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime4"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime5"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmFriday"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class="plan-list-view-body-row">
+                                <span class="alarmTime1"></span>
+                                <span class="alarmTime2"></span>
+                                <span class="alarmTime3"></span>
+                                <span class="alarmTime4"></span>
+                                <span class="alarmTime5"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-list-view-body-status">
+
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-dont">
+                        漏执行天数:
+                        <span class="leakDay">1天</span>
+                    </div>
+                    <div class="plan-list-view-body-plan-status">
+                        <span class="pregress">计划执行中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <!--运动计划-->
+    <li class="gjk-plan-list-view-item sportList">
+        <a class="gjk-plan-list-view-head sport-color" href="#">
+            <h3 class="plan-list-view-head-name  icon-sports iconfont-plan">
+                <span class="plan-list-view-head-name-content">运动计划</span>
+                <!--<span>(</span>-->
+                <!--<span class="plan-list-view-head-name-drug"></span>-->
+                <!--<span>)</span>-->
+            </h3>
+            <span class="plan-list-view-head-status">第2/30天</span>
+        </a>
+        <div class="gjk-plan-list-view-body" data-state="" data-index="" data-id="">
+            <div class="plan-list-view-body-content">
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>开始日期:</label>
+                        <span class="startTime"></span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>结束日期:</label>
+                        <span class="endTime">2016-11-11</span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-table">
+                        <div class="plan-list-view-table-field">
+                            <label>提醒时间:</label>
+                        </div>
+                        <div class="plan-list-view-table-block">
+                            <div class="plan-list-view-body-row">
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmMonday">周一8:00</span>
+                                </div>
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmTuesday">周一8:00</span>
+                                </div>
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmWednesday">周一8:00</span>
+                                </div>
+                            </div>
+                            <div class="plan-list-view-body-row">
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmThursday">周一8:00</span>
+                                </div>
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmFriday">周一8:00</span>
+                                </div>
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmSaturday">周一8:00</span>
+                                </div>
+                            </div>
+                            <div class="plan-list-view-body-row">
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmSunday">周一8:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="plan-list-view-body-status">
+
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-dont">
+                        <!--漏执行天数:-->
+                        <!--<span>1天</span>-->
+                    </div>
+                    <div class="plan-list-view-body-plan-status">
+                        <span class="pregress">计划执行中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <!--戒烟计划-->
+    <li class="gjk-plan-list-view-item smokingList">
+        <a class="gjk-plan-list-view-head smoking-color" href="#">
+            <h3 class="plan-list-view-head-name  icon-smoking iconfont-plan">
+                <span class="plan-list-view-head-name-content">戒烟计划</span>
+                <!--<span>(</span>-->
+                <!--<span class="plan-list-view-head-name-drug"></span>-->
+                <!--<span>)</span>-->
+            </h3>
+            <span class="plan-list-view-head-status">第10/30天</span>
+        </a>
+        <div class="gjk-plan-list-view-body" data-state="" data-index="" data-id="">
+            <div class="plan-list-view-body-content">
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>开始日期:</label>
+                        <span class="startTime"></span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>结束日期:</label>
+                        <span class="endTime"></span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-table">
+                        <div class="plan-list-view-table-field">
+                            <label>提醒时间:</label>
+                        </div>
+                        <div class="plan-list-view-table-block">
+                            <div class="plan-list-view-body-row smokeTimeList">
+                                <span class="alarmTime1"></span>
+                                <span class="alarmTime2"></span>
+                                <span class="alarmTime3"></span>
+                                <span class="alarmTime4"></span>
+                                <span class="alarmTime5"></span>
+                                <span class="alarmTime6"></span>
+                                <span class="alarmTime7"></span>
+                                <span class="alarmTime8"></span>
+                                <span class="alarmTime9"></span>
+                                <span class="alarmTime10"></span>
+                                <span class="alarmTime11"></span>
+                                <span class="alarmTime12"></span>
+                                <span class="alarmTime13"></span>
+                                <span class="alarmTime14"></span>
+                                <span class="alarmTime15"></span>
+                            </div>
+                            <!--<div class="plan-list-view-body-row">-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime1"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime2"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime3"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="plan-list-view-body-row">-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime4"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime5"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime6"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="plan-list-view-body-row">-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime7"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime8"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime9"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="plan-list-view-body-row">-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime10"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime11"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime12"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="plan-list-view-body-row">-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime13"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime14"></span>-->
+                                <!--</div>-->
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmTime15"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="plan-list-view-body-status">
+
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-dont">
+                        漏执行天数:
+                        <span class="smSeepDate"></span>
+                    </div>
+                    <div class="plan-list-view-body-plan-status">
+                        <span class="smState"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <!--戒酒计划-->
+    <li class="gjk-plan-list-view-item wineList">
+        <a class="gjk-plan-list-view-head wine-color" href="#">
+            <h3 class="plan-list-view-head-name  icon-wine iconfont-plan">
+                <span class="plan-list-view-head-name-content">戒酒计划</span>
+                <!--<span>(</span>-->
+                <!--<span class="plan-list-view-head-name-drug"></span>-->
+                <!--<span>)</span>-->
+            </h3>
+            <span class="plan-list-view-head-status">第6/30天</span>
+        </a>
+        <div class="gjk-plan-list-view-body" data-state="" data-index="" data-id="">
+            <div class="plan-list-view-body-content">
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>开始日期:</label>
+                        <span class="startTime">2016-11-11</span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>结束日期:</label>
+                        <span class="endTime">2016-11-11</span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-table">
+                        <div class="plan-list-view-table-field">
+                            <label>提醒时间:</label>
+                        </div>
+                        <div class="plan-list-view-table-block">
+                            <div class="plan-list-view-body-row">
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmTime1">8:00</span>
+                                </div>
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmTime2">8:00</span>
+                                </div>
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmTime3">8:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-list-view-body-status">
+
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-dont">
+                        漏执行天数:
+                        <span class="leakDay">1天</span>
+                    </div>
+                    <div class="plan-list-view-body-plan-status">
+                        <span class="pregress">计划执行中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <!--作息计划-->
+    <li class="gjk-plan-list-view-item restList">
+        <a class="gjk-plan-list-view-head rest-color" href="#">
+            <h3 class="plan-list-view-head-name  icon-rest iconfont-plan">
+                <span class="plan-list-view-head-name-content">作息计划</span>
+                <!--<span>(</span>-->
+                <!--<span class="plan-list-view-head-name-drug"></span>-->
+                <!--<span>)</span>-->
+            </h3>
+            <span class="plan-list-view-head-status">第5/30天</span>
+        </a>
+        <div class="gjk-plan-list-view-body" data-state="" data-index="" data-id="">
+            <div class="plan-list-view-body-content">
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>开始日期:</label>
+                        <span class="startTime">2016-11-11</span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>结束日期:</label>
+                        <span class="endTime">2016-11-11</span>
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-table">
+                        <div class="plan-list-view-table-field">
+                            <label>提醒时间:</label>
+                        </div>
+                        <div class="plan-list-view-table-block">
+                            <div class="plan-list-view-body-row">
+                                <!--<div class="plan-list-view-table-cell">-->
+                                    <!--<span class="alarmGetup">周一8:00</span>-->
+                                <!--</div>-->
+                                <div class="plan-list-view-table-cell">
+                                    <span class="alarmSleep">周一8:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="plan-list-view-body-status">
+
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-dont">
+                        漏执行天数:
+                        <span class="leakDay">1天</span>
+                    </div>
+                    <div class="plan-list-view-body-plan-status">
+                        <span class="pregress">计划执行中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <!--复诊计划-->
+    <li class="gjk-plan-list-view-item doctorsList">
+        <a class="gjk-plan-list-view-head doctors-color" href="#">
+            <h3 class="plan-list-view-head-name  icon-doctors iconfont-plan">
+                <span class="plan-list-view-head-name-content">复诊计划</span>
+                <!--<span>(</span>-->
+                <!--<span class="plan-list-view-head-name-drug"></span>-->
+                <!--<span>)</span>-->
+            </h3>
+            <!--<span class="plan-list-view-head-status">第2/30天</span>-->
+        </a>
+        <div class="gjk-plan-list-view-body" data-state="" data-index="" data-id="">
+            <div class="plan-list-view-body-content">
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-field">
+                        <label>复诊计划:</label>
+                        <span class="startTime">2016-11-11</span>
+
+                    </div>
+                </div>
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-table">
+                        <div class="plan-list-view-table-field">
+                            <label>提醒时间:</label>
+                        </div>
+                        <div class="plan-list-view-table-block">
+                            <div class="plan-list-view-body-row">
+                                <div class="plan-list-view-table-cell">
+                                    <span class="advanceWeek"></span>
+                                </div>
+                            </div>
+                            <div class="plan-list-view-body-row">
+                                <div class="plan-list-view-table-cell">
+                                    <span class="advanceThreedays"></span>
+                                </div>
+                            </div>
+                            <div class="plan-list-view-body-row">
+                                <div class="plan-list-view-table-cell">
+                                    <span class="advanceToday"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-list-view-body-status">
+
+                <div class="plan-list-view-body-row">
+                    <div class="plan-list-view-body-dont">
+                        漏执行天数:
+                        <span>1天</span>
+                    </div>
+                    <div class="plan-list-view-body-plan-status">
+                        <span>计划执行中</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</div>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/fx.js"></script>
+<script src="../js/zepto.scroll.js"></script>
+<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var $gjkPlanListView = $('.gjk-plan-list-view');
+        var $planList = $('#planList');
+        var $planList2 = $('#planList2');
+
+        $planList2.on('click', '.gjk-plan-list-view-head', function () {
+            var $planListItems = $planList2 .find(".gjk-plan-list-view-head");
+            var $planBody = $planList2 .find(".gjk-plan-list-view-body");
+            $planBody.eq($planListItems.index($(this))).toggle();
+        });
+
+        function addAllPlan() {
+            var _url = 'dailyRecord/findAllUserPlanByUserId';
+            var _data = {};
+            var _success = function (data) {
+                console.log(data)
+                if(data.data.length == 0){
+                    $('#hasNoPlanList').show();
+                }else {
+                    $('#hasNoPlanList').hide();
+                    addPlanList(data);
+                }
+            };
+            var _error = function (data) {
+            };
+            if(getUrlParams().state == 1 ){
+                $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+                }, 'POST', 'findAllUserPlanByUserId');
+            }else if(getUrlParams().state == 0){
+                $.gjk.ajax.requestPostOrder(_url, _data, _success, _error, function () {
+                }, 'POST', 'findAllUserPlanByUserId');
+            }
+
+        }
+
+        addAllPlan();
+
+        function addPlanList(data) {
+            var dataTypeArr = classify(data.data);
+            var $planList = $('#planList');
+            var $planList2 = $('#planList2');
+//            console.log(dataTypeArr)
+            //判断数据是否存在
+            for (var i in dataTypeArr) {
+                if (i == 'dataType') {
+                    for (var items in dataTypeArr[i]) {
+                        if (dataTypeArr[i][items].length != 0) {
+                            switch (items) {
+                                case "sport":
+                                    createSport(dataTypeArr[i][items], $planList,1);
+                                    continue
+                                case "smok":
+                                    createSmok(dataTypeArr[i][items], $planList,1);
+                                    continue
+                                case "rest":
+                                    createRest(dataTypeArr[i][items], $planList,1);
+                                    continue
+                                case "treat":
+                                    createTreat(dataTypeArr[i][items], $planList,1);
+                                    continue
+                                case "abstinence":
+                                    createAbstinence(dataTypeArr[i][items], $planList,1);
+                                    continue;
+                                case "visit":
+                                    createVisit(dataTypeArr[i][items], $planList,1);
+                                    continue;
+                            }
+                        }
+                    }
+                } else {
+                    for (var items in dataTypeArr[i]) {
+                        if (dataTypeArr[i][items].length != 0) {
+                            switch (items) {
+                                case "sport":
+                                    createSport(dataTypeArr[i][items], $planList2,0);
+                                    continue
+                                case "smok":
+                                    createSmok(dataTypeArr[i][items], $planList2,0);
+                                    continue
+                                case "rest":
+                                    createRest(dataTypeArr[i][items], $planList2,0);
+                                    continue
+                                case "treat":
+                                    createTreat(dataTypeArr[i][items], $planList2,0);
+                                    continue
+                                case "abstinence":
+                                    createAbstinence(dataTypeArr[i][items], $planList2,0);
+                                    continue;
+                                case "visit":
+                                    createVisit(dataTypeArr[i][items], $planList2,0);
+                                    continue;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function createSport(obj, parent,state) {
+            for (var i = 0; i < obj.length; i++) {
+                var html = gainHtml().sportListHtml;
+                $(html).find('.plan-list-view-head-status').html('第' + obj[i].planDay + '天');
+                $(html).find('.gjk-plan-list-view-body').attr('data-id', obj[i].planData.sportId);
+                $(html).find('.gjk-plan-list-view-body').attr('data-index', 'modifysport');
+                $(html).find('.gjk-plan-list-view-body').attr('data-state', state);
+                $(html).find('.startTime').html(format(obj[i].planData.startDate, 'yyyy-MM-dd'));
+                $(html).find('.endTime').html(format(obj[i].planData.endDate, 'yyyy-MM-dd'));
+                $(html).find('.alarmMonday').html('周一：' + (deleteState2(obj[i].planData.alarmMonday)[1] == 1 ? deleteState2(obj[i].planData.alarmMonday)[0] : '休息'));
+                $(html).find('.alarmTuesday').html('周二：' + (deleteState2(obj[i].planData.alarmTuesday)[1] == 1 ? deleteState2(obj[i].planData.alarmTuesday)[0] : '休息'));
+                $(html).find('.alarmWednesday').html('周三：' + (deleteState2(obj[i].planData.alarmWednesday)[1] == 1 ? deleteState2(obj[i].planData.alarmWednesday)[0] : '休息'));
+                $(html).find('.alarmThursday').html('周四：' + (deleteState2(obj[i].planData.alarmThursday)[1] == 1 ? deleteState2(obj[i].planData.alarmThursday)[0] : '休息'));
+                $(html).find('.alarmFriday').html('周五：' + (deleteState2(obj[i].planData.alarmFriday)[1] == 1 ? deleteState2(obj[i].planData.alarmFriday)[0] : '休息'));
+                $(html).find('.alarmSaturday').html('周六：' + (deleteState2(obj[i].planData.alarmSaturday)[1] == 1 ? deleteState2(obj[i].planData.alarmSaturday)[0] : '休息'));
+                $(html).find('.alarmSunday').html('周日：' + (deleteState2(obj[i].planData.alarmSunday)[1] == 1 ? deleteState2(obj[i].planData.alarmSunday)[0] : '休息'));
+                $(html).find('.pregress').html(obj[i].pregress);
+                parent.append(html);
+            }
+        }
+
+        function createSmok(obj, parent,state) {
+            for (var i = 0; i < obj.length; i++) {
+                var html = gainHtml().smokingListHtml;
+                $(html).find('.plan-list-view-head-status').html('第' + obj[i].planDay + '天');
+                $(html).find('.gjk-plan-list-view-body').attr('data-id', obj[i].planData.smokId);
+                $(html).find('.gjk-plan-list-view-body').attr('data-index', 'modifysmoke');
+                $(html).find('.gjk-plan-list-view-body').attr('data-state', state);
+                $(html).find('.startTime').html(format(obj[i].planData.startDate, 'yyyy-MM-dd'));
+                $(html).find('.endTime').html(format(obj[i].planData.endDate, 'yyyy-MM-dd'));
+                createSmokeTime(obj[i].planData,html);
+                $(html).find('.smSeepDate').html(obj[i].leakDay + '天');
+                $(html).find('.smState').html(obj[i].pregress);
+                parent.append(html);
+            }
+        }
+        function createSmokeTime(obj,html) {
+            for(var i=1;i<16;i++){
+                var data = obj['alarmTime' + i];
+                if(deleteState2(data)[1] == 1){
+                    $(html).find('.alarmTime' + i ).html(deleteState2(data)[0]);
+                }else{
+                    $(html).find('.alarmTime' + i  ).html("");
+                    $(html).find('.alarmTime' + i  ).css({'display':'none'})
+                }
+            }
+        }
+        function createRest(obj, parent,state) {
+            for (var i = 0; i < obj.length; i++) {
+                var html = gainHtml().restListHtml;
+//                    console.log(obj);
+                $(html).find('.plan-list-view-head-status').html('第' + obj[i].planDay + '天');
+                $(html).find('.gjk-plan-list-view-body').attr('data-id', obj[i].planData.restId);
+                $(html).find('.gjk-plan-list-view-body').attr('data-index', 'modifyrest');
+                $(html).find('.gjk-plan-list-view-body').attr('data-state', state);
+                $(html).find('.startTime').html(format(obj[i].planData.startDate, 'yyyy-MM-dd'));
+                $(html).find('.endTime').html(format(obj[i].planData.endDate, 'yyyy-MM-dd'));
+                $(html).find('.alarmGetup').html('起床：' + (deleteState(obj[i].planData.alarmGetup) ? deleteState(obj[i].planData.alarmGetup) : '休息'));
+                $(html).find('.alarmSleep').html('睡觉：' + (deleteState(obj[i].planData.alarmSleep) ? deleteState(obj[i].planData.alarmSleep) : ''));
+                $(html).find('.leakDay').html(obj[i].leakDay + '天');
+                $(html).find('.pregress').html(obj[i].pregress);
+                parent.append(html);
+            }
+        }
+
+        function createTreat(obj, parent,state) {
+            for (var i = 0; i < obj.length; i++) {
+                var html = gainHtml().drugListHtml;
+//                    console.log(obj);
+                $(html).find('.plan-list-view-head-status').html('第' + obj[i].planDay + '天');
+                $(html).find('.gjk-plan-list-view-body').attr('data-id', obj[i].planData.msklTreatplanId);
+                $(html).find('.gjk-plan-list-view-body').attr('data-index', 'modifymedicine');
+                $(html).find('.gjk-plan-list-view-body').attr('data-state', state);
+                $(html).find('.plan-list-view-head-name-drug').html(obj[i].planData.medicalName.length > 4 ? obj[i].planData.medicalName.slice(0, 4) + '...' : obj[i].planData.medicalName)
+                $(html).find('.yellowfont').html(obj[i].planData.medicalName + '(' + obj[i].planData.normalName + ')');
+                $(html).find('.startTime').html(format(obj[i].planData.startDate, 'yyyy-MM-dd'));
+                $(html).find('.endTime').html(format(obj[i].planData.endDate, 'yyyy-MM-dd'));
+                $(html).find('.dose').html(obj[i].planData.dose + obj[i].planData.mediniceInit);
+                $(html).find('.dailyTimes').html(obj[i].planData.dailyTimes + '次');
+                createSmokeTime(obj[i].planData,html);
+                $(html).find('.leakDay').html(obj[i].leakDay + '天');
+                $(html).find('.pregress').html(obj[i].pregress);
+                parent.append(html);
+            }
+        }
+
+        function createAbstinence(obj, parent,state) {
+            for (var i = 0; i < obj.length; i++) {
+                var html = gainHtml().wineListHtml;
+                $(html).find('.plan-list-view-head-status').html('第' + obj[i].planDay + '天');
+                $(html).find('.gjk-plan-list-view-body').attr('data-id', obj[i].planData.abstinenceId);
+                $(html).find('.gjk-plan-list-view-body').attr('data-index', 'modifywine');
+                $(html).find('.gjk-plan-list-view-body').attr('data-state', state);
+                $(html).find('.startTime').html(format(obj[i].planData.startDate, 'yyyy-MM-dd'));
+                $(html).find('.endTime').html(format(obj[i].planData.endDate, 'yyyy-MM-dd'));
+                $(html).find('.alarmTime1').html(deleteState(obj[i].planData.alarmTime1));
+                $(html).find('.alarmTime2').html(deleteState(obj[i].planData.alarmTime2));
+                $(html).find('.alarmTime3').html(deleteState(obj[i].planData.alarmTime3));
+                $(html).find('.leakDay').html(obj[i].leakDay + '天');
+                $(html).find('.pregress').html(obj[i].pregress);
+                parent.append(html);
+            }
+        }
+
+        function createVisit(obj, parent,state) {
+            console.log(obj)
+            for (var i = 0; i < obj.length; i++) {
+                var html = gainHtml().doctorsListHtml;
+//                    console.log(obj);
+                $(html).find('.plan-list-view-head-status').html('第' + obj[i].planDay + '天');
+                $(html).find('.gjk-plan-list-view-body').attr('data-id', obj[i].planData.visitId);
+                $(html).find('.gjk-plan-list-view-body').attr('data-index', 'modifyreferral');
+                $(html).find('.gjk-plan-list-view-body').attr('data-state', state);
+                $(html).find('.startTime').html(obj[i].planData.visitDate);
+                $(html).find('.endTime').html(format(obj[i].planData.endDate, 'yyyy-MM-dd'));
+                console.log(deleteState(obj[i].planData.advanceWeek));
+                if(deleteState2(obj[i].planData.advanceWeek)[1] == 0){
+                    $(html).find('.advanceWeek').html("未设置提醒");
+                }else {
+                    $(html).find('.advanceWeek').html('提前一周：' + deleteState(obj[i].planData.advanceWeek));
+                }
+
+                if(deleteState2(obj[i].planData.advanceThreedays)[1] == 0){
+                    $(html).find('.advanceThreedays').html("未设置提醒");
+                }else {
+                    $(html).find('.advanceThreedays').html('提前三天：' + deleteState(obj[i].planData.advanceThreedays));
+                }
+
+                if(deleteState2(obj[i].planData.advanceToday)[1] == 0){
+                    $(html).find('.advanceToday').html("未设置提醒");
+                }else {
+                    $(html).find('.advanceToday').html('当天提醒：' + deleteState(obj[i].planData.advanceToday));
+                }
+                $(html).find('.pregress').html(obj[i].pregress);
+                parent.append(html);
+            }
+        }
+
+        //列表点击事件
+        var $ListItems = $('#allList');
+        $ListItems.on('click','.gjk-plan-list-view-body', clickListItems);
+
+        function clickListItems() {
+            var _page = $(this).attr('data-index');
+            var _id = $(this).attr('data-id');
+//            var _state= $(this).attr('data-state');
+            var _state= getUrlParams().state;
+            window.location.href =  _page + '.html?id=' + _id + "&state=" + _state;
+        }
+
+        //删除状态值
+        function deleteState(obj) {
+            if (obj) {
+                var newObj = obj.split('|');
+                return newObj[0]
+            } else {
+                return '';
+            }
+        }
+        //删除状态值
+        function deleteState2(obj) {
+            var timeAndState;
+            if (obj) {
+                timeAndState = obj.split('|');
+                return timeAndState;
+            } else {
+                return '';
+            }
+        }
+        //获取页面中的html源码
+        function gainHtml() {
+            var planHtml = {};
+            var $planListItemsHtml = $('#planListItemsHtml');
+            planHtml.drugListHtml = $planListItemsHtml.find('.drugList').clone();
+            planHtml.sportListHtml = $planListItemsHtml.find('.sportList').clone();
+            planHtml.smokingListHtml = $planListItemsHtml.find('.smokingList').clone();
+            planHtml.restListHtml = $planListItemsHtml.find('.restList').clone();
+            planHtml.doctorsListHtml = $planListItemsHtml.find('.doctorsList').clone();
+            planHtml.wineListHtml = $planListItemsHtml.find('.wineList').clone();
+
+            return planHtml;
+        }
+
+        //数据分类
+        function classify(data) {
+            var dataAllType = {
+                dataType: {sport: [], smok: [], rest: [], treat: [], abstinence: [], diet: [], visit: []},
+                dataFinishType: {sport: [], smok: [], rest: [], treat: [], abstinence: [], diet: [], visit: []}
+            };
+            for (var items in data) {
+                if (data[items].planStatus == 1) {
+                    switch (data[items].planType) {
+                        case 'sport':
+                            dataAllType.dataFinishType.sport.push(data[items]);
+                            break;
+                        case 'smok':
+                            dataAllType.dataFinishType.smok.push(data[items]);
+                            break;
+                        case 'rest':
+                            dataAllType.dataFinishType.rest.push(data[items]);
+                            break;
+                        case 'treat':
+                            dataAllType.dataFinishType.treat.push(data[items]);
+                            break;
+                        case 'abstinence':
+                            dataAllType.dataFinishType.abstinence.push(data[items]);
+                            break;
+                        case 'diet':
+                            dataAllType.dataFinishType.diet.push(data[items]);
+                            break;
+                        case 'visit':
+                            dataAllType.dataFinishType.visit.push(data[items]);
+                            break;
+                    }
+                } else {
+                    switch (data[items].planType) {
+                        case 'sport':
+                            dataAllType.dataType.sport.push(data[items]);
+                            break;
+                        case 'smok':
+                            dataAllType.dataType.smok.push(data[items]);
+                            break;
+                        case 'rest':
+                            dataAllType.dataType.rest.push(data[items]);
+                            break;
+                        case 'treat':
+                            dataAllType.dataType.treat.push(data[items]);
+                            break;
+                        case 'abstinence':
+                            dataAllType.dataType.abstinence.push(data[items]);
+                            break;
+                        case 'diet':
+                            dataAllType.dataType.diet.push(data[items]);
+                            break;
+                        case 'visit':
+                            dataAllType.dataType.visit.push(data[items]);
+                            break;
+                    }
+                }
+            }
+            return dataAllType;
+        }
+
+    })
+    $('#goBackPackPlan').on('click',function () {
+        if(getUrlParams().state == 0){
+            window.location.href = '../supervisor/home.html';
+        }else {
+            window.location.href = '../life/index.html';
+        }
+    })
+</script>
+</body>
+
+</html>

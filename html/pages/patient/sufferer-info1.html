@@ -1,0 +1,51 @@
+<button class="button button-big bg-main dialogs" data-toggle="click" data-target="#mydialog" data-mask="1" data-width="50%">
+	弹出对话框</button>
+<div id="mydialog">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong>对话框标题</strong>
+		</div>
+		<div class="dialog-body">
+			   <div class="panel admin-panel suffererDIV">
+			      <div class="padding border-bottom">
+			      <form id="msklUser">
+				      <ul class="search heard_search" style="padding-left:10px;">
+				        <li>
+				          	<label>用户名：</label><input  type="text" placeholder="用户名" name="userName" class="input" />
+			                <label>手机号：</label><input type="text" placeholder="手机号" name="mobile" class="input" />
+				      		<label>邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</label> <input type="text" placeholder="邮箱" name="email" class="input" />
+				    		<label>注册时间： </label><input type="text" placeholder="起始时间" name="startTime" class="input" />
+				        		-- <input type="text" placeholder="结束时间" name="endTime" class="input" />
+			            </li>
+				        <li>
+			             <label>昵&nbsp;&nbsp;称：</label><input type="text" placeholder=" 昵称" name="userNickName" class="input" />
+			      		 <label>性&nbsp;&nbsp;别：</label><select id="type" name="sex" class="input" >
+										           	<option value='' >未选择</option>
+										           	<option value='男' >男</option>
+										           	<option value='女'>女</option>
+										           </select>
+				         <label> 身份状态 :</label><select id="type" name="authStatus" class="input" >
+							            		<option value='' >未选择</option>
+								            	<option value='0' >未认证</option>
+								            	<option value='1' >认证中</option>
+								            	<option value='2' >已认证</option>
+								            	<option value='3' >认证失败</option>
+								            </select>
+				          <label>邀请码：</label> <input type="text" placeholder="邀请码" name="invitationCode" class="input" />
+				           <a href="javascript:void(0)" class="button border-main icon-search" id="msklsearch" > 搜索</a>
+			            </li>
+				     </ul>
+			     </form>
+			     </div>		
+			    </div>		
+			
+		</div>
+		<div class="dialog-foot">
+			<button class="button dialog-close">
+				取消</button>
+			<button class="button bg-green">
+				确认</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/pintuer.js" ></script>

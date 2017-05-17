@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style type="text/css">
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @-o-viewport {
+            width: device-width;
+        }
+
+        @viewport {
+            width: device-width;
+        }
+    </style>
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script>
+        // Copyright 2014-2015 Twitter, Inc.
+        // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    '@-ms-viewport{width:auto!important}'
+                )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <link rel="stylesheet" href="../css/addplan.css"/>
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <div role="navigation" class="navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="pull-left">
+                    <a role="backlink" id="goBackPack" class="glyphicon glyphicon-menu-left" href="javascript:;"></a>
+                </div>
+                <div class="pull-right">
+                    <a href="javascript:void();"></a>
+                </div>
+                <div role="navtitle">
+                    修改复诊计划
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div id="list">
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content item-link gjk-item gjk-open-calendar">
+                            <div class="item-inner gjk-item-inner">
+                                <div class="item-title">设置复诊日期</div>
+                                <div class="item-input item-calendar start-time">
+                                    <input id="startTime" type="text" placeholder="点击选择日期" readonly="">
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="list-block list-blockx">
+                    <ul id="switchCheckBox">
+                        <li class="item-content gjk-item">
+                            <div class="item-inner gjk-item-inner row">
+                                <div class="col-50 input-wrapper" style="text-align: center;">
+                                    <label class="label-checkbox">
+                                        <input type="checkbox">
+                                        <div class="checkbox-2">
+                                            <span>提前一周</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-50 input-wrapper">
+                                    <div class="item-input item-time">
+                                        <label class="label-time gjk-open-input">
+
+
+                                            <div class="timebox">
+                                                <input type="text" placeholder="8:00" readonly>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content gjk-item">
+                            <div class="item-inner gjk-item-inner row">
+                                <div class="col-50 input-wrapper" style="text-align: center;">
+                                    <label class="label-checkbox">
+                                        <input type="checkbox">
+                                        <div class="checkbox-2">
+                                            <span>提前三天</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-50 input-wrapper">
+                                    <div class="item-input item-time">
+                                        <label class="label-time gjk-open-input">
+
+
+                                            <div class="timebox">
+                                                <input type="text" placeholder="8:00" readonly>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content gjk-item">
+                            <div class="item-inner gjk-item-inner row">
+                                <div class="col-50 input-wrapper" style="text-align: center;">
+                                    <label class="label-checkbox">
+                                        <input type="checkbox">
+                                        <div class="checkbox-2">
+                                            <span>当天提醒</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="col-50 input-wrapper">
+                                    <div class="item-input item-time">
+                                        <label class="label-time gjk-open-input">
+
+
+                                            <div class="timebox">
+                                                <input type="text" placeholder="8:00" readonly>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="content-block">
+                    <p><a href="#" class="button button-big btn-save">保存</a></p>
+                    <p><a href="#" class="button button-big btn-del">删除</a></p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--删除按钮-->
+<div id="longModel">
+    <div class="modelBody">
+        <div class="modelContext">
+            <!--<p>添加成功！</p>-->
+            <p>确定要删除信息吗？</p>
+        </div>
+        <div class="modelFooter">
+            <a href="javascript:;" class="btnRes">取消</a>
+            <a href="javascript:;" class="btnOk">确定</a>
+        </div>
+    </div>
+</div>
+<!--model层-->
+<div id="reminder">
+    <div class="reminderBody">
+        <div class="reminderContext">
+            <div><span id="msg"></span><!--<span id="num">2s</span>--></div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<!--script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script-->
+<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/zepto.touch.js" charset="utf-8"></script>
+<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../js/calendar.js" type="text/javascript" charset="utf-8"></script>-->
+<script src="../js/base.js"></script>
+<script type='text/javascript'>
+    $.init();
+    /*tap  替换成了click */
+    $.refreshScroller();
+    var start = new Date();
+    var maxDateTime = new Date();
+    maxDateTime.setDate(maxDateTime.getDate() + 60);
+    $(".item-calendar input").calendar({
+        dateFormat: 'yyyy-mm-dd',
+//        value: [new Date()],
+        minDate: start,
+        maxDate: maxDateTime
+    });
+
+    $(".label-checkbox").click(function (e) {
+        if ($(this).hasClass('checked')) {
+            $(this).removeClass('checked');
+            $(this).find('.checkbox-2').removeClass('checked');
+            $(this).find('input').attr('checked', 'checked');
+        } else {
+            $(this).addClass('checked');
+            $(this).find('.checkbox-2').addClass('checked');
+            $(this).find('input').removeAttr('checked');
+        }
+        e.preventDefault();
+    });
+
+    $(".item-singe input").picker({
+        toolbarTemplate: '<header class="bar bar-nav">\
+		  <button class="button button-link pull-left close-picker">取消</button>\
+		  <button class="button button-link pull-right close-picker">确定</button>\
+		  <h1 class="title">选择次数</h1>\
+		  </header>',
+        cols: [
+            {
+                textAlign: 'center',
+                values: ['1次', '2次', '3次', '4次', '5次']
+            }
+        ]
+    });
+    var __this;
+    $('#switchCheckBox').on('click', '.item-time input', function () {
+        __this = $(this);
+        $(this).picker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+		  <button class="button button-link pull-left close-picker">取消</button>\
+		  <button class="button button-link pull-right close-picker">确定</button>\
+		  <h1 class="title">选择时间</h1>\
+		  </header>',
+            cols: [
+                {
+                    textAlign: 'center',
+                    values: ['08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '01', '02', '03', '04', '05', '06', '07']
+                    //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+                },
+                {
+                    textAlign: 'center',
+                    values: ['：']
+                    //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+                },
+                {
+                    textAlign: 'center',
+                    values: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59']
+                }
+            ],
+            formatValue: function (p, v, d) {
+                return (d[0] + ':' + d[2]);
+            }
+        });
+    });
+    //还原输入框时间值
+    function resetValue() {
+        $('body').on('click', '.button.button-link.pull-left.close-picker', function () {
+            __this.val('');
+        })
+    }
+    resetValue()
+
+    //加载页面数据
+    function createPageData() {
+        var _url = 'userPlan/findByVisitId';
+        var _data = {
+            "primaryKey": getUrlParams().id
+        };
+
+        var _success = function (data) {
+//            console.log(data);
+            refresh(data);
+        };
+        var _error = function (data) {
+//            console.log(data);
+//            alert('请求数据失败！')
+        };
+        if(getUrlParams().state == 1){
+            $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+            }, 'POST', 'findByRestId');
+        }else {
+            $.gjk.ajax.requestPostOrder(_url, _data, _success, _error, function () {
+            }, 'POST', 'findByRestId');
+        }
+
+    }
+
+    createPageData();
+
+    //刷新页面数据
+    function refresh(data) {
+        var alarmTime = createBtnCount(data.data);
+        $('.item-calendar').find('input').attr('placeholder', data.data.visitDate);
+//        console.log(alarmTime);
+        //生成选择框、开关样式
+        addBtnStyleAndPl(alarmTime);
+
+        if (getUrlParams().state == 0) {
+            $('.content-block').hide();
+        }
+
+    }
+
+    var $switchCheckBox = $('#switchCheckBox');
+    var $labelCheckbox = $switchCheckBox.find('.label-checkbox');
+    var $timebox = $switchCheckBox.find('.timebox');
+    //生成对应按钮的样式
+    function addBtnStyleAndPl(data) {
+        $(data).each(function (i) {
+            if (deleteState(data[i])[1] == 1) {
+                $timebox.eq(i).find('input').attr('placeholder', deleteState(data[i])[0]);
+                $labelCheckbox.eq(i).addClass('checked');
+                $labelCheckbox.eq(i).find('.checkbox-2').addClass('checked');
+            }
+        })
+    }
+
+    //取出时间数据
+    function createBtnCount(obj) {
+        var exp = new RegExp('advance');
+        var alertTimes = [];
+        for (var items in obj) {
+            if (exp.test(items)) {
+                alertTimes.push(obj[items])
+            }
+        }
+        return alertTimes;
+    }
+
+    //改变状态值
+    changeBtnStates2()
+
+    $('.btn-save').on('click', function () {
+        var $itemContent = $('.item-content');
+        var $labelSwitch = $itemContent.find('.label-switch');
+        var $labelCheckbox = $('.label-checkbox');
+        //获取页面数据
+        function alarmTime() {
+            var options = {
+                "visitId": getUrlParams().id ? getUrlParams().id : "",
+                "visitDate": $("#startTime").val() ? $("#startTime").val() : $("#startTime").attr('placeholder'),
+                "advanceWeek": generatedTime()[0],
+                "advanceThreedays": generatedTime()[1],
+                "advanceToday": generatedTime()[2]
+            };
+            return options;
+        }
+        //生成提醒时间
+        function generatedTime() {
+            var timeDate = [];
+            $labelCheckbox.each(function (i) {
+                if ($(this).hasClass('checked')) {
+                    if ($timebox.eq(i).find('input').val() == '') {
+                        timeDate.push('8:00|1')
+                    } else {
+                        timeDate.push($timebox.eq(i).find('input').val() + '|1')
+                    }
+                } else {
+                    timeDate.push('');
+                }
+            });
+            return timeDate;
+        }
+        function selectTimeChangeBtnState() {
+            var selectVal = $(".item-calendar input").calendar()[0].input[0].value ? $(".item-calendar input").calendar()[0].input[0].value : format(createStartAndEndDate().moreDate, 'yyyy-MM-dd');
+            var newTime = format(createStartAndEndDate().startDate, 'yyyy-MM-dd');
+
+            var newTimethree = timersda_1(newTime) + (3 * 24 * 60 * 60 * 1000);
+            var newTimeWeek = timersda_1(newTime) + (7 * 24 * 60 * 60 * 1000);
+            var selectValTimes = timersda_1(selectVal);
+            var timeArr = generatedTime();
+            if (timeArr[0]) {
+                if (newTimeWeek > selectValTimes) {
+                    alertTextModelHint("您的复诊计划距离今天不足七天，无法设置提醒")
+                    return false;
+                }
+            }
+            if ((timeArr[0] && timeArr[1] ) || (!timeArr[0] && timeArr[1] )) {
+                if (newTimethree > selectValTimes) {
+                    alertTextModelHint("您的复诊计划距离今天不足三天，无法设置提醒")
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        if (selectTimeChangeBtnState()) {
+            sendajax()
+        } else {
+            return
+        }
+
+        //ajax发送数据
+        function sendajax() {
+            var optionsDatas = alarmTime();
+            var options = {
+                _url: 'userPlan/saveVisitPlan',
+                _success: function (data) {
+                    console.log(data)
+                    if (data.success == true) {
+                        window.location.href =  'finishplan.html?state=' + getUrlParams().state
+                    } else {
+                        alertTextModelHint(data.message)
+                    }
+                },
+                _error: function (data) {
+//                    alert("获取数据失败！");
+                },
+                _data: optionsDatas
+            };
+            $.gjk.ajax.postAjax(options._url, options._data, options._success, options._error, function () {
+            }, 'POST', 'saveAbstinencePlan');
+        }
+
+        sendajax();
+
+    });
+
+    function clickDeleteBtn() {
+        $('.btn-del').on('click', deleteRest);
+
+        function deleteRest() {
+            var $longModel = $('#longModel');
+            $longModel.show();  //显示模态层
+            $longModel.on('click', '.btnRes', function () {
+                $longModel.hide();
+            });
+            $longModel.on('click', '.btnOk', sendDeleFyrest);
+
+            function sendDeleFyrest() {
+                var _url = 'userPlan/deleteVisitPlanByVisitId';
+                var _data = {
+                    "primaryKey": getUrlParams().id
+                };
+                var _success = function (data) {
+                    if (data.success == true) {
+//                        console.log(data);
+                        $longModel.hide();
+                        window.location.href = 'finishplan.html?state=' + getUrlParams().state
+                    }
+                };
+                var _error = function (data) {
+//                    console.log(data);
+//                    alert('请求数据失败!')
+                };
+                $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+                }, 'POST', 'deleteVisitPlanByVisitId')
+            }
+        }
+    }
+    clickDeleteBtn();
+
+    $('.item-input.item-calendar').on('click', function () {
+        changePicker();
+        limitTimeDate();
+    });
+    $('#goBackPack').on('click',function () {
+        window.location.href = 'finishplan.html?state=' + getUrlParams().state;
+    })
+</script>
+</body>
+</html>

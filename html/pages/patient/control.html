@@ -1,0 +1,56 @@
+	
+  <div class="panel admin-panel controlrDIV">
+      <div class="padding border-bottom">
+      <form id="controlUser">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+	          	<label>用户名：</label><input  type="text" placeholder="用户名" name="userName" class="input" />
+                <label>昵称：</label><input type="text" placeholder=" 昵称" name="userNickName" class="input" />
+      		    <label>性别：</label><select name="sex" class="input" >
+							           	<option value='' >未选择</option>
+							           	<option value='男' >男</option>
+							           	<option value='女'>女</option>
+						           </select>
+                <label>手机号：</label><input type="text" placeholder="手机号 " name="mobile" class="input" />
+                
+                </li>
+                <li>
+	    		<label>注册时间： </label><input type="text" placeholder="起始时间" name="startTime" class="input" />
+	        		-- <input type="text" placeholder="结束时间" name="endTime" class="input" />
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="controlsearch" > 搜索</a>
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    
+    <table class="table table-hover text-center  table-bordered">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="12">
+	    	<span style="padding-left:10px;float:left">今日注册用户：<span class="todayNum">0</span></span>
+			<span style="padding-left:10px;float:left;height:20px;">累计注册用户：<span class="userSum">0</span></span>
+		</td>
+    </tr> 
+      <tr>
+        <th>序号</th>
+        <th>用户名</th>       
+        <th>昵称</th>       
+        <th>性别</th>       
+        <th>年龄</th>
+        <th>手机号码</th>
+        <th>QQ/微信号</th>
+        <th>监督对象关系</th>
+        <th>修改时间</th>
+      </tr> 
+		<tbody  class="controlList"></tbody>    
+      <tr>
+        <td colspan="9"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+  </div>
+
+<script type="text/javascript" src="js/pagejs/control.js"></script>
+<script type="text/javascript">
+Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+	$('.controlrDIV').control({});
+</script>

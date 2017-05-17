@@ -1,0 +1,89 @@
+  <div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="usersfrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+	    		<label>注册时间： </label><input type="text" placeholder="起始时间" name="startTime" class="input" />
+	        		-- <input type="text" placeholder="结束时间" name="endTime" class="input" />
+	         <label> 用户类型 :</label><select name="userType" class="input" >
+				            		<option value='' >全部</option>
+					            	<option value='0' >病人</option>
+					            	<option value='1' >监督人</option>
+					            	<option value='2' >医生</option>
+					            	<option value='3' >药店</option>
+					            </select>
+	          	<label>药品名：</label><input  type="text" placeholder="药品名称/通用名称" name="medicalName" class="input" />
+                <label>厂商名称：</label><input type="text" placeholder="厂商名称" name="manufacturer" class="input" />
+            </li>
+	        <li>
+      			 <label>疾病身份：</label><select name="userDiseaseName" class="input" >
+							           </select>
+      			 <label>是否咨询：</label><select name="chatFlag" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='1' >是</option>
+							           	<option value='0'>否</option>
+							           </select>
+      			 <label>是否上传处方：</label><select name="isChuFang" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='1' >是</option>
+							           	<option value='0'>否</option>
+							           </select>
+      			 <label>是否绑定手机号：</label><select name="isMobiile" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='1' >是</option>
+							           	<option value='0'>否</option>
+							           </select>
+	           </li>
+	           <li>
+      			 <label>计划种类：</label><select name="plan" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='0' >服药</option>
+							           	<option value='1'>运动</option>
+							           	<option value='2'>饮食</option>
+							           	<option value='3'>戒烟</option>
+							           	<option value='4'>戒酒</option>
+							           	<option value='5'>作息</option>
+							           </select>
+      			 <label>性别：</label><select name="sex" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='男' >男</option>
+							           	<option value='女'>女</option>
+							           </select>
+					
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklUserSearch" > 搜索</a>
+	           <!-- <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklDaySearch" > 今日</a>
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklMouthSearch" > 本月</a>
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklYearSearch" > 今年</a> -->
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    
+    <table class="table table-hover text-center  table-bordered">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="7">
+	    	<span style="padding-left:10px;float:left">共：<span class="sum">0</span>条记录</span>
+		</td>
+    </tr> 
+      <tr>
+        <th>昵称</th>       
+        <th>手机号码</th>
+        <th>性别</th>       
+        <th>用药名称</th>
+        <th>厂商名称</th>
+        <th>疾病身份</th>
+        <th>用户类型</th>
+      </tr> 
+		<tbody  class="mskluserlist"></tbody>    
+      <tr>
+        <td colspan="12"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+  </div>
+
+<script type="text/javascript" src="js/pagejs/operate/user.js"></script>
+<script type="text/javascript">
+Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+$('.suffererDIV').user({init:"init"});
+</script>

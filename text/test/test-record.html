@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/personal.css" />
+	</head>
+
+	<body class="hasNav hasFoot">
+
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="../self/myhome.html"></a>
+				</div>
+				<div class="pull-right">
+					<a href="javascript:void();"></a>
+				</div>
+				<div role="navtitle">
+					测试报告
+				</div>
+			</div>
+		</div>
+		<div class="test-record-h1 pull-down test_top">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="h1-content">
+						<div class="pull-left">
+							<span>测试日期：</span>
+							<span id="testListTime">2016-01-01</span>
+						</div>
+						<div class="slide sildeClick">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div role="test" class="test-view view_body">
+			<div role="test" class="test-view">
+				<div class="test-record Sbot">
+					<div class="test-record-content" style="padding: 8px 15px 10px 15px ;">
+						<div class="view_head">
+							<p></p>
+							<p></p>
+							<p></p>
+						</div>
+					</div>
+				</div>
+				<div class="test-record Sbot">
+
+					<div class="test-record  Sbot">
+						<div class="test-record-h1 ">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="h1-content">
+										<div class="pull-left">
+											<span>注意事项：</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="test-record-content paddingT0">
+							<div class="txt" style="">
+							<div class="test-record-list txtone">
+							</div>
+							</div>
+							<p class="slowhs">查看全文</p>
+						</div>
+					</div>
+
+					<div class="test-record">
+						<div class="test-record-h1 ">
+							<div class="container-fluid">
+								<div class="row">
+									<div class="h1-content">
+										<div class="pull-left">
+											<span>健康指导：</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="test-record-content paddingT0 txttwo">
+							<div>
+								<p style="color: #999999;">用药指导:</p>
+								<div class="txtthree"></div>
+							</div>
+							<div>
+								<p  style="color: #999999;">饮食指导:</p>
+								<div class="txt" style="">
+									<p class="txtfour"></p>
+								</div>
+								<p class="slowh">查看全文</p>
+							</div>
+							<div>
+								<p  style="color: #999999;">运动指导:</p>
+								<div class="txt" style="">
+									<p class="txtfive"></p>
+								</div>
+								<p class="slowh">查看全文</p>
+							</div>
+							<div>
+								<p  style="color: #999999;">生活习惯及日常护理指导:</p>
+								<div class="txt" style="">
+									<p class="txtsix"></p>
+								</div>
+								<p class="slowh">查看全文</p>
+							</div>
+							<div>
+								<p  style="color: #999999;">心理疏导:</p>
+								<div class="txt" style="">
+									<p class="txtseven"></p>
+								</div>
+							</div>
+							<div style="padding-bottom: 40px;">
+								<p  style="color: #999999;"	>复诊检查:</p>
+								<div class="txt" style="">
+									<p class="txteight"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="one"></div>
+				</div>
+
+				<div class="planbox hide">
+
+				</div>
+				<div class="planmin hide">
+					<p>请选择自动为您生成的计划</p>
+					<div class="test-list-itemtext treatPlan hide" sum="treatPlan">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="pull-left test-txt">服药计划</div>
+								<div class="pull-right checked addchecked test-checkbox"></div>
+							</div>
+						</div>
+					</div>
+					<div class="test-list-itemtext sportPlan hide" sum="sportPlan">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="pull-left test-txt">运动计划</div>
+								<div class="pull-right checked addchecked test-checkbox"></div>
+							</div>
+						</div>
+					</div>
+					<div class="test-list-itemtext smokPlan hide" sum="smokPlan">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="pull-left test-txt">戒烟计划</div>
+								<div class="pull-right checked addchecked test-checkbox"></div>
+							</div>
+						</div>
+					</div>
+					<div class="test-list-itemtext restPlan hide" sum="restPlan">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="pull-left test-txt">戒酒计划</div>
+								<div class="pull-right checked addchecked test-checkbox"></div>
+							</div>
+						</div>
+					</div>
+					<div class="test-list-itemtext atPlan hide" sum="atPlan">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="pull-left test-txt">作息计划</div>
+								<div class="pull-right checked addchecked test-checkbox"></div>
+							</div>
+						</div>
+					</div>
+					<div class="test-list-itemtext visitPlan hide" sum="visitPlan">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="pull-left test-txt">复诊计划</div>
+								<div class="pull-right checked addchecked test-checkbox"></div>
+							</div>
+						</div>
+					</div>
+					<p><button class="noplan">取消</button><button class="yesplan">确定</button></p>
+				</div>
+			</div>
+		</div>
+		<div class="again-test bot">
+			<button class="btnOne">手动设置计划</button><button class="btnTwo">自动设置计划</button>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+		<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+		<script src="../js/underscore.js"></script>
+		<script src="../js/cookie.js"></script>
+		<script src="../js/gjk.js"></script>
+		<script type="text/javascript">
+			(function($, $1) {
+				$(".slowhs").on("click",function(){
+					var h = $(this).parent().find(".txtone").height();
+						var hs = $(this).parent().find(".txt").height();
+						if(hs <= 60) {
+							$1(this).parent().find(".txt").animate({ "height": h + "px" }, 500)
+							$1(this).text("↑收起全文")
+						} else {
+
+							$1(this).parent().find(".txt").animate({ "height": "60px" }, 500)
+							$1(this).text("查看全文")
+						}
+				})
+				var arr = [];
+				$("body").on("click", ".row", function() {
+					var str = $(this).parents(".test-list-itemtext").attr("sum");
+
+					if($(this).find(".checked").hasClass("test-checkbox")) {
+						$(this).find(".checked").removeClass("test-checkbox")
+						arr.splice(arr.indexOf(str), 1)
+					} else {
+						$(this).find(".checked").addClass("test-checkbox")
+						arr.push(str)
+						console.log(arr)
+					}
+				})
+				clicksild(".txtfour")
+				clicksild(".txtfive")
+				clicksild(".txtsix")
+				clicksild(".txtseven")
+				clicksild(".txteight")
+
+				function clicksild(name) {
+					$1(".slowh").on("click", function() {
+						var h = $(this).parent().find(name).height();
+						var hs = $(this).parent().find(".txt").height();
+						if(hs <= 60) {
+							$1(this).parent().find(".txt").animate({ "height": h + "px" }, 500)
+							$1(this).text("↑收起全文")
+						} else {
+
+							$1(this).parent().find(".txt").animate({ "height": "60px" }, 500)
+							$1(this).text("查看全文")
+						}
+					})
+				}
+				$1(".slide").on("click", function() {
+					$1(".view_body").slideToggle("slow");
+					if($1(this).hasClass("slide")) {
+						$1(this).removeClass("slide").addClass("slides")
+					} else {
+						$1(this).removeClass("slides").addClass("slide")
+					}
+				})
+				var obj = JSON.parse(window.sessionStorage.getItem("list"));
+				if(obj.success = true) {
+				    console.log(obj)
+					var strOne = obj.data.reportAssessContext.split("@");
+					var strOnes = strOne[0].split("！")
+					$(".view_head p").eq(0).text(strOnes[0] + "！")
+					$(".view_head p").eq(1).text(strOnes[1] + strOnes[2])
+					for(var i = 1; i < strOne.length; i++) {
+						if(strOne[i] == 0 || strOne[i] == undefined) {
+
+						} else {
+							$(".txtone").append("<p>" + strOne[i] + "</p>")
+						}
+					}
+					$(".txtthree").html(obj.data.suggestTreat)
+					$(".txtfour").html(obj.data.suggestDiet)
+					$(".txtfive").html(obj.data.suggestSport)
+					$(".txtsix").html(obj.data.suggestDailyhabits)
+					$(".txtseven").html(obj.data.suggestPsychology)
+					$(".txteight").html(obj.data.suggestPsychology)
+					$("#testListTime").html(obj.data.reportDate)
+				}
+				$(".btnOne").on("click", function() {
+					window.location.href = "../plan/plusplans.html"
+				})
+				var _url = "healthyTest/checkAutoPlan";
+				var _data = {};
+				var _success = function(obj) {
+					if(obj.success==true){
+						if(obj.data.treatPlan == 0 && obj.data.sportPlan == 0 && obj.data.restPlan == 0 && obj.data.smokPlan == 0 && obj.data.atPlan == 0 && obj.data.visitPlan == 0) {
+						$(".btnTwo").hide()
+						$(".btnOne").css({ "width": "90%" })
+					} else {
+						$(".btnTwo").on("click", function() {
+							var bodyh = $("body").height();
+							$(".planbox").height(bodyh)
+							$(".planbox").removeClass("hide")
+							$(".planmin").removeClass("hide")
+							if(obj.data.treatPlan != 1) {
+								$(".treatPlan").removeClass("hide")
+								arr.push("treatPlan")
+							}
+							if(obj.data.sportPlan != 1) {
+								$(".sportPlan").removeClass("hide")
+								arr.push("sportPlan")
+							}
+							if(obj.data.restPlan != 1) {
+								$(".restPlan").removeClass("hide")
+								arr.push("restPlan")
+							}
+							if(obj.data.smokPlan != 1) {
+								$(".smokPlan").removeClass("hide")
+								arr.push("smokPlan")
+							}
+							if(obj.data.atPlan != 1) {
+								$(".atPlan").removeClass("hide")
+								arr.push("atPlan")
+							}
+							if(obj.data.visitPlan != 1) {
+								$(".visitPlan").removeClass("hide")
+								arr.push("atPlan")
+							}
+							$(".noplan").on("click", function() {
+								$(".planbox").addClass("hide")
+								$(".planmin").addClass("hide")
+							})
+							$(".yesplan").on("click", function() {
+								$.each(arr, function(key, val) {
+									if(arr[val]) {
+										_data[val] = "1"
+									}
+								});
+								var __url = "healthyTest/autoPlan";
+								var __data = {
+									"treatPlan": "0",
+									"treatPlanId": obj.data.treatPlanId,
+									"sportPlan": "0",
+									"sportNum": obj.data.sportNum,
+									"restPlan": "0",
+									"smokPlan": "0",
+									"smoknum": obj.data.smoknum,
+									"atPlan": "0",
+									"atNum": obj.data.atNum,
+									"visitPlan": "0",
+									"visitDate": obj.data.visitDate
+								};
+								var __success = function() {
+									window.location.href = "../life/index.html"
+								}
+								var __error = function(obj) {
+									alert(obj.message);
+								};
+								$.gjk.ajax.postAjax(__url, __data, __success, __error, function() {}, "POST", "myhome");
+							})
+
+						})
+					}
+					}else{
+						$(".btnTwo").hide()
+						$(".btnOne").css({ "width": "90%" })
+					}
+					
+				};
+
+				var _error = function(obj) {
+					alert(obj.message);
+				};
+				$.gjk.ajax.postAjax(_url, _data, _success, _error, function() {}, "POST", "myhome");
+
+			})(Zepto, jQuery)
+		</script>
+	</body>
+
+</html>

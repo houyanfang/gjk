@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style type="text/css">
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @-o-viewport {
+            width: device-width;
+        }
+
+        @viewport {
+            width: device-width;
+        }
+    </style>
+
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script>
+        // Copyright 2014-2015 Twitter, Inc.
+        // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    '@-ms-viewport{width:auto!important}'
+                )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <link rel="stylesheet" href="../css/addplan.css"/>
+    <link rel="stylesheet" href="../css/personal.css"/>
+</head>
+<body>
+<div class="page-group">
+    <div class="page page-current">
+        <div role="navigation" class="navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="pull-left">
+                    <a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+                </div>
+                <div class="pull-right">
+                    <a href="javascript:void();"></a>
+                </div>
+                <div role="navtitle">
+                    完成服药
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div id="list">
+                <div class="list-block">
+                    <div class="finish-plan-symbol">
+                    </div>
+                    <div class="finish-plan-form">
+                        <div class="finish-plan-diet">
+                            <table class="medicine-infor">
+                                <tr>
+                                    <td>通用名称：</td>
+                                    <td class="normalName"></td>
+                                </tr>
+                                <tr>
+                                    <td>商品名称：</td>
+                                    <td class="medicalName"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right">用量：</td>
+                                    <td class="dose"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <p><a href="#" class="button button-big btn-save">已完成</a></p>
+                    <p><a href="#" class="button button-big btn-del">稍后提醒</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="planbox hide"></div>
+<div class="timeboxs hide">
+
+    <div>
+        <button class="noTime">取消</button>
+        请选稍后提醒时间
+        <button class="yesTime">确定</button>
+    </div>
+    <p class="red">10分钟后提醒</p>
+    <p>30分钟后提醒</p>
+    <p>60分钟后提醒</p>
+</div>
+<div class="mood-record-view hide">
+    <div class="mood-record-overlay"></div>
+    <div class="mood-record-panel">
+        <div class="mood-record-panel-head">
+            <div class="mood-record-panel-title">
+                <span>今日心情</span>
+            </div>
+            <div class="mood-record-close">
+                关闭
+            </div>
+
+        </div>
+        <div class="mood-record-input-view hide">
+
+            <i class="mood-record-input-icon iconfont-mood icon-input"></i>
+            <div class="mood-record-input">
+                <input type="text"/>
+            </div>
+
+            <a href="###" class="mood-record-finish-btn circular">
+                完成
+            </a>
+        </div>
+        <div class="mood-record-panel-content hide">
+            <div class="mood-record-icon">
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-no"></i>
+                    <span class="">不太好</span>
+                </div>
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-commonly"></i>
+                    <span>一般</span>
+                </div>
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-good"></i>
+                    <span>不错</span>
+                </div>
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-happy"></i>
+                    <span>很开心</span>
+                </div>
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-wonderful"></i>
+                    <span>棒极了</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script src="../js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/base.js"></script>
+<script>
+    $(document).ready(function () {
+        console.log(getUrlParams());
+        //心情 FIXME 心情记录
+        function mood() {
+            $(".mood-record-view").removeClass("hide")
+            $(".mood-record-panel-content").removeClass("hide")
+            $(".mood-record-icon").on("click", "div", function () {
+                $(".mood-record-panel-content").addClass("hide");
+                $(".mood-record-input-view").removeClass("hide");
+                var sum = "";
+                var num = $(this).index() + 1;
+                switch (num) {
+                    case 5:
+                        sum = "棒极了：露出了24颗牙才算笑的标准哦~";
+                        break;
+                    case 4:
+                        sum = "很开心：我这颗心，已经快盛不下蜜糖般的喜悦了~";
+                        break;
+                    case 3:
+                        sum = " 不错：如果我是只袋鼠，此刻正想蹦起来~";
+                        break;
+                    case 2:
+                        sum = "一般：每天，都要多爱自己一点~";
+                        break;
+                    case 1:
+                        sum = "不太好：再烦，也别忘记微笑哦~";
+                        break;
+                }
+                $(".mood-record-input-view input").val(sum);
+                $(".circular").on("click", function () {
+                    var _url = "dailyRecord/saveMood";
+                    var _data = {
+                        "moodStatus": num,
+                        "moodDescribe": $(".mood-record-input-view input").val()
+                    };
+                    var _success = function (obj) {
+                        if (obj.success == true) {
+                            $(".mood-record-view").addClass("hide")
+                            $(".mood-record-panel-content").addClass("hide")
+                            window.location.href = "../life/index.html"
+                        }
+                    };
+
+                    var _error = function (obj) {
+                        alert(obj.message);
+                    };
+                    $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+                    }, "POST", "myhome");
+                })
+                $(".mood-record-close").on("click", function () {
+                    var _url = "dailyRecord/saveMood";
+                    var _data = {
+                        "moodStatus": num,
+                        "moodDescribe": ""
+                    };
+                    var _success = function (obj) {
+                        if (obj.success == true) {
+                            $(".mood-record-view").addClass("hide")
+                            $(".mood-record-panel-content").addClass("hide")
+                            window.location.href = "../life/index.html"
+                        }
+                    };
+
+                    var _error = function (obj) {
+//                        console.log(obj.message);
+                    };
+                    $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+                    }, "POST", "myhome");
+                })
+            })
+
+        }
+
+        // FIXME 刷新页面数据
+        drowPageData();
+        function drowPageData() {
+            var pageData = getUrlParams();
+            var $normalName = $('.normalName');
+            var $medicalName = $('.medicalName');
+            var $dose = $('.dose');
+            $normalName.html(decodeURIComponent(pageData.normalName));
+            $medicalName.html(decodeURIComponent(pageData.medicalName));
+            $dose.html(pageData.dose + decodeURIComponent(pageData.mediniceInit));
+            if (getUrlParams().takenStatus == 2) {
+                $('.content-block').hide()
+            }
+        }
+
+        if (getUrlParams().logType == "treatPlan") {
+            $(".finish-plan-symbol").css({"background": "url(../images/1.png) no-repeat center center;    background-size: 221px 163px;background-color: #FFF"})
+        } else if (getUrlParams().logType == "sportPlan") {
+            $(".finish-plan-symbol").css({"background": "url(../images/1.png) no-repeat center center;    background-size: 221px 163px;background-color: #FFF"})
+        }
+        $(".noTime").on("click", function () {
+            $(".planbox").addClass("hide");
+            $(".timeboxs").addClass("hide")
+        });
+        var _num = 1;
+        $(".timeboxs p").on("click", function () {
+            $(this).addClass("red").siblings().removeClass("red");
+            _num = $(this).index()
+        });
+        var _id = getUrlParams().id;
+        var _type = getUrlParams().logType;
+        $(".yesTime").on("click", function () {
+
+            var _sts = "";
+            switch (_num) {
+                case 1:
+                    _sts = "10";
+                    break;
+                case 2:
+                    _sts = "20";
+                    break;
+                case 3:
+                    _sts = "30";
+                    break;
+            }
+            var __url = "http://gl.gjk.com.cn/mskl-api/api/remind/alterRemind";
+            var __data = {
+                "planType": _type,
+                "planId": _id,
+                "alterTime": _sts
+            };
+            var __success = function (obj) {
+                var data = JSON.parse(obj);
+
+                if (data.success == true) {
+                    $(".planbox").addClass("hide");
+                    $(".timeboxs").addClass("hide");
+                    window.location.href = '../life/index.html'
+                }
+
+            };
+            var __error = function (obj) {
+                console.log(obj.message);
+            };
+
+            $.ajax({
+                type: "POST",
+                url: __url,
+                data: JSON.stringify(__data),
+//                dataType: 'json',
+                contentType: 'application/json',
+                success: __success,
+                error: __error,
+                complete: function () {}
+            });
+//            $.gjk.ajax.postAjax(__url, __data, __success, __error, function () {
+//            }, "POST", "myhome");
+        });
+        $(".btn-del").on("click", function () {
+            $(".planbox").removeClass("hide");
+            $(".timeboxs").removeClass("hide")
+
+
+        })
+        // FIXME 点击完成用药
+        savePlan();
+        function savePlan() {
+            var $saveBtn = $('.btn-save');
+            $saveBtn.on('click', sendData);
+            function sendData() {
+                var option = {
+                    url: 'http://gl.gjk.com.cn/mskl-api/api/treat/takeMedicines',
+                    data: {
+                        primaryKey: getUrlParams().id
+                    },
+                    success: function (data) {
+                        if (data.otherdata == "fail") {
+                            mood()
+                        } else {
+                            window.location.href = "../life/index.html"
+                        }
+//                        console.log(data)
+                        if (data.code == 200) {
+                            //window.location.href = '../life/index.html'
+                        }
+                    },
+                    error: function (data) {
+//                        console.log(data);
+//                        alert('数据请求失败！')
+                    }
+                };
+                $.gjk.ajax.hasNoTokenAndTime(option.url, option.data, option.success, option.error, function () {
+                }, 'POST')
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

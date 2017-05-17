@@ -1,0 +1,41 @@
+  <div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="drugcodeFrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+                <label>手机号：</label><input type="text" placeholder="手机号" name="mobile" class="input" />
+             <label>昵称：</label><input type="text" placeholder=" 昵称" name="userNickName" class="input" />
+      		 <label>活动名称：</label><select id="infoTitle" name="infoTitle" class="input" >
+							           </select>
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklMedCodesearch" > 搜索</a>
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    
+    <table class="table table-hover text-center  table-bordered">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="6">
+			<span style="padding-left:10px;float:left;height:20px;">活动药监码记录：<span class="sum">0</span></span>
+		</td>
+    </tr>
+      <tr>
+        <th>昵称</th>       
+        <th>手机号码</th>
+        <th>活动名称</th>
+        <th>药监码</th>       
+        <th>上传时间</th>       
+        <th>删除</th>
+      </tr> 
+		<tbody  class="druglist"></tbody>    
+      <tr>
+        <td colspan="6"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+  </div>
+
+<script type="text/javascript" src="js/pagejs/custom/drugcode.js"></script>
+<script type="text/javascript">
+$('.suffererDIV').drugcode({init:"init"});
+</script>

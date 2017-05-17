@@ -1,0 +1,65 @@
+  <div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="msklActiviFrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+	          	<label> 活动名称 :</label><select name="promotionName" class="input" >
+					            </select>
+      			 <label>类型：</label><select name="promotionType" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='0' >现金活动</option>
+							           	<option value='1'>专场活动</option>
+							           </select>
+      			 <label>状态：</label><select name="status" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='0' >活动未开始</option>
+							           	<option value='1'>进行中</option>
+							           	<option value='2' >已结束</option>
+							           	<option value='3'>已删除</option>
+							           	<option value='4' >草稿</option>
+							           </select>
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklActiviSearch" > 搜索</a>
+	           <button type="button" class="button border-yellow addActivityView" ><span class="icon-plus-square-o"></span> 添加活动</button>
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    
+    <table class="table table-hover text-center  table-bordered leaveout8">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="16">
+	    	<span style="padding-left:10px;float:left">活动失败人数：<span class="sum">0</span>人</span>
+	    	<span style="padding-left:10px;float:left">活动成功人数：<span class="sum">0</span>人</span>
+	    	<span style="padding-left:10px;float:left">报名总人数：<span class="sum">0</span>人</span>
+		</td>
+    </tr> 
+      <tr>
+        <th>活动名称</th>
+        <th>banner图</th>       
+        <th>活动页地址</th>       
+        <th>活动类型</th>       
+        <th>药品商品名称</th>
+        <th>药监码前7位</th>
+        <th>药监码数量</th>
+        <th>允许漏服天数</th>
+        <th>服药天数</th>
+        <th>活动奖金/人次</th>
+        <th>报名人数</th>
+        <th>活动状态</th>       
+        <th>分享次数</th>       
+        <th>排列顺序</th>       
+        <th>修改</th>       
+        <th>删除</th>       
+      </tr> 
+		<tbody  class="msklactilist"></tbody>    
+      <tr>
+        <td colspan="16"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+  </div>
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/operate/activity.js"></script>
+<script type="text/javascript">
+$('.suffererDIV').activity({init:"init"});
+</script>

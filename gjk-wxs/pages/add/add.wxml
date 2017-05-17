@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="user-infor">
+    <view class="list">
+      <view class="user-item">
+        <text class="black-text">药品名称</text>
+        <view class="width-half flex-row">
+          <view class="times">
+            <view class="picker">{{medFullName}}</view>
+          </view>
+          <text class="icon-go" bindtap="enterSearch">></text>
+        </view>
+      </view>
+      <view class="user-item">
+        <text class="black-text">购药数量</text>
+        <view class="width-half  flex-right">
+         <text class="icon-num" id="reduce" bindtap="buyCount">-</text>
+          <text class="numText" > {{buyCount}} </text>
+          <text class="icon-num" id="add" bindtap="buyCount">+</text>
+        </view>
+      </view>
+      <view class="user-item">
+        <text class="black-text">药品单位</text>
+        <view class="width-half flex-row">
+          <view class="times">
+            <picker mode="selector" range="{{units}}" value="{{uIndex}}" bindchange="alertunits">
+              <view class="picker">{{units[uIndex]}}</view>
+            </picker>
+          </view>
+          <text class="icon-go" bindtap="alertunits">></text>
+        </view>
+      </view>
+      <view class="user-item">
+        <text class="black-text">购药时间</text>
+        <view class="width-half flex-row">
+          <view class="times">
+            <picker mode="date" value="{{defaultDate}}" start="2015-09-01" end="2020-09-01" bindchange="bindDateChange">
+              <view class="picker">{{defaultDate}}</view>
+            </picker>
+          </view>
+          <text class="icon-go" bindtap="bindDateChange">></text>
+        </view>
+      </view>
+      <view class="user-item"  bindtap="enterUpload">
+        <view class="width-big">
+          <text class="pres-text">购药凭证</text>
+          <text class="little-text">(处方/病例/结算单/小票)</text>
+        </view>
+        <text class="icon-go">></text>
+      </view>
+    </view>
+  </view>
+  <view class="saveView">
+    <button class="login-btn" bindtap="saveData">保 存</button>
+  </view>
+</view>

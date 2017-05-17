@@ -1,0 +1,27 @@
+  <div class="panel admin-panel userDIV">
+    <div class="panel-head"><strong>文章发布数量</strong></div>
+    <div class="padding border-bottom">
+      <ul class="search">
+        <li>
+          <button type="button" class="button border-yellow addArticleHtml pharmaceuticalFactory" ><span class="icon-plus-square-o"></span> 添加条目</button>
+          <button type="button" class="button border-yellow showStatisticalChart" >显示统计图</button></li>
+      </ul>
+    </div>
+    <table class="table table-hover text-center">
+      <tr>
+        <th width="120">序号</th>
+        <th>日期</th>       
+        <th>数量</th>       
+        <th>类型</th>
+        <th class="pharmaceuticalFactory">操作</th>       
+      </tr> 
+		<tbody  class="userlist"></tbody>    
+      <tr>
+        <td colspan="5"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+  </div>
+<script type="text/javascript" src="js/pagejs/statis/article.js"></script>
+<script type="text/javascript">
+	$('.userDIV').article({"init":"init"});
+</script>

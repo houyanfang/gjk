@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="js/ztree_v3/css/zTreeStyle/zTreeStyle2.css" type="text/css">
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/pagejs/menu.js"></script>
+<script type="text/javascript" src="js/ztree_v3/js/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="js/ztree_v3/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="js/ztree_v3/js/jquery.ztree.exedit.js"></script>
+
+<script type="text/javascript" src="js/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+<script type="text/javascript" src="js/pagination/jquery.pagination.js"></script>
+	
+	
+	<div class="panel admin-panel" style=" min-height:400px;min-width:250px;float:left;">
+		<div id="treeDemo2" class="ztree2"></div>
+	</div>
+	
+	<script type="text/javascript">
+		initree();
+	</script>
+	<input type="hidden" id="rename" />
+  
+<div class="panel admin-panel" style="min-height:400px; margin-left:300px;width:400px;">
+  <div class="panel-head" style="    text-align: center;"><strong>添加菜单</strong></div>
+  <div class="body-content">
+    <form  class="form-x" id="menufrom">
+          <input type="hidden" id="id" name="id" />       
+      <div class="form-group">
+        <div class="label w40">
+          <label for="sitename">菜单名称：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w50" id="name" name="name" size="50" placeholder="请输入菜单名称" data-validate="required:请输入菜单名称,twice:名称已存在" />       
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="label">
+          <label for="sitename">菜单页面</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w100" id="menuurl" name="menuurl" size="50" placeholder="请输入菜单页面"  />         
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label for="sitename">菜单序号</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w100" name="seq" size="50" placeholder="请输入菜单序号"  />         
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label for="sitename">菜单字段</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w100" name="passUrl" size="50" placeholder="请输入菜单页面"  />         
+        </div>
+      </div>
+      <div class="form-group">
+          <div class="label">
+            <label>上级菜单：</label>
+          </div>
+          <div class="field">
+            <select name="pId" class="input w50 upmenu">
+            </select>
+            <div class="tips"></div>
+          </div>
+        </div>
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <input class="button bg-main" id="addMenu" type="button" value=" 提交 " />   
+        </div>
+      </div>      
+    </form>
+  </div>
+</div>
+<div style="float:left;margin:10px 10px;">
+	<a id="remove" class="button border-red" href="#" title="删除菜单" onclick="return false;"><span class="icon-trash-o"></span>删除菜单</a>   
+	<a id="edit" class="button border-main" href="#" title="修改菜单" onclick="return false;"><span class="icon-edit"></span>修改菜单</a>   
+	<a id="add" class="button border-main" href="#" title="添加菜单" onclick="return false;"><span class="icon-edit"></span>添加菜单</a>   
+</div>
+	

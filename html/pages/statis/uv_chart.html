@@ -1,0 +1,26 @@
+<div class="chart">
+<div class="padding border-bottom">
+      <ul class="search" style="padding-left:10px;">
+        <li>
+          <input type="text" placeholder="起始时间" name="startTime" class="input" style="width:180px; line-height:17px;display:inline-block" />
+          <input type="text" placeholder="结束时间" name="endTime" class="input" style="width:180px; line-height:17px;display:inline-block" />
+          <a href="javascript:void(0)" class="button border-main icon-search" id="articlesearch" > 搜索</a>
+          <span style="padding-left:10px;">总UV量：<span class="sum">0</span></span>
+          <span style="padding-left:10px;">肝健康网UV量：<span class="gjkwsum">0</span></span>
+          <span style="padding-left:10px;">柑橘客UV量：<span class="gjksum">0</span></span>
+          <span style="padding-left:10px;">自媒体UV量：<span class="zmtsum">0</span></span>
+          <span style="padding-left:10px;">其它UV量：<span class="qtsum">0</span></span>
+         </li>
+      </ul>
+    </div>
+	<div id="chart1" class="chart_combo" style="width:800px;"></div>
+	<div id="chart2" class="chart_combo" style="width:800px;"></div>
+	<div id="chart3" class="chart_combo" style="width:800px;"></div>
+	<div id="chart4" class="chart_combo" style="width:800px;"></div>
+</div>
+
+<script type="text/javascript" src="js/pagejs/statis/uv_chart.js" ></script>
+<script type="text/javascript">
+Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+$('.chart').uv_chart({});
+</script>

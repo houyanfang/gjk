@@ -1,0 +1,42 @@
+<view id="Top" class="header">
+  <icon type="search" />
+  <input placeholder="请输入您要搜索的药品名、生成厂家" bindinput="searchList" />
+</view>
+<scroll-view scroll-y style="height: {{windowHeight}}" scroll-into-view="{{alpha}}">
+  <view class="alphabet">
+    <view class="alphabet-list">
+      <view wx:for="{{list}}" wx:key="unique" id="{{item.alphabet}}" class="section-item" wx:if="{{item.datas.length != 0}}">
+        <view class="section-item-header">
+          {{item.alphabet}}
+        </view>
+        <view wx:for="{{item.datas}}" wx:key="unique" wx:for-item="cell" wx:for-index="cellIndex" class="section-item-cells">
+          <navigator url="../add/add?medicalName={{cell.medicalName}}&normalName={{cell.normalName}}&medicineUnit={{cell.medicineUnit}}&packageAmount={{cell.packageAmount}}&medicaId={{cell.msklMedicineId}}">
+            <view class="section-item-cell {{cellIndex != (item.datas.length-1) ? 'border-bottom':''}}">
+              <view class="leftitems">
+                <text class="name">{{cell.medicalName}}</text>
+                <text class="product">{{cell.manufacturer}}</text>
+              </view>
+              <text class="desc">{{cell.packageAmount}}{{cell.medicineUnit}}</text>
+            </view>
+          </navigator>
+        </view>
+      </view>
+      <view class="loadingImg" wx:if="{{showLoadingImg}}">
+        <image src="../../images/loading.gif"></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="hasNoDrug">
+  <text>找不到您的药品名称？没关系</text>
+  <view class="btn">
+    <navigator url="../addbyhand/addbyhand">
+      <button>手动添加药品信息</button>
+    </navigator>
+  </view>
+</view>
+<view data-id="selector" catchtouchstart="handlerAlphaTap" catchtouchmove="handlerMove" class="alphanet-selector">
+  <view data-ap="{{item.alphabet}}" wx:for="{{list}}" wx:key="unique" class="selector-one">
+    {{item.alphabet}}
+  </view>
+</view>

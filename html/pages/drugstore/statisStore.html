@@ -1,0 +1,66 @@
+<div class="panel admin-panel suffererDIV">
+  <div class="padding border-bottom">
+      <form id="msklDiseaseFrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+	          	<label>创建时间 :</label>
+	          	<input type="text" placeholder="起始时间" name="startTime" class="input" style="width:180px; line-height:17px;display:inline-block" />
+     		      <span>--</span>
+     		     <input type="text" placeholder="结束时间" name="endTime" class="input" style="width:180px; line-height:17px;display:inline-block" />
+         	   <label class="label-width">药品名 :</label><input type="text" placeholder="药品名称/通用名称" class="input" />
+		         <label class="label-width">厂商名称 :</label><input type="text" placeholder="" class="input" />
+			       <label>绑定手机号码：</label>
+			        <select name="isDelete" class="input" >
+			           	<option value='1' >是</option>
+			           	<option value='' >否</option>
+			        </select>
+		     			
+      			 <label>疾病类型：</label>
+      			 <select name="isDelete" class="input" >
+			           	<option value='' >全部</option>
+			           	<option value='1' >已启用</option>
+			           	<option value='2'>未启用</option>
+			       </select>
+			       <label>计划类型：</label>
+      			 <select name="isDelete" class="input" >
+			           	<option value='' >全部</option>
+			           	<option value='1' >已启用</option>
+			           	<option value='2'>未启用</option>
+			       </select>
+			       <label>复购次数：</label>
+      			 <select name="isDelete" class="input" >
+			           	<option value='' >全部</option>
+			           	<option value='1' >已启用</option>
+			           	<option value='2'>未启用</option>
+			       </select>
+			       <label>处方上传：</label>
+      			 <select name="isDelete" class="input" >
+			           	<option value='' >全部</option>
+			           	<option value='1' >已启用</option>
+			           	<option value='2'>未启用</option>
+			       </select>
+	           <a href="javascript:void(0)" class="button border-main  buttons" id="msklDiseaseSearch" > 生成</a>
+            </li>
+	     </ul>
+     </form>
+      
+    
+	    
+     
+  </div>
+  <div class="padding10">
+    	<h2 class="font-td">报表数据如下</h2>
+    	<div class="chart-box ">fdafggfgfdadsffdafggfgfdadsffdafggfgfdadsffdafggfgfdadsffdafggfgfdadsffdafggfgfdadsf</div>
+  </div> 
+  
+    
+</div>
+  
+<script type="text/javascript" src="js/pintuer.js" ></script>
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/drugstore/statisStore.js"></script>
+<script type="text/javascript">
+$('.suffererDIV').statisStore({init:"init"});
+Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+$('.chart').article_chart({});
+</script>

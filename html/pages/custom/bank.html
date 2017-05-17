@@ -1,0 +1,134 @@
+  <link rel="stylesheet" href="css/style.css">
+  <div class="panel admin-panel bankDIV">
+      <div class="padding border-bottom">
+      <form id="msklBank">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+          	
+      		 <label class="label320" >银行卡状态：</label><select name="mbStatus" class="input" >
+							           	<option value='' >未选择</option>
+							           	<option value='1' >审核中</option>
+							           	<option value='2'>已审核</option>
+							           	<option value='3'>审核已通过</option>
+							           </select>
+	         <label> 身份状态 :</label><select name="miStatus" class="input" >
+				            		<option value='' >未选择</option>
+					            	<option value='1' >审核中</option>
+					            	<option value='2' >审核通过</option>
+					            	<option value='3' >未通过审核</option>
+					            </select>
+             <label>手机号：</label><input type="text" placeholder="手机号" name="mobile" class="input" />
+             <label>昵称：</label><input type="text" placeholder=" 昵称" name="userNickName" class="input" />
+			 <label class="label320">持卡人姓名：</label><input  type="text" placeholder="持卡人姓名" name="userRealName" class="input" />
+             
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklBankSearch" > 搜索</a>
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    
+    <table class="table table-hover text-center  table-bordered leaveout8">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="12">
+	    	<span style="padding-left:10px;float:left">今日提交银行卡：<span class="num1">0</span></span>
+			<span style="padding-left:10px;float:left;height:20px;">累计提交银行卡：<span class="sum1">0</span></span>
+	    	<span style="padding-left:10px;float:left">今日提交身份：<span class="num2">0</span></span>
+			<span style="padding-left:10px;float:left;height:20px;">累计提交身份：<span class="sum2">0</span></span>
+		</td>
+    </tr> 
+      <tr>
+        <th>昵称</th>       
+        <th>手机号码</th>
+        <th>用户身份提交日期</th>       
+        <th>身份审核状态</th>       
+        <th>持卡人姓名</th>
+        <th>卡号</th>
+        <th>开户银行</th>
+        <th>开户名称</th>
+        <th>开户地区</th>
+        <th>银行卡审核状态</th>
+        <th>审核</th>       
+        <th>修改</th>       
+      </tr> 
+		<tbody  class="banklist"></tbody>    
+      <tr>
+        <td colspan="12"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+    
+    
+    
+    
+<button class="dialogs hidden check_bank_open" data-toggle="click" data-target="#check_bank" data-mask="1" data-width="90%"></button>
+<div id="check_bank">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong class="plan_type">银行卡审核</strong>
+		</div>
+		<div class="dialog-body">
+		
+			 <form class="identfrom hidden">
+			      <ul class="search heard_search" style="padding-left:10px;">
+			        <li>
+			    		 <label class="label320">身份证照片： </label><img class="idcardimg" src="" width="400" height="300" class="img-border border-blue radius" />
+			             <div class="divs">
+				             <label class="label320">姓名：</label><input type="text" placeholder=" 姓名" name="userRealName" class="input topinput" />
+				             <br /><label class="label320">身份证号码：</label><input type="text" placeholder="身份证号码" name="userIdentiCard" class="input topinput" />
+			             </div>
+		            </li>
+		             <li class="ischecked hidden">
+			             <div style="padding :15px;" class="divscenter">
+				             <label class="label320">卡号：</label><input type="text" placeholder=" 卡号" name="cardNo" class="input topinput" />
+				             <br /><label class="label320">开户银行：</label><input type="text" placeholder="开户银行" name="bankName" class="input topinput" />
+				             <br /><label class="label320">开户地区：</label><input type="text" placeholder="开户地区" name="bankAddrNo" class="input topinput" />
+				             <br /><label class="label320">开户行名称：</label><input type="text" placeholder="开户行名称" name="bankBranchName" class="input topinput" />
+			             </div>
+		            </li>
+			      	<li class="ischecked">
+			      		<div class="divstext">
+				           <a href="javascript:void(0)" class="button border-main icon icon-check buttons IdentPass" > 审核通过</a>
+				           <a href="javascript:void(0)" class="button border-main icon icon-times buttons IdentUnPass" > 审核失败</a>
+				           <a href="javascript:void(0)" class="button border-main icon icon-times buttons IdentUpdate" > 修改</a>
+		            	</div>
+		            </li>
+			        </ul>
+		        </form>
+		
+		      
+		      <form class="bankfrom hidden">
+			      <ul class="search heard_search" style="padding-left:10px;">
+			        <li>
+			             <div class="divscenter">
+				             <label class="label320">卡号：</label><input type="text" placeholder=" 卡号" name="cardNo" class="input topinput" />
+				             <br /><label class="label320">开户银行：</label><input type="text" placeholder="开户银行" name="bankName" class="input topinput" />
+				             <br /><label class="label320">开户地区：</label><input type="text" placeholder="开户地区" name="bankAddrNo" class="input topinput" />
+				             <br /><label class="label320">开户行名称：</label><input type="text" placeholder="开户行名称" name="bankBranchName" class="input topinput" />
+			             </div>
+		            </li>
+			      	<li>
+			      		<div class="divstext">
+				           <a href="javascript:void(0)" class="button border-main icon icon-check buttons BankPass" > 审核通过</a>
+				           <a href="javascript:void(0)" class="button border-main icon icon-times buttons BankUnPass"> 审核失败</a>
+		            	</div>
+		            </li>
+			       </ul>
+		        </form>
+		</div>
+		<button class="dialog-close hidden check_close"></button>
+	</div>
+</div>
+    
+    
+    
+    
+    
+  </div>
+  
+  
+<script type="text/javascript" src="js/pintuer.js" ></script>
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/custom/bank.js"></script>
+<script type="text/javascript">
+$('.bankDIV').bank({init:"init"});
+</script>

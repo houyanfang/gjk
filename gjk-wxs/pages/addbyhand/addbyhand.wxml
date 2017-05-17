@@ -1,0 +1,82 @@
+<view class="container">
+  <view class="user-infor">
+     <view class="list">
+         <view class="list-tip">
+           <view class="tip-circle"></view>
+           <text>您好，很抱歉暂时没有您需要的药品信息，快来和柑橘
+客一起完善药品库吧！</text>
+         </view>
+         <view class="user-item">
+            <text class="black-text">药品商品名</text>
+            <view class="width-half">
+           <view class="gray-text">
+                 <input type="text" placeholder="请输入药品商品名，如润众" value="{{medicalName}}"  />
+               </view>
+            </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">药品通用名</text>
+             <view class="width-half">
+               <view class="gray-text">
+                 <input type="text" placeholder="请输入药品通用名，如恩替卡韦" value="{{normalName}}"  />
+               </view>
+             </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">生产厂商</text>
+             <view class="width-half">
+               <view class="gray-text">
+                 <input type="text" placeholder="请输入生产厂商"   value="{{manufacturer}}" />
+               </view>
+             </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">规格</text>
+             <view class="width-half  flex-row">
+                 <view class="times">
+                  <picker mode="selector" range="{{units}}" value="{{uIndex}}"  bindchange="alertunits">
+                      <view class="picker">{{units[uIndex]}}</view>
+                   </picker>
+                 </view>
+                <text class="icon-go">></text>
+             </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">每次服用</text>
+             <view class="width-half  flex-row">
+                 <view class="times">
+                  <picker mode="selector" range="{{arrayNum}}" value="{{index}}"  bindchange="alertMed">
+                      <view class="picker">{{arrayNum[index]}}</view>
+                   </picker>
+               </view>
+                <text class="icon-go">></text>
+             </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">每日次数</text>
+             <view class="width-half  flex-row">
+                <view class="times">
+                  <picker mode="selector" range="{{arrayNum}}" value="{{numIndex}}"  bindchange="alertNum">
+                      <view class="picker">{{arrayNum[numIndex]}}</view>
+                   </picker>
+               </view>
+                <text class="icon-go">></text>
+             </view>
+          </view>
+
+
+          <view class="user-item" bindtap="enterUpload">
+           <view class="width-big">
+              <text class="pres-text">购药凭证</text>
+              <text class="little-text">(处方/病例/结算单/小票)</text>
+            </view>
+              <text class="icon-go" >></text>
+          </view>
+     </view>
+     <view class="flex-colume marginbt" style="margin-top:60rpx;">
+        <button class="login-btn" bindtap="saveData">保存</button>
+     </view>
+  </view>
+
+   
+</view>

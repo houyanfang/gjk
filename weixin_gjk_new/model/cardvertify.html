@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+	</head>
+
+	<body class="hasNav hasFoot fullscreen">
+
+		
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				<div class="pull-right">
+					<a  href="javascript:void();"></a>
+				</div>
+				<div role="navtitle">
+					实名认证
+				</div>
+			</div>
+		</div>
+		
+		<div role="identification" class="identification">
+			<div class="upload">
+				<div class="upload-icon"></div>
+			</div>
+			<div class="text-center font16 text-yellow" style="font-weight: bolder;">
+				审核中
+			</div>
+		</div>
+		<div class="me-loading">
+	    	<img  src="../img/loading.gif" />
+	    </div>
+		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+		<!--script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script-->
+		<script src="../js/underscore.js"></script>
+		<script src="../js/cookie.js"></script>	
+		<script src="../js/gjk.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.me-loading').show();
+				var _url = "account";
+				var _data = {};
+				var _success = function(obj){
+					if(obj.data){
+						var idCardStatus = obj.data.idCardStatus;
+						if()
+					}
+				};
+				var _error = function(obj){};
+				var _complete = function(){
+					$('.me-loading').hide();
+				};
+				$.gjk.ajax.postAjax(_url,_data,_success,_error,_complete,"POST","cardvertify");
+			})
+		</script>
+		
+	</body>
+
+</html>

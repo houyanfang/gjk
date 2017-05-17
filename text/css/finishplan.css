@@ -1,0 +1,279 @@
+.gjk-plan-list {
+	position: relative;
+	min-height: 100%;
+	background: #FFF;
+	overflow: hidden;
+}
+
+.gjk-plan-list .gjk-plan-list-inner {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.gjk-plan-list .gjk-plan-list-empty-list {
+	display: none;
+	margin: 51px 0 0;
+}
+
+.gjk-plan-list .gjk-plan-list-empty-view {
+	width: 154px;
+	height:126px;
+	margin: 0 auto;
+	background: url(../img/adno.png) no-repeat;
+	background-size: 120px 100%;
+}
+
+
+.gjk-plan-list .gjk-plan-list-empty-plus-btn {
+	display: block;
+	width: 262px;
+	height: 45px;
+	margin: 26px auto 20px;
+	font-size: 18px;
+	text-align: center;
+	color: #FFF;
+	line-height: 46px;
+	background: #fea70f;
+	-webkit-border-radius: 2.5px;
+	border-radius: 2.5px;
+	-webkit-box-shadow: 0px 2px 25px rgba(254, 167, 15, .5);
+	box-shadow: 0px 2px 25px rgba(254, 167, 15, .5);
+}
+
+
+.gjk-plan-list-view {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	overflow: hidden;
+}
+
+.gjk-plan-list-view .gjk-plan-list-view-item {
+	margin: 18px 9px 18px;
+}
+.gjk-plan-list-view-item{
+
+}
+
+.gjk-plan-list-view .gjk-plan-list-view-head {
+	position: relative;
+	height: 41px;
+	padding: 10px;
+	
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	
+	
+}
+.drug-color{
+    background: #7dde8f;	
+}
+.sport-color{
+	background: #f3d747;
+}
+.diet-color{
+	background: #f8af8a;
+}
+.wine-color{
+	background: #8d6de0 ;
+}
+.smoking-color{
+	background:#e58380;
+}
+.rest-color{
+	background:#7ab1df;
+}
+.doctors-color{
+	background: #7adfcd;
+}
+.gjk-plan-list-view .gjk-plan-list-view-head.pulldown {
+	-webkit-border-top-left-radius: 5px;
+	border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.gjk-plan-list-view .gjk-plan-list-view-head:after {
+	content: '';
+	display: block;
+	width: 22px;
+	height: 22px;
+	background: url(../img/fas.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.gjk-plan-list-view .gjk-plan-list-view-head.pulldown:after {
+	background: url(../img/faa.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.gjk-plan-list-view .plan-list-view-head-name {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 400;
+	color: #FFF;
+	/*line-height: .6rem;*/
+}
+
+
+
+.gjk-plan-list-view .plan-list-view-head-name-drug {
+
+}
+
+
+.gjk-plan-list-view .plan-list-view-head-status {
+	margin-right: 5px;
+	font-size: 16px;
+	color: #FFF;
+}
+
+#planList2 .gjk-plan-list-view-body{
+    display:none;
+}
+
+.gjk-plan-list-view .gjk-plan-list-view-body {
+	font-size: 15px;
+	color: #333;
+	border-width: 0 1px 1px;
+	border-style: solid;
+	border-color: transparent #ccc #ccc;
+	-webkit-border-bottom-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	border-bottom-right-radius:5px;
+}
+
+.gjk-plan-list-view-body .plan-list-view-body-content {
+	margin-top:-3px;
+	padding:12px;
+	border-bottom: 1px solid #ccc;
+}
+
+.gjk-plan-list-view .plan-list-view-head-name,
+.gjk-plan-list-view .gjk-plan-list-view-head,
+.plan-list-view-body-row,
+.plan-list-view-body-table {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-moz-box-orient: horizontal;
+	-moz-box-direction: normal;
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+.gjk-plan-list-view-body .plan-list-view-body-content {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-moz-box-orient: vertical;
+	-moz-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.plan-list-view-body-row,
+.plan-list-view-body-field:first-child,
+.plan-list-view-table-cell,
+.plan-list-view-table-block,
+.plan-list-view-body-table,
+.plan-list-view-body-dont,
+.plan-list-view-body-plan-status {
+	flex: 1;
+}
+
+.plan-list-view-body-dont,
+.plan-list-view-body-plan-status {
+	text-align: center;
+}
+
+.plan-list-view-body-field,
+.plan-list-view-body-table {
+	padding: 2px 0;
+}
+.plan-list-view-body-field label,
+.plan-list-view-table-field label {
+	padding: 0 4px 0 0;
+	color: #999;
+}
+
+.plan-list-view-body-status {
+	position: relative;
+	padding: 10px 0;
+}
+
+.plan-list-view-body-status:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 50%;
+	z-index: 2;
+	width: 1px;
+	height: 100%;
+	background: #ccc;
+	
+}
+
+.plan-list-view-body-field:last-child {
+	padding: 0;
+	margin:0;
+}
+@font-face {font-family: "iconfont-plan";
+  src: url('../font/plan/iconfont.eot?t=1487147738006'); /* IE9*/
+  src: url('../font/plan/iconfont.eot?t=1487147738006#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/plan/iconfont.woff?t=1487147738006') format('woff'), /* chrome, firefox */
+  url('../font/plan/iconfont.ttf?t=1487147738006') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../font/plan/iconfont.svg?t=1487147738006#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont-plan {
+  font-family:"iconfont-plan" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-rest:before { content: "\e635";}
+
+.icon-drug:before { content: "\e6cb";}
+
+.icon-wine:before { content: "\e618";}
+
+.icon-smoking:before { content: "\e6ce";}
+
+.icon-sports:before { content: "\e74e";}
+
+.icon-doctors:before { content: "\e61a";}
+
+.icon-diet:before { content: "\e663";}
+
+
+.icon-diet:before,
+.icon-rest:before,
+.icon-drug:before,
+.icon-doctors:before,
+.icon-sports:before,
+.icon-smoking:before,
+.icon-wine:before {
+	float: left;
+	padding: 0 4px 0 0;
+	font-size:24px;
+}
+.yellowfont{
+	color: #FEA70F;
+}

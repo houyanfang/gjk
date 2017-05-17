@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+
+    <!--测试必须注释掉-->
+    <!--<script src="js/noway.js" type="text/javascript" charset="utf-8"></script>-->
+    <style type="text/css">
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @-o-viewport {
+            width: device-width;
+        }
+
+        @viewport {
+            width: device-width;
+        }
+        html{
+            background: #ffffff;
+        }
+        html body .messageBody{
+            background: #ffffff;
+        }
+    </style>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script>
+        // Copyright 2014-2015 Twitter, Inc.
+        // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    '@-ms-viewport{width:auto!important}'
+                )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+</head>
+<body>
+
+<div role="navigation" style="z-index: 9999999;" class="navbar-fixed-top navbar-calendar">
+    <div class="container-fluid">
+        <div class="pull-left">
+            <a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+        </div>
+        <div role="navtitle">
+            消息
+        </div>
+    </div>
+</div>
+
+<div role="calendar" class="calendar-view navbar-fixed-top">
+    <div class="calendar-head">
+    </div>
+    <div class="messageBody">
+        <div class="messageetails">
+            <h3></h3>
+            <div class="content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script src="../js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../js/calendar.js" type="text/javascript" charset="utf-8"></script>-->
+<script src="../js/base.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        queryPushMsgContentByIds();
+        function queryPushMsgContentByIds() {
+            var options = {
+                url:'pushMsg/queryPushMsgContentByIds',
+                data:{
+                    "token": $.gjk.isHasToken(),
+                    "pushMsgId": getUrlParams().id
+                },
+                success:function (data) {
+//                    console.log(data);
+                    drowPageData(data);
+                },
+                error:function (data) {
+//                    console.log(data);
+//                    alert('数据请求失败！')
+                }
+            };
+            $.gjk.ajax.postAjax(options.url, options.data, options.success, options.error,function () {},"POST",'queryPushMsgContentByIds')
+        }
+        function drowPageData(data) {
+            var $messageetails = $('.messageetails');
+            $messageetails.find('h3').html(decodeURIComponent(getUrlParams().title));
+            var msg = '';
+            for(var i=0;i<data.data.msgContent.length;i++){
+
+                msg+='<p>'+ data.data.msgContent[i] +'</p>';
+            }
+            $messageetails.find('.content').html(msg);
+        }
+    })
+</script>
+</body>
+
+</html>

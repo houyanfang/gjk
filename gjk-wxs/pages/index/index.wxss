@@ -1,0 +1,93 @@
+/**index.wxss**/
+
+.search-box{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width:90vw;
+  height: 50rpx;
+  line-height: 1;
+  padding:5px 10px;
+  border-radius: 5px;
+  margin:15px auto;
+  background-color: #ffffff;
+}
+.search-box input{
+  width:95%;
+  font-family: "Microsoft YaHei" ! important;
+  padding-left: 10px;
+  font-size: 12px;
+  color:#999999;
+}
+.input-placeholder{
+  font-family: "Microsoft YaHei" ! important;
+  font-size: 12px;
+  color:#999999;
+}
+.list .item-box{
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  width: 100%;
+  height: 50px;
+  border-bottom:1px solid #cccccc;
+  padding:5px;
+  justify-content: space-around
+}
+.list .item-box:last-child{
+  border:none;
+}
+.list .item-box image{
+  width:40px;
+  height: 40px;
+  display: inline-block;
+  margin:5px;
+}
+.list .item-box .text-infor{
+  margin:0px 5px;
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+  width: 60vw;
+  font-size:14px;
+}
+.hide{
+  visibility: hidden;
+}
+.parentNew{
+  width: 38px
+}
+.flag{
+  width: 38px;
+  height: 18px;
+  background-color: #ff0000;
+  color:#ffffff;
+  margin:15px 5px 0px 0px;
+  padding:0px;
+  text-align: center;
+  font-size:12px;
+  border-radius: 16px;
+}
+.flag image{
+  width: 38px;
+  height:16px;
+  margin-top:10px;
+}
+.text-infor .text-name{
+   width: 100%;
+   margin:3px 0px;
+   color:#999999;
+}
+.text-infor .text-num{
+   width: 100%;
+   color:#cccccc;
+}
+.list .item-title{
+  width:100%;
+  text-indent: 10px;
+  height: 20px;
+  line-height: 20px;
+  font-size:18px;
+  padding:3px 0px;
+  color:#999999;
+}

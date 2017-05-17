@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" type="text/css" href="../css/personal.css" />
+	</head>
+
+	<body class="hasNav hasFoot fullscreen">
+
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				<div class="pull-right">
+					<a href="javascript:void();"></a>
+				</div>
+				<div role="navtitle">
+					资料认证
+				</div>
+			</div>
+		</div>
+
+		<div role="identification" class="identification">
+			<div class="identification-tip">
+				您好，完善资料后您即可享受健康管理师咨询服务和健康计划等贴心服务！
+			</div>
+
+			<div class="identification-form-view">
+				<div class="identification-form-item">
+					<div class="identification-form-input">
+
+						<div class="container-fluid">
+							<div class="row">
+								<input class="pull-left" type="text" id="phone" placeholder="手机号码" />
+								<button class="pull-right gain" type="button">获取验证码</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="identification-form-item">
+					<div class="identification-form-input">
+
+						<div class="container-fluid">
+							<div class="row">
+								<input class="pull-left celltxt" type="text" placeholder="验证码" />
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="identification-form-title">
+					(选填)
+				</div>
+				<div class="identification-form-item">
+					<div class="identification-form-input">
+
+						<div class="container-fluid">
+							<div class="row">
+								<input class="pull-left" type="text" placeholder="处方照片" readonly="" />
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="identification-form-file">
+					<div class="container-fluid">
+						<div class="row" id="result">
+
+							<div class="pull-left identification-plus">
+								<input type="file" id="add-btn" class="inpadd" capture="camera" accept="image/*" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="identification-form-item">
+					<div class="identification-form-input">
+
+						<div class="container-fluid">
+							<div class="row">
+								<div class="pull-left identification-label">
+									药店编号
+								</div>
+								<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+
+								<input class="pull-right text-right drugstore" type="text" placeholder="请您选择药店编号" readonly="" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="identification-form-submit">
+					<a class="circular addcell" href="###">确认</a>
+					<div class="proxy">
+						<div class="left"></div>
+						<p>我已同意<span>《柑橘客用户协议》</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+		<script src="../js/fx.js"></script>
+		<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+		<script src="../js/zepto.scroll.js"></script>
+		<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/cookie.js"></script>
+		<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function($) {
+				var result = document.getElementById("result");
+				var input = document.getElementById("add-btn");
+
+				if(typeof FileReader === 'undefined') {
+					result.innerHTML = "抱歉，你的浏览器不支持 FileReader";
+					input.setAttribute('disabled', 'disabled');
+				} else {
+					input.addEventListener('change', readFile, false);
+				}
+
+				function readFile() {
+					var file = this.files[0];
+					if(!/image\/\w+/.test(file.type)) {
+						alert("请确保文件为图像类型");
+						return false;
+					}
+					var reader = new FileReader();
+					reader.readAsDataURL(file);
+
+					reader.onload = function(e) {
+						//alert(3333)
+						//alert(this.result);
+						var img = new Image,
+							width = 95, //图片resize宽度  
+							quality = 1.0, //图像质量  
+							canvas = document.createElement("canvas"),
+							drawer = canvas.getContext("2d");
+						img.src = this.result;
+						canvas.width = width;
+						canvas.height = width * (img.height / img.width);
+						drawer.drawImage(img, 0, 0, canvas.width, canvas.height);
+						var str = '<div class="pull-left identification-plus"><img src="' + img.src + '" alt="" /></div>'
+						$("#result").prepend(str)
+						var _url = "mskluser/uploadPrescription/iasdfasjkjo@6985";
+						var _data = {
+							"patientUserid": "0",
+							"file": img.src
+						}
+						var _success = function() {
+							console.log("上传成功")
+						}
+						var _error = function(obj) {
+							console.log("12313")
+						}
+						$.gjk.ajax.request(_url, _data, _success, _error, function() {}, "POST", "getpwd");
+					}
+				}
+				var countdown = 10;
+
+				function settime(val, name) {
+					if(countdown == 0) {
+						val.removeAttribute("disabled");
+						$(name).text("获取验证码");
+						countdown = 10;
+						return false;
+					} else {
+						val.setAttribute("disabled", true);
+						countdown--;
+						$(name).text("重新发送(" + countdown + ")");
+
+					}
+					console.log(countdown)
+					setTimeout(function() {
+						settime(val, ".gain")
+					}, 1000)
+
+				}
+				$(".gain").on("click", function() {
+
+					var reg = /^1[3|4|5|7|8][0-9]{9}$/;
+					var phoneNum = $("#phone").val();
+					if(reg.test(phoneNum)) {
+						var _this = this;
+						var mobile = $("#phone").val();
+						if(!mobile) {
+							alert("请输入正确的手机号");
+							return false;
+						}
+						_mobile = mobile;
+						var _url = "verificationCode/register";
+						var _data = { mobile: mobile };
+						var _success = function(obj) {
+							console.log(obj.data);
+							if(obj.success) {
+								$(".addcell").on("click", function() {
+
+									if($(".celltxt").val() != obj.data) {
+										alert("请输入正确的验证码")
+										$(".celltxt").val("")
+									} else {
+										if($(".drugstore").val().length>=2) {
+											//药店编号
+											alert("请选择药店编号")
+										}else{
+											
+											var _url = "mskluser/userDateConfirm/iasdfasjkjo@6985";
+											var _data = {
+												"data":$(".drugstore").val()
+											}
+											var _success = function() {
+												window.href="../life/index.html"
+											}
+											var _error = function(obj) {
+												console.log("12313")
+											}
+											$.gjk.ajax.request(_url, _data, _success, _error, function() {}, "POST", "getpwd");
+										}
+
+									}
+								})
+							}
+						};
+						var _complete = function() {
+							$('.me-loading').hide();
+						};
+						var _error = function() {
+							alert(obj.message);
+						};
+						$.gjk.ajax.request(_url, _data, _success, _error, _complete, "POST", "getpwd");
+
+					} else {
+						alert("请输入正确的手机号");
+						return false;
+						$("#phone").val("")
+					}
+					settime(this, ".gain")
+
+				})
+
+				$(".drugstore").picker({
+					toolbarTemplate: '<header class="bar bar-nav">\
+		 					 <button class="button button-link pull-left close-picker">取消</button>\
+		  						<button class="button button-link pull-right close-picker">确定</button>\
+		  						<h1 class="title">疾病种类</h1>\
+		  					</header>',
+					cols: [{
+						textAlign: 'center',
+						values: ['1', '2', '3']
+
+					}]
+				});
+			})(Zepto)
+		</script>
+	</body>
+
+</html>

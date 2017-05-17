@@ -1,0 +1,99 @@
+<div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="msklDiseaseFrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+					<label class="label-width">昵称 :</label><input type="text" class="input" />
+					<label>手机号码 :</label><input type="text" class="input" />
+					<label>药店名称：</label><select name="isDelete" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='1' >药店1</option>
+							           	<option value='2'>药店1</option>
+							           </select>
+					<label>注册时间：</label>
+					<input type="text" placeholder="起始时间" name="startTime" class="input" style="width:180px; line-height:17px;display:inline-block" />
+     		  <span>--</span>
+     		  <input type="text" placeholder="结束时间" name="endTime" class="input" style="width:180px; line-height:17px;display:inline-block" />
+         	
+					<label class="label-width">微信号 :</label><input type="text" class="input" />	<br />	
+					<label class="label-width">性别：</label><select name="isDelete" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='1' >男</option>
+							           	<option value='2'>女</option>
+							         </select>
+					<label>疾病类型：</label><select name="isDelete" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='1' >慢性乙肝</option>
+							           	<option value='2'>慢性丙肝</option>
+							           	<option value='3'>脂肪肝</option>
+							           	<option value='4'>酒精肝</option>
+							           	<option value='5'>乙肝病毒携带者</option>
+							           	<option value='6'>肝硬化(代偿)</option>
+							           	<option value='7'>肝硬化(失代偿)</option>
+							           	<option value='8'>肝癌</option>
+							           	<option value='9'>肝移植术后</option>
+							           	<option value='10'>其他</option>
+							         </select>
+					<a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklDiseaseSearch">查询</a>
+					<button type="button" class="button border-yellow addDiseaseView"><span class="icon-plus-square-o" ></span> 添加</button>
+					
+					<a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklDiseaseSearch" style="padding: 5px 17px;">发送消息</a>
+					<a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklDiseaseSearch" style="padding: 5px 17px;">发送短信</a>
+				</li>
+	     </ul>
+     </form>
+     </div>
+    
+    <table class="table table-hover text-center  table-bordered">
+   <tr style="border-bottom:1px solid #ddd">
+			<td colspan="12">
+				<span style="padding-left:10px;float:left">今日用户：<span class="sum">0</span>个
+				<span style="padding-left:15px;float:left">累计用户：<span class="sum">728</span>个
+		</tr>
+		<tr class="newtab-head">
+			<th>选择</th>
+			<th>昵称</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th>手机号码</th>
+			<th>所属药店</th>
+			<th>疾病类型</th>
+			<th>添加时间</th>
+			<th>最近聊天时间</th>
+			<th>详细信息</th>
+			<th>微信聊天记录</th>
+			<th>电话聊天<span style="font-size: 10px;">(音频)</span></th>
+		</tr>
+		<tbody class="mskldiseaseList"></tbody>
+		<tr>
+			<td colspan="12">
+				<div class="pagelist" id="pagination"></div>
+			</td>
+		</tr>
+    </table>
+    
+    
+    
+    
+
+		      
+		      
+		      
+		</div>
+		<button class="dialog-close hidden check_close"></button>
+ 		<script type="text/javascript" src="js/base.js" ></script>
+	</div>
+</div>
+    
+    
+  </div>
+  
+<script type="text/javascript" src="js/pintuer.js" ></script>
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/healthy/userAccurate.js"></script>
+<script type="text/javascript">
+$('.suffererDIV').userAccurate({init:"init"});
+
+	Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+	$('.chart').article_chart({});
+</script>

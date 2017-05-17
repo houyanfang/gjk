@@ -1,0 +1,21 @@
+{
+  "pages":[
+    "pages/login/login",
+    "pages/index/index",
+    "pages/examineNew/examineNew",
+    "pages/examine/examine",
+    "pages/examine/plan/plan",
+    "pages/search/search",
+    "pages/add/add",
+    "pages/uploadpres/uploadpres",
+    "pages/addbyhand/addbyhand",
+    "pages/logs/logs"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#3f88e1",
+    "navigationBarTextStyle":"white",
+    "navigationBarTitleText":"柑橘客"
+  }
+}

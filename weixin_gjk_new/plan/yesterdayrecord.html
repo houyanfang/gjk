@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+
+    <style type="text/css">@-ms-viewport {
+        width: device-width;
+    }
+
+    @-o-viewport {
+        width: device-width;
+    }
+
+    @viewport {
+        width: device-width;
+    }</style>
+    <link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/mui.poppicker.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/personal.css"/>
+    <link rel="stylesheet" href="../css/date.css"/>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script>// Copyright 2014-2015 Twitter, Inc.
+    // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+    if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement('style')
+        msViewportStyle.appendChild(
+            document.createTextNode(
+                '@-ms-viewport{width:auto!important}'
+            )
+        )
+        document.querySelector('head').appendChild(msViewportStyle)
+    }</script>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <link rel="stylesheet" href="../css/addplan.css"/>
+</head>
+
+<body class="hasNav" style="overflow: hidden;">
+
+<div role="navigation" class="navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="pull-left">
+            <a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+        </div>
+        <div class="pull-right">
+            <a href="javascript:void();"></a>
+        </div>
+        <div role="navtitle">
+            昨日生活/饮食记录
+        </div>
+    </div>
+</div>
+
+<div class="mood-record-view hide">
+    <div class="mood-record-overlay"></div>
+    <div class="mood-record-panel">
+        <div class="mood-record-panel-head">
+            <div class="mood-record-panel-title">
+                <span>今日心情</span>
+            </div>
+            <div class="mood-record-close">
+                关闭
+            </div>
+
+        </div>
+        <div class="mood-record-input-view hide">
+
+            <i class="mood-record-input-icon iconfont-mood icon-input"></i>
+            <div class="mood-record-input">
+                <input type="text"/>
+            </div>
+
+            <a href="javascript:;" class="mood-record-finish-btn circular">
+                完成
+            </a>
+        </div>
+        <div class="mood-record-panel-content hide">
+            <div class="mood-record-icon">
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-no"></i>
+                    <span class="">不太好</span>
+                </div>
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-commonly"></i>
+                    <span>一般</span>
+                </div>
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-good"></i>
+                    <span>不错</span>
+                </div>
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-happy"></i>
+                    <span>很开心</span>
+                </div>
+                <div class="mood-record-icon-item">
+                    <i class="iconfont-mood icon-wonderful"></i>
+                    <span>棒极了</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="yester-record-view">
+    <div class="yester-record-symbol"></div>
+    <div class="yester-record-formlist">
+        <div id="showUserPicker1" class="yester-record-formlist-item clearfix hide">
+            <div class="pull-left yester-record-item-name">抽烟</div>
+            <div class="pull-right yester-record-item-value">
+                <input id="userResult1" class="pull-left userResult1" type="text" placeholder="请选择抽烟数量" readonly="readonly" onfocus="this.blur();"  unselectable="on"/>
+                <i class="pull-left inlink glyphicon glyphicon-menu-right"></i>
+            </div>
+        </div>
+
+        <div id="showUserPicker2" class="yester-record-formlist-item clearfix hide">
+            <div class="pull-left yester-record-item-name">饮酒</div>
+            <div class="pull-right yester-record-item-value">
+                <input id="userResultWine" class="pull-left userResult2" type="text" placeholder="请选择喝酒数量" readonly="readonly" onfocus="this.blur();"  unselectable="on"/>
+                <i class="pull-left inlink glyphicon glyphicon-menu-right"></i>
+            </div>
+        </div>
+
+        <div id="showUserPicker4" class="yester-record-formlist-item clearfix showUserPicker4 hide">
+            <div class="pull-left yester-record-item-name">睡觉</div>
+            <div class="pull-right yester-record-item-value">
+                <input id="userResult4" class="pull-left userResult4" type="text" placeholder="21:00" readonly="readonly" onfocus="this.blur();"  unselectable="on"/>
+                <i class="pull-left inlink glyphicon glyphicon-menu-right"></i>
+            </div>
+        </div>
+
+        <div id="showUserPicker3" class="yester-record-formlist-item clearfix">
+            <div class="pull-left yester-record-item-name">饮食</div>
+            <div class="pull-right yester-record-item-value">
+                <input id="userResult3" class="pull-left userResult3" type="text" placeholder="暂未记录" readonly="readonly" onfocus="this.blur();"  unselectable="on"/>
+                <i class="pull-left inlink glyphicon glyphicon-menu-right"></i>
+            </div>
+        </div>
+
+        <div class="yester-record-formlist-btn">
+            <a id="submits" class="yester-record-item-finishbtn">完成</a>
+        </div>
+    </div>
+</div>
+<div class="face hide">
+    <div class="_head">
+        <span class="removeface">取消</span>
+        <p class="foottxt">选择摄入食物(可多选)</p><span class="orange yesface">确定</span>
+    </div>
+    <div class="face_body">
+
+    </div>
+</div>
+<div id="addBox" class="hide"></div>
+<!--model层-->
+<div id="reminder">
+    <div class="reminderBody">
+        <div class="reminderContext">
+            <div><span id="msg"></span><!--<span id="num">2s</span>--></div>
+        </div>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>-->
+<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/mui.picker.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/mui.poppicker.js" type="text/javascript" charset="utf-8"></script>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+<!--<script type="text/javascript" src="../js/zepto.touch.js" charset="utf-8"></script>-->
+<script src="../js/underscore.js"></script>
+<script src="../js/cookie.js"></script>
+<script src="../js/gjk.js"></script>
+<script src="../js/base.js"></script>
+<script type="text/javascript">
+    (function ($, doc) {
+
+        $.init();
+        $.ready(function () {
+            //选择器
+            var userPicker1 = new $.PopPicker({
+                content: '抽烟(支)'
+            });
+            userPicker1.setData([{
+                value: '1',
+                text: '0支'
+            }, {
+                value: '2',
+                text: '5支以下'
+            }, {
+                value: '3',
+                text: '5-10支'
+            }, {
+                value: '4',
+                text: '10-20支'
+            }, {
+                value: '5',
+                text: '20以上'
+            }]);
+            var showUserPickerButton1 = doc.getElementById('showUserPicker1');
+            var userResult1 = doc.getElementById('userResult1');
+            showUserPickerButton1.addEventListener('tap', function (event) {
+                userPicker1.show(function (items) {
+                    userResult1.value = items[0].text;
+                });
+            }, false);
+
+            //级联示例
+            var userPicker2 = new $.PopPicker({
+                layer: 2,
+                content: '饮酒(ml)'
+            });
+
+            userPicker2.setData([{
+                value: '1',
+                text: '白酒',
+                children: [{
+                    value: "1",
+                    text: "0ml"
+                }, {
+                    value: "2",
+                    text: "50ml以下"
+                }, {
+                    value: "3",
+                    text: "50-100ml"
+                }, {
+                    value: "4",
+                    text: "100-200ml"
+                }, {
+                    value: "5",
+                    text: "200ml以上"
+                }]
+            }, {
+                value: '2',
+                text: '啤酒',
+                children: [{
+                    value: "1",
+                    text: "0ml"
+                }, {
+                    value: "2",
+                    text: "50ml以下"
+                }, {
+                    value: "3",
+                    text: "50-100ml"
+                }, {
+                    value: "4",
+                    text: "100-200ml"
+                }, {
+                    value: "5",
+                    text: "200ml以上"
+                }]
+            },
+                {
+                    value: '3',
+                    text: '红酒',
+                    children: [{
+                        value: "6",
+                        text: "0ml"
+                    }, {
+                        value: "2",
+                        text: "50ml以下"
+                    }, {
+                        value: "3",
+                        text: "50-100ml"
+                    }, {
+                        value: "4",
+                        text: "100-200ml"
+                    }, {
+                        value: "5",
+                        text: "200ml以上"
+                    }]
+                }, {
+                    value: '4',
+                    text: '洋酒',
+                    children: [{
+                        value: "1",
+                        text: "0ml"
+                    }, {
+                        value: "2",
+                        text: "50ml以下"
+                    }, {
+                        value: "3",
+                        text: "50-100ml"
+                    }, {
+                        value: "4",
+                        text: "100-200ml"
+                    }, {
+                        value: "5",
+                        text: "200ml以上"
+                    }]
+                },
+            ]);
+            var showUserPickerButton2 = doc.getElementById('showUserPicker2');
+            var userResult2 = doc.getElementById('userResultWine');
+            showUserPickerButton2.addEventListener('tap', function (event) {
+                userPicker2.show(function (items) {
+                    userResult2.value = items[0].text + " " + items[1].text;
+                });
+            }, false);
+
+        });
+
+    })(mui, document);
+    var __arr = [];
+    var arr = [];
+    (function ($) {
+        if (getUrlParams().state == 1) {
+            $("#submits").addClass("hide");
+            $(".userResult1").attr("id", "");
+            $(".userResult4").attr("id", "");
+            $(".userResult2").attr("id", "");
+            $(".userResult3").attr("id", "");
+            $("#userResultWine").attr("id", "");
+            $("#userResult1").attr("id", "");
+            userPicker1 = {};
+            userPicker2 = {}
+//            $("#showUserPicker2").attr("id","");
+//            $("#showUserPicker1").attr("id","")
+        }
+        var _obj = {
+            "restPlanId": "",
+            "smokPlanId": "",
+            "abstinencePlanId": ""
+        };
+
+        function getTimeYesterday(time) {
+            var newTime = timersda_1(time) - (24 * 60 * 60 * 1000);
+            return format(newTime, 'yyyy-MM-dd')
+        }
+
+        //获取昨日运动计划
+        var _urls = "dailyRecord/findLogByYesterDayPlan";
+        var _datas = {
+            // "date": getTimeYesterday(getUrlParams().time)
+            "date": getUrlParams().time
+        };
+        var _successs = function (obj) {
+
+            console.log(obj);
+            if (obj.success == true && obj.data) {
+                if (obj.data.smokStatus != 0) {
+                    $("#showUserPicker1").removeClass("hide");
+                    _obj.smokPlanId = obj.data.smokPlanId;
+                    if (obj.data.smokStatus == 2) {
+                        if (obj.data.smokLog.smokCount) {
+                            $(".userResult1").val(getSmokPlanCount(obj.data.smokLog.smokCount));
+                        } else {
+                            $(".userResult1").val("0支");
+                        }
+
+                        $(".userResult1").attr("id", "")
+                    }
+                }
+                if (obj.data.restStatus != 0) {
+                    $("#showUserPicker4").removeClass("hide");
+                    _obj.restPlanId = obj.data.restPlanId;
+                    if (obj.data.restStatus == 2) {
+                        $(".userResult4").val(obj.data.restLog.sleepTime);
+                        $(".userResult4").attr("id", "")
+                    }
+                }
+                
+                if (obj.data.abstinenceStatus != 0) {
+                    _obj.abstinencePlanId = obj.data.abstinencePlanId;
+                    $("#showUserPicker2").removeClass("hide");
+                    if (obj.data.abstinenceStatus == 2) {
+                        if (obj.data.abstinenceLog.wineType && obj.data.abstinenceLog.drinkMl) {
+                            $(".userResult2").val(obj.data.abstinenceLog.wineType + " " + getAbstinencePlanCount(obj.data.abstinenceLog.drinkMl));
+                        } else {
+                            $(".userResult2").val("0ml");
+                        }
+
+                        $(".userResult2").attr("id", "")
+                    }
+                }
+                //生成饮食计划的列表
+                if (obj.data.dietLog.typeNameList) {
+                    var txt = '';
+                    for (var item in obj.data.dietLog.typeNameList) {
+                        txt += obj.data.dietLog.typeNameList[item].dietTypeName + "、";
+                    }
+                    $('.userResult3').val(txt)
+                }
+            }
+
+        };
+
+        function getAbstinencePlanCount(num) {
+            var _num = num;
+            switch (_num) {
+                case 1:
+                    return "0ml"
+                    break;
+                case 2:
+                    return "50ml以下";
+                    break;
+                case 3:
+                    return "50-100ml";
+                    break;
+                case 4:
+                    return "100-200ml";
+                    break;
+                case 5:
+                    return "200ml以上"
+                    break;
+                default:
+                    return "0ml"
+            }
+        }
+
+        function getSmokPlanCount(num) {
+            var _num = num;
+            switch (_num) {
+                case 1:
+                    return "0支"
+                    break;
+                case 2:
+                    return "5支以下";
+                    break;
+                case 3:
+                    return "5-10支";
+                    break;
+                case 4:
+                    return "10-20支";
+                    break;
+                case 5:
+                    return "20以上"
+                    break;
+                default:
+                    return "0支"
+            }
+        }
+
+
+        var _errors = function (obj) {
+//            alert(obj.message);
+        };
+        $.gjk.ajax.postAjax(_urls, _datas, _successs, _errors, function () {
+        }, "POST", "yesterdayrecord");
+
+        //填写心情
+
+        var num, moodDescribe,spanText;
+
+        function mood() {
+            $(".mood-record-view").removeClass("hide")
+            $(".mood-record-panel-content").removeClass("hide")
+            $(".mood-record-icon").on("click", "div", function () {
+                $(".mood-record-panel-content").addClass("hide");
+                $(".mood-record-input-view").removeClass("hide");
+                var sum = "";
+                num = $(this).index() + 1;
+                spanText =$(this).find('span').text();
+                switch (num) {
+                    case 5:
+                        sum = "棒极了：露出了24颗牙才算笑的标准哦~";
+                        break;
+                    case 4:
+                        sum = "很开心：我这颗心，已经快盛不下蜜糖般的喜悦了~";
+                        break;
+                    case 3:
+                        sum = "不错：如果我是只袋鼠，此刻正想蹦起来~";
+                        break;
+                    case 2:
+                        sum = "一般：每天，都要多爱自己一点~";
+                        break;
+                    case 1:
+                        sum = "不太好：再烦，也别忘记微笑哦~";
+                        break;
+                }
+                $(".mood-record-input-view input").val($.trim(sum));
+            })
+
+        }
+
+        $(".circular").on("click", function () {
+
+            moodDescribe = $(".mood-record-input-view input").val()!="" ? $(".mood-record-input-view input").val() : $(".mood-record-input-view input").attr('placeholder');
+            var _url = "dailyRecord/saveMood";
+            var _data = {
+                "moodStatus": num,
+                "moodDescribe": moodDescribe
+            };
+            var _success = function (obj) {
+                console.log(obj);
+                if (obj.success == true) {
+                    $(".mood-record-view").addClass("hide")
+                    $(".mood-record-panel-content").addClass("hide")
+                    window.location.href = "../life/index.html"
+                }
+            };
+
+            var _error = function (obj) {
+                alert(obj.message);
+            };
+            $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+            }, "POST", "yesterdayrecord");
+        })
+        $("body").on("click", ".mood-record-close", function () {
+            console.log("12345");
+            var _url = "dailyRecord/saveMood";
+            var _data = {
+                "moodStatus": $.trim(num) == "" ? "" : num,
+                "moodDescribe": spanText
+            };
+            var _success = function (obj) {
+                console.log(obj);
+                if (obj.success == true) {
+                    $(".mood-record-view").addClass("hide")
+                    $(".mood-record-panel-content").addClass("hide")
+                    // window.location.href = "../life/index.html"
+                }
+            };
+
+            var _error = function (obj) {
+//                        console.log(obj.message);
+            };
+            $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+            }, "POST", "yesterdayrecord");
+        })
+
+        //食品选择
+        $(".face_body").on("click", "p", function () {
+            var txt = $(this).text();
+            if ($(this).hasClass("bgorange")) {
+                $(this).removeClass("bgorange");
+                if (__arr.indexOf(txt) != -1) {
+                    __arr.splice(__arr.indexOf(txt), 1)
+                    arr.splice(arr.indexOf($(this).index() + 1), 1)
+                }
+                if (arr.indexOf(arr.indexOf($(this).index() + 1)) != -1) {
+                    arr.splice(arr.indexOf($(this).index() + 1), 1)
+                }
+            } else {
+                $(this).addClass("bgorange");
+                __arr.push(txt);
+                arr.push($(this).index() + 1);
+            }
+            console.log(__arr, arr)
+        })
+        //点击完成昨日计划
+        $(".yester-record-item-finishbtn").on("click", function () {
+            var arr = [];
+            var one = $(".userResult1").val() ? $(".userResult1").val() : $(".userResult1").attr('placeholder'),
+                two = $(".userResult2").val() ? $(".userResult2").val() : $(".userResult2").attr('placeholder'),
+                three = $(".userResult3").val() ? $(".userResult3").val() : $(".userResult3").attr('placeholder'),
+                four = $(".userResult4").val() ? $(".userResult4").val() : $(".userResult4").attr('placeholder');
+            accomplish(one, two, three, four)
+        })
+        //昨日计划完成函数
+        function accomplish(one, two, three, four) {
+
+            var ones, twos;
+            switch (one) {
+                case "0支":
+                    ones = 0;
+                    break;
+                case "5支以下":
+                    ones = 1;
+                    break;
+                case "5-10支":
+                    ones = 2;
+                    break;
+                case "10-20支":
+                    ones = 3;
+                    break;
+                case "20以上":
+                    ones = 4;
+                    break;
+                case "请选择抽烟数量":
+                    ones = 99999;
+                    break
+            }
+            ;
+            var _arr = two.split(" ");
+            switch (_arr[1]) {
+                case "0ml":
+                    twos = 0;
+                    break;
+                case "50ml以下":
+                    twos = 1;
+                    break;
+                case "50-100ml":
+                    twos = 2;
+                    break;
+                case "100-200ml":
+                    twos = 3;
+                    break;
+                case "200ml以上":
+                    twos = 4;
+                    break;
+                case "请选择喝酒数量":
+                    twos = 99999;
+                    break
+            }
+            ;
+            var sums = [];
+            $.each(arr, function (key, val) {
+                var obj = new Object();
+                obj.dietTypeId = val;
+                sums.push(obj)
+            })
+            if (sums.length == 0) {
+                alertTextModelHint("请选择饮食类型")
+                return
+            }
+            if (!$('#showUserPicker1').hasClass('hide')) {
+                if (ones == 99999) {
+                    alertTextModelHint("请选择抽烟数量")
+                    return
+                }
+            }
+            if (!$('#showUserPicker2').hasClass('hide')) {
+                if (twos == 99999) {
+                    alertTextModelHint("请选择喝酒数量")
+                    return
+                }
+            }
+
+            if (_obj.smokPlanId.length <= 0) {
+                _obj.smokPlanId = "";
+            }
+            if (_obj.abstinencePlanId.length <= 0) {
+                _obj.abstinencePlanId = ""
+            }
+            if (_obj.restPlanId.length <= 0) {
+                _obj.restPlanId = ""
+            }
+            var myDate = new Date();
+            var samedaynum = myDate.getFullYear() + "-" + (myDate.getMonth() * 1 + 1) + "-" + myDate.getDate();
+            var _url = "dailyRecord/saveRecord";
+            var _data = {
+                "thatdayDate": getUrlParams().time,
+                "smokLog": {
+                    "smokPlanId": _obj.smokPlanId ? _obj.smokPlanId : "",
+                    "smokCount": ones == 99999 ? 0 : ones,
+                    "dayDate": ""
+                },
+                "atLog": {
+                    "abstinencePlanId": _obj.abstinencePlanId ? _obj.abstinencePlanId : "",
+                    "drinkMl": twos == 99999 ? 0 : twos,
+                    "wineType": _arr[0],
+                    "dayDate": ""
+                },
+                "restLog": {
+                    "restPlanId": _obj.restPlanId ? _obj.restPlanId : "",
+                    "getupTime": "",
+//                    "sleepTime": four,
+                    "sleepTime": $("#userResult4").val() ? $("#userResult4").val() : "",
+                    "dayDate": ""
+                },
+                "dietLog": {
+                    "dietPlanId": "",
+                    "dietType": "3",
+                    "dietDate": "08:00",
+                    "dayDate": "",
+                    "dietTypeIdList": sums
+                }
+            };
+//            console.log(_data)
+            var _success = function (obj) {
+                console.log(obj);
+                if (obj.success == true) {
+//                    console.log(obj)
+                    $(".yester-record-item-finishbtn").addClass("hide");
+                    if (obj.otherdata == "fail") {
+                        mood()
+                    } else {
+                        window.location.href = "../life/index.html"
+                    }
+                }
+            };
+
+            var _error = function (obj) {
+                window.location.href = "../life/index.html"
+//                alert(obj.message);
+            };
+            $.gjk.ajax.basePostRequest(_url, _data, _success, _error, function () {
+            }, "POST", "yesterdayrecord");
+        }
+
+        //时间列表
+        $('#userResult4').picker({
+            toolbarTemplate: '<header class="bar bar-nav">\
+						  <button class="button button-link pull-left close-picker">取消</button>\
+						  <button class="button button-link pull-right close-picker">确定</button>\
+						  <h1 class="title">选择时间</h1>\
+						  </header>',
+            cols: [{
+                textAlign: 'center',
+                values: ['21', '22', '23', '24', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
+                //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+            },
+                {
+                    textAlign: 'center',
+                    values: ['：']
+                    //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+                },
+                {
+                    textAlign: 'center',
+                    values: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59']
+                }
+            ],
+            formatValue: function (p, v, d) {
+                return (d[0] + ':' + d[2]);
+            }
+        });
+
+        getUserInfo();
+
+        function getUserInfo() {
+
+            var _url = "dietLog/findAllBaseDietType";
+            var _data = {};
+            var _success = function (obj) {
+                console.log(obj)
+                if (obj.success == true) {
+                    $.each(obj.data, function (key, val) {
+                        var str = "<p>" + val.dietTypeName + "</p>";
+                        $(".face_body").append(str)
+                    })
+                }
+            };
+
+            var _error = function (obj) {
+                alert(obj.message);
+            };
+            $.gjk.ajax.postAjax(_url, _data, _success, _error, function () {
+            }, "POST", "yesterdayrecord");
+
+        }
+    })(Zepto)
+
+    $("#userResult3").on("click", function () {
+        sums = [];
+        $(".face").removeClass("hide");
+        $("#addBox").removeClass("hide");
+        var _h = $(".face").outerHeight();
+        $(".face").css({"bottom": -_h});
+        $(".face").animate({"bottom": 0}, 200);
+        $(".removeface").on("click", function () {
+            $("#addBox").addClass("hide");
+            $(".face").animate({"bottom": -_h}, 200);
+
+        });
+
+        $(".yesface").on("click", function () {
+            $("#addBox").addClass("hide");
+            $(".face").animate({"bottom": -_h}, 200);
+            $("#userResult3").val(__arr.join("、"))
+        })
+
+    })</script>
+</body>
+
+</html>

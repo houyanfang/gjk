@@ -1,0 +1,19 @@
+<div class="chart">
+<div class="padding border-bottom">
+      <ul class="search" style="padding-left:10px;">
+        <li>
+          <input type="text" placeholder="起始时间" name="startTime" class="input" style="width:180px; line-height:17px;display:inline-block" />
+          <input type="text" placeholder="结束时间" name="endTime" class="input" style="width:180px; line-height:17px;display:inline-block" />
+          <a href="javascript:void(0)" class="button border-main icon-search" id="articlesearch" > 搜索</a>
+          <span style="padding-left:10px;">社区发帖总量：<span class="sum">0</span></span>
+          </li>
+      </ul>
+    </div>
+	<div id="chart1" class="chart_combo original" style="width:800px;"></div>
+</div>
+
+<script type="text/javascript" src="js/pagejs/statis/community_chart.js" ></script>
+<script type="text/javascript">
+Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+$('.chart').community_chart({});
+</script>

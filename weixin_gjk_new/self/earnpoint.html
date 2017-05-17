@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">
+			(function(w, d) {
+				function setREM() {
+					var __h = d.documentElement,
+						__b = d.body;
+					__w = __h.clientWidth || __b.clientWidth;
+					var __f = __w / 18.75;
+					__h.style.fontSize = __f + 'px';
+				}
+				setREM()
+				w.onresize = function() {
+					setTimeout(function() {
+						setREM()
+					}, 100)
+				}
+			})(window, window.document)
+		</script>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+
+		<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+		<link rel="stylesheet" href="../css/personal.css" />
+	</head>
+
+	<body class="hasNav">
+
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+
+				<div role="navtitle">
+					赚取积分
+				</div>
+			</div>
+		</div>
+
+		<div class="points-title">
+			<div class="container-fluid">
+				<div class="row">
+					<span class="font24 text-white align-center integralnum">
+				    	0
+				    </span>
+					<span class="font14 text-white">
+				    	积分
+				    </span>
+				</div>
+
+			</div>
+		</div>
+		<div class="point-white-bg">
+			<ul>
+				<li class="border-btm">
+					<div class="container-fluid">
+						<div class="row addphones">
+							<div class="pull-left lineht">绑定手机号码</div>
+							<i class="pull-right inlink lineht padding0	 glyphicon glyphicon-menu-right add-tele"></i>
+							<div class="text-yellow lineht pull-right  addphone">+20</div>
+						</div>
+					</div>
+				</li>
+				<li class="border-btm">
+					<div class="container-fluid">
+						<div class="row addmessages">
+							<div class="pull-left lineht">绑定疾病信息</div>
+							<i class="pull-right inlink lineht padding0 glyphicon glyphicon-menu-right add-infor"></i>
+							<div class="text-yellow lineht pull-right addmessage">+20</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="container-fluid">
+						<div class="row addphoto">
+							<div class="pull-left lineht">上传处方照片</div>
+							<i class="pull-right inlink lineht padding0 glyphicon glyphicon-menu-right"></i>
+							<div class="text-yellow lineht pull-right upLoadpres">+20</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="point-gray-bg">积分规则</div>
+		<div class="point-white-bg paddingudrl">
+			<p>1.设置任意计划，并完成了当天所有计划，完成最后一条 时，奖励5积分；
+			</p>
+			<p>2.填写心情记录，奖励5积分；</p>
+			<p>3.连续执行计划并全部完成，奖励如下：</p>
+			<p style="text-indent: 30px;">连续5天额外奖励10积分； </p>
+			<p style="text-indent: 30px;">连续10天额外奖励20积分； </p>
+			<p style="text-indent: 30px;">连续30天额外奖励30积分； </p>
+			<p style="text-indent: 30px;">连续60天额外奖励50积分； </p>
+			<p style="text-indent: 30px;">连续100天额外奖励80积分； </p>
+			<p style="text-indent: 30px;">连续300天额外奖励100积分； </p>
+			<p style="text-indent: 30px;">连续600天额外奖励200积分</p>
+			<p style="text-indent: 30px;">一旦中断则从头开始计算；</p>
+		</div>
+		<div id="addBox" class="hide">
+
+		</div>
+		<div class="min hide">
+			<p><input type="tel" class="mobile-number" name="" id="phones" placeholder="请输入手机号码" style="width: 55%;" onkeyup="this.value=this.value.replace(/[^\d]/g,'')" /><button class="gain" style="width: 45%;">获取验证码</button></p>
+			<p><input type="text" name="celltxt" id="" placeholder="请输入验证码"  /></p>
+			<p class="tip-panel"></p>
+			<p class="btnPhone"><button class="removeadd">取消</button><button class="orange">绑定</button></p>
+		</div>
+		<!--提示框-->
+		<div id="reminder">
+		    <div class="reminderBody">
+		        <div class="reminderContext">
+		            <div><span id="msg"></span></div>
+		        </div>
+		    </div>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+		<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+
+		<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+		<script src="../js/fx.js"></script>
+		<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+		<script src="../js/zepto.scroll.js"></script>
+		<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/cookie.js"></script>
+		<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function($) {
+				var countdown = 60;
+				var _id="";
+				var _mobile;
+				
+				//验证码倒计时
+				function settime(val, name) {
+					if(countdown == 0) {
+
+						val.removeAttribute("disabled");
+						$(name).text("获取验证码");
+						countdown = 60;
+						return false;
+					} else {
+						val.setAttribute("disabled", true);
+						countdown--;
+						$(name).text("重新发送(" + countdown + ")");
+
+					}
+//					console.log(countdown)
+					setTimeout(function() {
+						settime(val, ".gain")
+					}, 1000)
+				}
+				isillness();
+				myPres();
+				//获取个人信息
+				function getData() {
+					var _url = "account";
+					var _data = {};
+					var _success = function(obj) {
+						console.log(obj);
+						//渲染积分
+						if(obj.success == true) {
+							$(".integralnum").text(obj.data.userIntegrate);
+						}
+					};
+					var _error = function(obj) {
+						console.log(obj.message);
+					};
+					$.gjk.ajax.postAjax(_url, _data, _success, _error, function() {}, "POST", "earnpoint");
+
+					var _url = "mskluser/userInfos";
+					var _success = function(obj) {
+						if(obj.success == true) {
+							console.log(obj)
+							//判断用户有没有疾病信息
+							if(obj.data.disease != null) {
+								var _icon = '<i class="pull-right inlink lineht padding0 glyphicon" style="color:green;padding-left:4px;">✔</i>';
+								$(".addmessages").find("i").remove();
+								$(".addmessages .pull-left").before(_icon)
+								$(".addmessage").removeClass("text-yellow").addClass("text-gray").css({"padding-top":"3px"});
+							}else{
+								//获取疾病列表
+								isillness();
+								
+							}
+							if(obj.data.mobile != "") {
+								var _icon = '<i class="pull-right inlink lineht padding0 glyphicon" style="color:green;padding-left:4px;">✔</i>';
+								$(".addphones").find("i").remove();
+								$(".addphone").removeClass("text-yellow").addClass("text-gray").css({"padding-top":"3px"});
+								$(".addphones .pull-left").before(_icon);
+							}else{
+								//获取验证码
+								$(".add-tele").on("click", function() {
+									$("#addBox").removeClass("hide");
+									$(".min").removeClass("hide");
+									$(".removeadd").on("click", function() {
+										$("#addBox").addClass("hide");
+										$(".min").addClass("hide");
+										$('input[name="celltxt"]').val(" ");
+										$(".mobile-number").val(" ");
+										time = 0;
+										//$(".gain").removeAttribute("disabled");
+									})
+									$(".gain").on("click", function() {
+										var reg = /^1[3|4|5|7|8][0-9]{9}$/;
+										var mobile = $("#phones").val();
+										if(reg.test(mobile)) {
+											var _this = this;
+//											var mobile = $(".mobile-number").val();
+											if(!mobile) {
+												var $msg = $('#msg');
+										        var $reminder = $('#reminder');
+										        $reminder.show();
+										        $msg.text("请输入手机号！");
+										
+										        setTimeout(function () {
+										             $reminder.hide();
+										         }, 2000);
+												return;
+											}
+											_mobile = mobile;
+											var _url = "verificationCode/register";
+											var _data = { "mobile": mobile };
+											var _success = function(obj) {
+												console.log(obj.data);
+												if(obj.success == true) {
+													//点击绑定
+													$('body').on('click','.orange', function (){
+													 	console.log("123");
+														if($('input[name="celltxt"]').val() === obj.data){
+															addphone(mobile,obj.data);
+															$("#addBox").addClass("hide");
+												        	$(".min").addClass("hide");
+												        	var $msg = $('#msg');
+													        var $reminder = $('#reminder');
+													        $reminder.show();
+													        $msg.text("您已经成功获取20积分啦！");
+													        setTimeout(function () {
+													             $reminder.hide();
+													        }, 2000);
+																	
+														}else{
+//															$(".tip-panel").text("验证码输入不正确！");
+															var $msg = $('#msg');
+													        var $reminder = $('#reminder');
+													        $reminder.show();
+													        $msg.text("验证码输入不正确！");
+													        setTimeout(function () {
+													             $reminder.hide();
+													        }, 2000);
+														}
+													})
+													
+													
+												}else{
+													console.log(obj.success);
+												}
+											};
+											var _complete = function() {
+												$('.me-loading').hide();
+											};
+											var _error = function() {
+												console.log(obj.message);
+											};
+											$.gjk.ajax.request(_url, _data, _success, _error, _complete, "POST", "earnpoint");
+											
+				
+										} else {									
+											var $msg = $('#msg');
+									        var $reminder = $('#reminder');
+									        $reminder.show();
+									        $msg.text("请输入正确的手机号！");
+									
+									        setTimeout(function () {
+									             $reminder.hide();
+									        }, 2000);
+									        
+											$("#phones").val("");	
+											return;
+										}
+										settime(this, ".gain");
+									})
+								})
+							}
+						}
+					};
+					var _error = function(obj) {
+//						console.log(obj.message);
+					};
+					$.gjk.ajax.postAjax(_url, _data, _success, _error, function() {}, "POST", "earnpoint");
+
+					
+//					var _urls = "mskluser/findUserPrescription";
+//					var _success = function(obj) {
+//						console.log(obj);
+//						if(obj.success == true) {
+//							
+//						}
+//					};
+//					$.gjk.ajax.postAjax(_urls, _data, _success, _error, function() {}, "POST", "earnpoint");
+
+				}
+				
+				getData();
+				function addphone(num,txt){
+					var _url = "mskluser/addMobileAndPassword";
+					var _data = { 
+						"mobile":num,
+    					"verificationCode":txt,
+    					"password":"123456"	
+					};
+					var _success = function(obj) {
+						console.log(obj);
+						if(obj.success == true) {
+							$("#addBox").addClass("hide");
+							$(".min").addClass("hide");
+							var _icon = '<i class="pull-right inlink lineht padding0 glyphicon" style="color:green;padding-left:4px;">✔</i>';
+							$(".addphones").find("i").remove();
+							$(".addphones .pull-left").before(_icon);
+						    window.location.reload();
+						}else{
+							alert(obj.message);
+						}
+					}
+					var _error = function(obj) {
+						console.log(obj.message);
+					};
+					$.gjk.ajax.postAjax(_url, _data, _success, _error, function() {}, "POST", "earnpoint");
+				}
+
+				function isillness() {
+					var _arr = [];
+					var _data = {}
+					var __url = "disease/list";
+					var _success = function(obj) {
+						console.log(obj);
+						if(obj.success == true) {
+							$.each(obj.data, function(key, val) {
+								_arr.push(val.userDiseaseName);
+							})
+							$(".add-infor").picker({
+								toolbarTemplate: '<header class="bar bar-nav">\
+		 					 <button class="button button-link pull-left close-picker recovery-picker-address">取消</button>\
+		  						<button class="button button-link pull-right close-picker yesjibing">确定</button>\
+		  						<h1 class="title">疾病种类</h1>\
+		  					</header>',
+		  					recovery: '.recovery-picker-address',
+							cols: [{
+										values: _arr,
+										textAlign: 'center',
+
+									},
+									{
+										textAlign: 'center',
+										values: ['3个月左右', '1年', '2年']
+
+								}]
+							});
+						}
+						
+						$("body").on("click",".yesjibing",function(){
+							var ids="";
+							var str=($(".add-infor").val()).split(" ");
+							for(var i=0;i<_arr.length;i++){
+								if(_arr[i]==str[0]){
+//									ids=""+ i +"";
+									ids = i;
+								}
+							}
+							var _urls="mydisease/svarUserDisease";
+							var _datas={
+   								 "diseaseId":ids,
+   								 "userDiseaseName":str[0],
+   								 "userDiseaseDate":str[1],
+   								 "userDiseaseId":""
+								}
+							var _successs = function(obj){
+								console.log(obj);
+								if(obj.success == true){
+									var $msg = $('#msg');
+							        var $reminder = $('#reminder');
+							        $reminder.show();
+							        $msg.text("您已经成功获取20积分啦！");
+							        setTimeout(function () {
+							             $reminder.hide();
+							        }, 2000);
+									window.location.reload();
+								}
+								//window.location.href = $.gjk.path_url + "self/earnpoint.html"
+							}
+							var _errors=function(){
+								console.log("保存失败")
+							}
+							$.gjk.ajax.postAjax(_urls, _datas, _successs, _errors, function() {}, "POST", "earnpoint");
+						})
+
+					};
+					var _error = function(obj) {
+						console.log(obj.message);
+					};
+
+					$.gjk.ajax.request(__url, _data, _success, _error, function() {}, "POST", "earnpoint");
+				}
+				//查询用户处方信息
+				function myPres(){
+					var _url = "medrecord";
+					var _success = function(obj){
+						console.log(obj);
+						if(obj.success == true && obj.data != null)
+						{
+							var _icon = '<i class="pull-right inlink lineht padding0 glyphicon" style="color:green;padding-left:4px;">✔</i>';
+							$(".addphoto").find("i").remove();
+							$(".upLoadpres").removeClass("text-yellow").addClass("text-gray").css({"padding-top":"3px"});
+							$(".addphoto .pull-left").before(_icon);
+//						    window.location.reload();
+						}
+						if(obj.success == true && obj.data == null){
+							$(".addphoto").on("click", function() {
+								window.location.href = $.gjk.path_url + "self/mypres.html"
+							})
+						}
+					};
+					var _error = function(obj){
+			//			alert(obj);
+			//			console.log("123");
+					};
+					var _complete = function(){
+						$('.me-loading').hide();
+					};
+					
+					$.gjk.ajax.postAjax(_url, {}, _success, _error, _complete, "POST", "earnpoint");
+				 
+				}
+				
+				
+			})(Zepto)
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,24 @@
+
+<!--index.wxml-->
+<view class="container">
+  <view class="search-box">
+    <icon type="search" size="18" />
+    <input type="text" placeholder="请输关键词搜索：姓名、手机号、药品名等" placeholder-class="input-placeholder" bindinput="searchPerson" />
+  </view>
+  <view class="list" wx:for="{{array}}" id="{{index}}" wx:if="{{array[index].length !=0}}">
+    <view class="item-title" wx:if="{{index != 'newman'}}">{{index}}</view>
+    <view class="item-box" wx:for="{{item}}" wx:for-item="data" data-name="{{data.userNickName}}" data-phoneNum="{{data.mobile}}" bindtap="goToDetails" data-personid="{{data.userId}}" data-state="{{data.isNew}}">
+      <image src="{{data.userPhoto}}"></image>
+      <view class="text-infor">
+        <text class="text-name">{{data.userNickName}}</text>
+        <text class="text-num">{{data.mobile}}</text>
+      </view>
+      <view class="parentNew">
+        <view class="flag" wx:if="{{data.isNew == 1}}">NEW</view>
+      </view>
+    </view>
+  </view>
+  <view class="noArrData" wx:if="{{hasData}}">
+    <image src="{{bgImg}}"></image>
+  </view>
+</view>

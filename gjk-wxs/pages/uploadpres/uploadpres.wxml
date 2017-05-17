@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="upload-panel ">
+    <view class="upload-preview">
+      <image src="{{img}}" bindtap="previewImg"></image>
+    </view>
+    <view class="upload-btn" bindtap="uploadBtn">+</view>
+  </view>
+  <view class="preview-panel hide">
+    <image src="{{img}}"></image>
+  </view>
+</view>

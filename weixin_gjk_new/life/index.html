@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+
+    <!--测试必须注释掉-->
+    <!--<script src="js/noway.js" type="text/javascript" charset="utf-8"></script>-->
+    <style type="text/css">
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @-o-viewport {
+            width: device-width;
+        }
+
+        @viewport {
+            width: device-width;
+        }
+    </style>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script>
+        // Copyright 2014-2015 Twitter, Inc.
+        // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    '@-ms-viewport{width:auto!important}'
+                )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+
+    <link rel="stylesheet" href="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/css/boot.css"/>
+    <link rel="stylesheet" href="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/css/theme.css"/>
+</head>
+<body>
+
+<div role="navigation" style="z-index: 9999999;" class="navbar-fixed-top navbar-calendar">
+    <div class="container-fluid" style="margin-top:15px;">
+        <div class="pull-left">
+            <a class="addPlan" id="addPlan" href="javascript:;"></a>
+            <div class="popUpBox" id="popUpBox" style="display: none;">
+                <a href="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/plan/plusplans.html"><i
+                        class="icon iconfont icon-tianjia"></i>添加计划</a>
+                <a href="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/plan/finishplan.html?state=1"><i
+                        class="icon iconfont icon-guanli"></i>管理计划</a>
+            </div>
+            <div id="model"></div>
+        </div>
+
+        <div class="pull-right right-index">
+            <a class="addMessage" id="addMessage"
+               href="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/public/messages.html"></a>
+        </div>
+        <div class="pull-right noMargin">
+            <a class="button circular">回今天</a>
+        </div>
+        <div role="navtitle" style="top:5px;" >
+            健康计划
+        </div>
+    </div>
+</div>
+
+<div role="calendar" class="calendar-view navbar-fixed-top">
+    <div class="calendar-head">
+        <div class="container-fluid">
+            <div class="row">
+                <!--<div class="pull-left">
+                    <div class="calendar-panel yes">0
+                    </div>
+                    <div class="calendar-status-view">
+                        坚持服药
+                    </div>
+                </div>-->
+
+                <!--<div class="pull-right">
+                    <div class="calendar-panel no">
+                        0
+                    </div>
+                    <div class="calendar-status-view">
+                        忘记服药
+                    </div>
+                </div>-->
+
+                <div class="calendar-picker clearfix">
+                    <i class="pull-left calendar-left"></i>
+                    <i class="pull-right calendar-right"></i>
+                    <span style="vertical-align: middle;display: inline-block;padding: 0px 8px; background: rgba(255,255,255,0.4);margin-top: -11px;border-radius: 5px;"></span>
+                    <!--<div class="date-text"></div>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="calendar-body">
+        <div class="calendar-week">
+            <table>
+                <thead>
+                <tr>
+                    <th>日</th>
+                    <th>一</th>
+                    <th>二</th>
+                    <th>三</th>
+                    <th>四</th>
+                    <th>五</th>
+                    <th>六</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="calendar-date" style="display: none;">
+            <table>
+                <thead>
+                <tr>
+                    <th>日</th>
+                    <th>一</th>
+                    <th>二</th>
+                    <th>三</th>
+                    <th>四</th>
+                    <th>五</th>
+                    <th>六</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="calendar-date-foot">
+                <div class="marqueeText" id="marqueeText">
+                </div>
+                <div class="do-tip pull-left">
+                    <div class="do-crl crl pull-left"></div>
+                    <div class="p pull-left">已完成</div>
+                </div>
+                <div class="none-tip">
+                    <div class="none-crl crl pull-left"></div>
+                    <div class="p pull-left">未完成</div>
+                </div>
+                <div class="eat-tip pull-right">
+                    <div class="eat-crl crl pull-left"></div>
+                    <div class="p pull-left">用药结束</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="calendar-foot"></div>
+
+</div>
+
+<div class="calendar-list">
+
+    <div class="calendar-list-view hide">
+    	<img  src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/img/indexm.png"/>
+        <div class="calendar-list-empty">
+            <a id="addPlanHealth" class="circular"
+               href="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/plan/plusplans.html">添加健康计划</a>
+        </div>
+    </div>
+
+    <ul class="calendar-list-block">
+
+    </ul>
+</div>
+<div class="footer">
+    <div class="homeIndex spColor">
+        <a href="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/life/index.html" class="homeIndex-inner">
+            <img src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/img/indexyl.png">
+            <p>主页</p>
+        </a>
+    </div>
+    <div class="mySelf">
+        <a href="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/self/myhome.html" class="mySelf-inner">
+            <img src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/img/mine.png">
+            <p>我的</p>
+        </a>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<!--<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>-->
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<!--<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+<script src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/js/underscore.js" type="text/javascript"
+        charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/js/touch.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/js/gjk.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/js/base.js"></script>
+<script src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/js/calendar.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://gl.gjk.com.cn/mskl-api/weixin_gjk_new/js/isLoginToken.js"></script>
+<script type="text/javascript">
+    (function ($) {
+
+        function getAccout() {
+            Zepto('[role="calendar"]').Calendar();
+
+            var $addPlan = $('#addPlan');
+            var $popUpBox = $('#popUpBox');
+            var $model = $('#model');
+
+            $addPlan.on('click', function () {
+                $model.toggle();
+                $popUpBox.toggle();
+            });
+            $model.on('click', function () {
+                $(this).hide();
+                $popUpBox.hide();
+            });
+            newMessages();
+            function newMessages() {
+                var option = {
+                    url: 'pushMsg/queryUnreadPushMsg',
+                    data: {
+                        "token": $.gjk.isHasToken()
+                    },
+                    success: function (data) {
+//                        console.log(data);
+                        if (data.success == true) {
+//                        console.log(data);
+                            addRedDot(data);
+                        }
+                    },
+                    error: function (data) {
+//                        console.log(data)
+                    }
+                };
+                $.gjk.ajax.request(option.url, option.data, option.success, option.error, function () {
+                }, "POST", "queryUnreadPushMsg")
+
+//                $.ajax({
+//                    url:option.url,
+//                    success:option.success,
+//                    error:option.error
+//                })
+            }
+
+            function addRedDot(data) {
+                if (data.data.length != 0) {
+                    $('#addMessage').addClass('hasMessage')
+                }
+            }
+
+            getOldDayAndNowDay();
+            function getOldDayAndNowDay() {
+                var option = {
+                    _url: "treatInfo/selectsum",
+                    _data: {},
+                    _success: function (res) {
+//                        console.log(res);
+                        if(!res.data){
+                            return;
+                        }
+                        changeNumber(res.data)
+                    },
+                    _error: function (res) {
+//                        console.log(res)
+                    }
+                };
+                $.gjk.ajax.postAjax(option._url, option._data, option._success, option._error, function () {
+                }, "POST", "selectsum")
+            }
+
+            function changeNumber(res) {
+                var $yes = $('.calendar-panel.yes');
+                var $no = $('.calendar-panel.no');
+                $yes.html(res.consistentDays);
+                $no.html(res.lostDays);
+            }
+        }
+
+        isLoginToken(getAccout, "index_plan");
+    })(Zepto)
+</script>
+</body>
+
+</html>

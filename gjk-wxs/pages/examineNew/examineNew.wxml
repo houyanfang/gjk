@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="user-infor">
+     <view class="list">
+         <view class="user-item">
+            <text class="black-text">姓名</text>
+            <view class="width-half">
+              <text class="gray-text ">{{userName}}</text>
+            </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">手机号</text>
+             <view class="width-half">
+                <text class="gray-text" wx:if="{{phone != undefined || phone != null || phone != ''}}">{{phone}}</text>
+             </view>
+          </view>
+          <navigator url="../examine/plan/plan?userId={{id}}">
+              <view class="user-item">
+                <text class="black-text" bindtap="goToPlanList">健康计划执行情况</text>
+                <view class=" width-half">
+                  <text class="icon-go">></text>
+                </view>
+              </view>
+          </navigator>
+     </view>
+     <view class="text-title bluet">购药信息</view>
+     <view class="list">
+        <navigator url="../search/search">
+            <view class="user-item">
+                <button size="mini" class="add-mini">+添加</button>
+            </view>
+        </navigator>
+     </view>
+  </view>
+</view>

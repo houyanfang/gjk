@@ -1,0 +1,93 @@
+/* pages/examine/plan/plan.wxss */
+.plan-box{
+    display: flex;
+    flex-direction: column;
+    width:94%;
+    padding:3%;
+    margin:0 auto;
+}
+.plan-title{
+    width: 94%;
+    display: flex;
+    flex-direction: row;
+    padding:0 3%;
+    color:#ffffff;
+    height: 80rpx;
+    background-color: #7dde8f;
+    border-top-left-radius: 6rpx;
+    border-top-right-radius: 6rpx;
+}
+.plan-title image{
+    width:50rpx;
+    height: 50rpx;
+    margin-top:16rpx;
+}
+.plan-name{
+    width:45%;
+    line-height: 70rpx;
+    font-size:28rpx;
+    padding:0 2%;
+}
+.plan-status{
+    width:35%;
+    line-height: 72rpx;
+    font-size:28rpx;
+    padding:0 2%;
+    text-align: right;
+}
+.plan-tab{
+    display: flex;
+    flex-direction: column;
+    width: 93.5%;
+    padding:3%;
+    background-color: #ffffff;
+    border-left:2rpx solid #cccccc;
+    border-right: 2rpx solid #cccccc;
+    border-bottom:2rpx solid #cccccc;
+}
+.plan-item{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    margin:10rpx auto 0 auto;
+    padding:0;
+}
+.item-title{
+    display: inline-block;
+    width:25%;
+    text-align: left;
+}
+.item-content{
+    display: inline-block;
+    width:45%;
+    text-align: left;
+}
+.item-times{
+    display: inline-block;
+    width:10%;
+    text-align: left;
+}
+.plan-result{
+    display: flex;
+    flex-direction: row;
+    margin:0;
+    width: 99.5%;
+    background-color: #ffffff;
+    border-bottom:2rpx solid #cccccc;
+    border-left: 2rpx solid #cccccc;
+    border-right: 2rpx solid #cccccc;
+    border-bottom-left-radius: 6rpx;
+    border-bottom-right-radius: 6rpx;
+}
+.result{
+    width: 50%;
+    text-align: center;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-bottom:10rpx;
+    border-right: 2rpx solid #cccccc;
+    margin-right: -2rpx;
+}
+.hideInner .planListInner{
+    display: none
+}

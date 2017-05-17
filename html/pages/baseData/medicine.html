@@ -1,0 +1,160 @@
+<div class="panel admin-panel suffererDIV">
+	<div class="padding border-bottom">
+		<form id="msklMedicineFrom">
+			<ul class="search heard_search" style="padding-left:10px;">
+				<li>
+					<label>通用名称 :</label><input type="text" name="normalName" class="input" />
+					<label>商品名称 :</label><input type="text" name="medicalName"  class="input"/>
+					<label>生产厂商 :</label><input type="text" name="manufacturer"  class="input"/>
+					<label>药品单位：</label>
+					<select name="medicineUnit" class="input">
+					</select>
+				</li>
+				<li>
+					<label >每天次数 :</label><input type="text" name="dailyTimes" class="input" />
+
+					<label>前7位药监码 :</label><input type="text" name="medCode" class="input" />
+					<label>商品码 :</label><input type="text" name="barCode"  class="input"/>
+					<a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklDiseaseSearch"> 搜索</a>
+					<button type="button" class="button border-yellow addMedicineView"><span class="icon-plus-square-o"></span> 添加</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+
+	<table class="table table-hover text-center  table-bordered">
+		<tr style="border-bottom:1px solid #ddd">
+			<td colspan="11">
+				<span style="padding-left:10px;float:left">药品数据：<span class="sum">1000</span>条</span>
+			</td>
+		</tr>
+		<tr>
+			<th>通用名称</th>
+			<th>商品名称</th>
+			<th>生产厂商</th>
+			<th>药品单位</th>
+			<th>单盒药量</th>
+			<th>单次药量</th>
+			<th>每天次数</th>
+			<th>前7位药监码</th>
+			<th>商品码</th>
+			<th>修改</th>
+			<th>删除</th>
+		</tr>
+		<tbody class="msklmedicineList"></tbody>
+		<tr>
+			<td colspan="11">
+				<div class="pagelist" id="pagination"></div>
+			</td>
+		</tr>
+	</table>
+
+	<button class="dialogs hidden show_open_view" data-toggle="click" data-target="#show_medicine_open" data-mask="1" data-width="70%"></button>
+	<div id="show_medicine_open">
+		<div class="dialog">
+			<div class="dialog-head">
+				<span class="close"></span><strong class="plan_type">药品信息</strong>
+			</div>
+			<div class="dialog-body">
+
+				<form class="form-x" id="AddMedicineForm">
+					<div class="form-group">
+						<div class="label">
+							<label>通用名称：</label>
+						</div>
+						<div class="field">
+							<input type="text" name="normalName" class="input"  placeholder="通用名称" data-validate="required:请输入通用名称"/>
+							<div class="tips"></div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="label">
+							<label>商品名称：</label>
+						</div>
+						<div class="field">
+							<input type="text" name="medicalName"  class="input"  placeholder="商品名称" data-validate="required:请输入商品名称"/>
+							<div class="tips"></div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="label">
+							<label>生产产商：</label>
+						</div>
+						<div class="field">
+							<input type="text" name="manufacturer"  class="input"  placeholder="生产产商" data-validate="required:请输入生产产商"/>
+							<div class="tips"></div>
+						</div>
+					</div>
+					<div class="form-group" style="float: left; width: 100%;">
+						<div class="label">
+							<label>药品单位：</label>
+						</div>
+						<div class="field" style="width: 25%;">
+							<select name="medicineUnit" class="input" style="float: left;">
+							</select>
+						</div>
+						<div class="label">
+							<label>每天服用次数：</label>
+						</div>
+						<div class="field" style="width: 25%;">
+							<input type="text"  name="dailyTimes"  class="input" placeholder="每天服用次数" data-validate="required:请输入每天服用次数"/>
+						</div>
+					</div>
+					
+					<div class="form-group" style="float: left; width: 100%;">
+						<div class="label">
+							<label>单盒药量：</label>
+						</div>
+						<div class="field" style="width: 25%;">
+							<input type="text"  name="packageAmount"  class="input" placeholder="单盒药量" data-validate="required:请输入单盒药量"/>
+						</div>
+						<div class="label" >
+							<label>单次药量：</label>
+						</div>
+						<div class="field" style="width: 25%;">
+							<input type="text"  name="dose"  class="input" placeholder="单次药量" data-validate="required:请输入单次药量"/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="label">
+							<label>药监码：</label>
+						</div>
+						<div class="field">
+							<input type="text" name="medCode"   class="input" placeholder="药监码" data-validate="required:请输入药监码"/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="label">
+							<label>商品码：</label>
+						</div>
+						<div class="field">
+							<input type="text"  name="barCode"  class="input" placeholder="商品码" data-validate="required:请输入商品码"/>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="label">
+							<label></label>
+						</div>
+						<div class="field">
+							<input type="button" class="button bg-main icon-check-square-o addMedicine" value="提交" />
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<button class="dialog-close hidden view_close"></button>
+			<script type="text/javascript" src="js/base.js"></script>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="js/pintuer.js"></script>
+<script type="text/javascript" src="js/constant.js"></script>
+<script type="text/javascript" src="js/pagejs/baseData/medicine.js"></script>
+<script type="text/javascript">
+	$('.suffererDIV').medicine({ init: "init" });
+</script>

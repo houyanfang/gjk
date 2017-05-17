@@ -1,0 +1,132 @@
+<style>
+.files {
+    position: relative;
+    display: inline-block;
+    background: #0ae;
+    border: 1px solid #0ae;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+.files input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.files:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+</style>
+<div class="panel admin-panel adduser">
+  <div class="panel-head"><strong><span></span> + 用户添加</strong></div>
+  <div class="body-content">
+  	<div>
+  		<form class="form-x" id="useraddFrom" enctype="multipart/form-data">
+	    	<input type="hidden" name="id"  />
+	      <div class="form-group">
+	        <div class="label">
+	          <label>用户名：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w35" name="userName" placeholder="请输入用户名" data-validate="required:请输入用户名,twice:名称已存在" />
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>LOGO：</label>
+	        </div>
+	        <div class="field">
+	        	<input type="hidden" name="userLogo" />
+	        	<img class="logoimg" src="images/tmbg-white.png" alt="" width="120" height="120">
+	        	<div class="files">选择文件  <input class="margin-left" type="file" name="file" /></div>
+	        	<input type="button" id="uploadlogo" class="button bg-main icon-check-square-o" value="上传" />
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>密码：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w35" name="passWord" />
+	        </div>
+	      </div>
+	      
+	      <div class="form-group">
+	        <div class="label">
+	          <label>真实姓名：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w35" name="realName" placeholder="请输入真实姓名" data-validate="required:请输入真实姓名"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>手机：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w35" name="phone" placeholder="请输入手机号" data-validate="required:请输入手机号"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	       <div class="form-group">
+	          <div class="label">
+	            <label>类型：</label>
+	          </div>
+	          <div class="field">
+	            <select name="userRole" class="input w50 upmenu">
+	            	<option value='1'>单位用户</option>
+	            	<option value='2'>药厂用户</option>
+	            </select>
+	            <div class="tips"></div>
+	          </div>
+	        </div>
+	        
+	         <div class="table-responsive">
+		    	<dl class="dl-inline clearfix">
+					<dt><label>权限菜单</label></dt>
+					<dd class="menu-dd"></dd>
+				</dl>
+		    	<div class="label text-center">
+		    		<label for="checkall">全选：</label>
+		    		<input type="checkbox" style="zoom:140%;"  class="button border-green" id="checkall">
+		    	</div>
+		     </div>
+	      
+	      <div class="form-group">
+	        <div class="label">
+	          <label></label>
+	        </div>
+	        <div class="field">
+	          <input type="button" class="button bg-main icon-check-square-o addUser" value="提交" />
+	        </div>
+	      </div>
+	      
+	    </form>
+  	</div>
+    
+  </div>
+</div>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/pagejs/adduser.js"></script>
+<script type="text/javascript">
+	$('.adduser').adduser({});
+	$("#checkall").click(function(){ 
+		var flag=this.checked;
+		  $("input[name='menuId']").each(function(){
+				  this.checked = flag;
+		  });
+		})
+
+</script>

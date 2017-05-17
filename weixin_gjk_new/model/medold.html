@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+		<link rel="stylesheet" href="../css/addplan.css"  />
+	</head>
+
+	<body class="hasNav hasFoot">
+		
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				<div class="pull-right">
+					<a  href="javascript:void();"></a>
+				</div>
+				<div role="navtitle">
+					购药药店
+				</div>
+			</div>
+		</div>
+		
+		<div role="identification" class="identification">
+						
+			<div class="upload-box">
+				
+				
+				<div class="cardinformation-form border-btm">
+					<div class="container-fluid">
+						<div class="row">
+							<input class="pull-left card-label" type="text" placeholder="所在地区" readonly="" />
+							<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+							<input class="pull-right text-right card-input text-color" type="text" id="city-picker" placeholder="" value=""/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="cardinformation-form border-btm">
+					<div class="container-fluid">
+						<div class="row">
+							<input class="pull-left card-label" type="text" placeholder="药店品牌" readonly="" />
+							<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+							<input class="pull-right text-right card-input" id="brank" type="text" placeholder="" value=""/>
+							
+						</div>
+					</div>
+				</div>
+				
+				<div class="cardinformation-form">
+					<div class="container-fluid">
+						<div class="row">
+							<input class="pull-left card-label" type="text" placeholder="药店名称" readonly="" />
+							<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+							<input class="pull-right text-right card-input" type="text" id="pharname" placeholder="" value=""/>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="identification-form-view">
+				<div class="identification-form-submit">
+					<a class="circular" href="###" id="save-btn">完成</a>
+				</div>
+			</div>
+			
+		</div>
+		<div class="me-loading">
+	    	<img  src="../img/loading.gif" />
+	    </div>
+		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+		<!--script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.js' charset='utf-8'></script-->
+		<script src="../js/underscore.js"></script>
+		<script src="../js/cookie.js"></script>	
+		<script src="../js/gjk.js"></script>
+		<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+		<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/zepto.touch.js" charset="utf-8"></script>
+		<script type="text/javascript">
+		var pharNames = [];
+		var pharIds =[];
+		$("#city-picker").cityPicker({
+			toolbarTemplate: '<header class="bar bar-nav">\
+			<button class="button button-link pull-right close-picker">确定</button>\
+			<h1 class="title">选择收货地址</h1>\
+			</header>'
+		});
+		$("#pharname").picker({
+		    toolbarTemplate: '<header class="bar bar-nav">\
+		    <button class="button button-link pull-left">按钮</button>\
+		    <button class="button button-link pull-right close-picker">确定</button>\
+		    <h1 class="title">请选择你的药店名称</h1>\
+		    </header>',
+			cols: [
+			    {
+			      textAlign: 'center',
+			      values: ["1"]
+			    }
+		    ],
+		    onClose:function(){
+		    	var currentValue = $("#pharname").data("picker").cols[0].value;
+		    	var i = pharNames.indexOf(currentValue);
+		    	var pharId = pharIds[i];
+		    	$("#pharname").data("pharId", pharId);
+		    	console.log(pharIds,pharNames);
+		    }
+		});
+		$("#pharname").picker("setValue",["1"]);
+		function brankInfor(){
+		    var _url = "baseController/findPharListByType";
+			var _data = {pharType:"1",pId:"0"};
+			var _success = function(obj){
+			    var brankNames = [], brankIds = [];
+	            for(var _brank of obj.data){
+	               brankNames.push(_brank.pharmacyName);
+	               brankIds.push(_brank.pharmacyId);
+	            }
+	            $("#brank").picker({
+					toolbarTemplate: '<header class="bar bar-nav">\
+					<button class="button button-link pull-left">按钮</button>\
+					<button class="button button-link pull-right close-picker">确定</button>\
+					<h1 class="title">请选择你的药店品牌</h1>\
+					</header>',
+					cols: [
+					    {
+					      textAlign: 'center',
+					      values:brankNames
+					    }
+					  ],
+					onClose: function(){
+		    			var currentValue = $("#brank").data("picker").cols[0].value;
+						var i = brankNames.indexOf(currentValue);
+						var brankId = brankIds[i];
+						$("#brank").data("brankId", brankId);
+						var _url = "baseController/findPharListByType";
+						var _data = {pharType:"2",pId: brankId};	
+						var _success = function(obj){
+						    pharNames = [];
+						    pharIds = [];
+				            for(var _phar of obj.data){
+				               pharNames.push(_phar.pharmacyName);
+				               pharIds.push(_phar.pharmacyId);
+				            }
+				            //console.log(pharNames);
+                            $("#pharname").data("picker").cols[0].replaceValues(pharNames);
+							$("#pharname").data("picker").updateValue();
+							$("#pharname").data("pharId", pharIds[0]);
+						};
+						var _complete = function(){					
+						   $('.me-loading').hide();
+						};
+						
+						var _error = function(obj){
+						   alert(obj.message);
+						};
+						$.gjk.ajax.postAjax(_url, _data, _success, _error, _complete, "POST", "medicineshop");
+						
+					}
+						
+				});
+				$("#brank").picker("setValue", [brankNames[0]]);
+			};
+			
+			var _complete = function(){					
+			   $('.me-loading').hide();
+			};
+			var _error = function(obj){
+			   alert(obj.message);
+			};
+			$.gjk.ajax.postAjax(_url, _data, _success, _error, _complete, "POST", "medicineshop");
+			
+		}
+		function pharInfor(){
+			var _url = "baseController/findPharListByType";
+			var _data = {pharType:"2",pId:""};//pId =	品牌的pharmacyId 就可以得到对应品牌的药店了		
+			var _success = function(obj){
+			    var phars = [];
+	            for(var _phar in obj.data){
+	               phars.push(_phar);
+	            }
+	            console.log(phars);
+			};
+			var _complete = function(){					
+			   $('.me-loading').hide();
+			};
+			var _error = function(obj){
+			   alert(obj.message);
+			};
+			$.gjk.ajax.postAjax(_url, _data, _success, _error, _complete, "POST", "medicineshop");
+			
+		}
+		$(document).ready(function(){
+			//$("#save-btn").click(saveData);
+			brankInfor();
+		});
+		function saveData(){
+			var _userAddress = $("#city-picker").val();
+			var _pharBrank = $("#brank").val();
+			var _pharName = $("#pharname").val();
+			
+			var message = "您好，输入不能为空！";
+			if(!_userAddress ||!_pharBrank ||!_pharName){
+				alert(message);
+				return;
+			}
+			
+			$('.me-loading').show();
+			var _url = "mskluser/saveUserPhar";
+			var _data = {
+					"pharId":"1",
+					"userAddress":_userAddress,
+					"pharBrank":_pharBrank,
+					"pharName":_pharName
+			};
+			var _success = function(data){
+			   console.log(data);
+			   //TODO
+			};
+			var _error = function(obj){
+			   alert(obj.message);
+			};
+			var _complete = function(){					
+			   $('.me-loading').hide();
+			}
+				$.gjk.ajax.postAjax(_url, _data, _success, _error, _complete, "POST", "medicineshop");
+							
+		}
+			
+		</script>
+	</body>
+
+</html>

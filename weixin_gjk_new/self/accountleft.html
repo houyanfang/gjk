@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+		<link rel="stylesheet" href="../css/alert.css" />
+	</head>
+
+	<body class="hasNav hasFoot">
+		
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				<div class="pull-right">
+					<a  href="javascript:void();"></a>
+				</div>
+				<div role="navtitle">
+					余额提现
+				</div>
+			</div>
+		</div>
+		
+		<div role="identification" class="identification">
+						
+			<div class="upload-box">
+				
+				<div class="cardinformation-form border-btm">
+					<div class="container-fluid">
+						<div class="row">
+							<input class="pull-left card-label" type="text" placeholder="账户余额" readonly="" />
+							<span class="pull-right text-right text-yellow account-num" style="margin-top:12px;margin-right:10px;font-size:24px;"></span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="cardinformation-form border-btm">
+					<div class="container-fluid">
+						<div class="row">
+							<input class="pull-left card-label" type="text" placeholder="到账银行号" readonly="" />
+							<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+							<input class="pull-right text-right card-input" id="cardId" type="text" placeholder="6788897327846283" readonly=""/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="cardinformation-form border-btm">
+					<div class="container-fluid">
+						<div class="row">
+							<input class="pull-left card-label" type="text" placeholder="提取金额" readonly="" />
+							<input class="pull-right text-right card-input marginr10 money-input" type="number" placeholder="请输入提现金额" readonly=""/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="cardinformation-form border-btm">
+					<div class="container-fluid">
+						<div class="row">
+							<input class="pull-left card-label" type="text" placeholder="提现密码" readonly="" />
+							<input class="pull-right text-right card-input marginr10 pwd-input" type="password" placeholder="请输入提现密码" readonly=""/>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="pull-left marginlt"><b class="warning-box">i</b></div>
+						<div class="pull-left identification-tiph">
+						  <p>温馨提示：</p>
+						  <p>1.提现申请提交成功后，需要人工审核。审核通过后，金额
+会打进所选中的银行卡中</p>
+						  <p>2.到账时间为1-3个工作日，节假日顺延</p>
+						  <p>3.提现金额必须大于50元</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="identification-form-view">
+				<div class="identification-form-submit">
+					<a class="circular end-btn">完成</a>
+				</div>
+			</div>
+		</div>
+		
+		<!--alert-->
+		<div class="Email_alert money">
+			<div class="Email_alertMain">
+				<div class="Email_alertMain_top alter-title"></div>
+				<div class="Email_alertMain_cen"><input type="number" value="" required/></div>
+				<div class="text-red" style="padding-left: 12px;padding-bottom:10px;"></div>
+				<div class="Email_alertMain_bot">
+					<div class="Email_alertMain_botLe money-no text-gray">取消</div>
+					<div class="Email_alertMain_botRi money-yes text-yellow">确定</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="Email_alert password">
+			<div class="Email_alertMain">
+				<div class="Email_alertMain_top alter-title"></div>
+				<div class="Email_alertMain_cen"><input type="password" value="" required/></div>
+				<div class="Email_alertMain_bot">
+					<div class="Email_alertMain_botLe pwd-no text-gray">取消</div>
+					<div class="Email_alertMain_botRi pwd-yes text-yellow">确定</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div id="longModel">
+		    <div class="modelBody">
+		        <div class="modelContext">
+		            <p>提现失败，请重新输入！</p>
+		        </div>
+		        <div class="modelFooter">
+		            <a href="javascript:;" class="btnRes">取消</a>
+		            <a href="javascript:;" class="btnOk">确定</a>
+		        </div>
+		    </div>
+		</div>
+		<div class="me-loading">
+	    	<img  src="../img/loading.gif" />
+	    </div>
+	    
+	    <!--提醒弹出层-->
+		<div id="reminder">
+		    <div class="reminderBody">
+		        <div class="reminderContext">
+		            <div><span id="msg"></span></div>
+		        </div>
+		    </div>
+		</div>
+	    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+		<script src="../js/underscore.js"></script>
+		<script src="../js/cookie.js"></script>	
+		<script src="../js/gjk.js"></script>
+		<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>	
+		<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/zepto.touch.js" charset="utf-8"></script>
+	    <script src="../js/accountleft.js"></script>
+	</body>
+
+</html>

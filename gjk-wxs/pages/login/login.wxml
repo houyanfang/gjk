@@ -1,0 +1,28 @@
+<!--pages/login/index.wxml-->
+<view class="form-box">
+   <form>
+        <input id="userName" type="text" placeholder="请输入药店为你提供的账号" placeholder-class="user-input" auto-focus bindinput="showVal"/>
+        <input id="passWord" type="password" placeholder="请输入药店为您提供的密码" placeholder-class="user-input" bindinput="showVal"/>
+        <button class="login-btn" disabled="{{checked}}" bindtap="UserLogin">登  录</button>
+   </form>
+</view>
+
+<view  class="agree">
+    <checkbox-group bindtap="">
+        <label class="checkbox" >
+            <checkbox checked bindtap="yetread"/>我已阅读过
+        </label>
+        <text class="blue-text" bindtap="enterXy">《柑橘客协议》</text>
+    </checkbox-group>
+</view>
+<view class="modelPage" style="display:{{display}}">
+    <view class="modelBody">
+        <view class="modelContent">
+            <text>{{msg}}</text>
+        </view>
+        <view class="modelBtn">
+            <button class="btnOk" bindtap="hideModel">确  定</button>
+        </view>
+    </view>
+</view>
+

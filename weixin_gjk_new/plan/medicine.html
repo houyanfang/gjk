@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/mui.indexedlist.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/medicine.css" />
+		<style>
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background: #fea70f;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #fff;"></a>
+			<h1 class="mui-title" style="color: #fff;">选择药品名</h1>
+		</header>
+		<div class="mui-content">
+			<div id="list" class="mui-indexed-list">
+				<div class="mui-indexed-list-search text-align mui-input-row mui-search">
+				  <div class="mui-indexed-list-search mui-input-row mui-search search">
+			    	<input id="medicine_name" type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="请输入药品名、通用名、生产厂商">
+				  </div>
+				</div>
+				<div class="medicine-list">
+					<div class="mui-indexed-list-bar zimu">
+						<span>A</span>
+						<span>B</span>
+						<span>C</span>
+						<span>D</span>
+						<span>E</span>
+						<span>F</span>
+						<span>G</span>
+						<span>H</span>
+						<span>I</span>
+						<span>J</span>
+						<span>K</span>
+						<span>L</span>
+						<span>M</span>
+						<span>N</span>
+						<span>O</span>
+						<span>P</span>
+						<span>Q</span>
+						<span>R</span>
+						<span>S</span>
+						<span>T</span>
+						<span>U</span>
+						<span>V</span>
+						<span>W</span>
+						<span>X</span>
+						<span>Y</span>
+						<span>Z</span>
+					</div>
+					<div class="mui-indexed-list-alert"></div>
+					<div class="mui-indexed-list-inner chang_main">
+						<ul id="searchlogList" class="mui-table-view  medicine-lsit-li">
+							
+						</ul>
+					</div>
+				</div>
+				<div class="login-prompt"><div class="login-prompt-cen"></div></div>
+				<div class="mui-indexed-list-empty-alert">没有数据</div>
+			</div>
+			<div class="err-data"></div>
+		</div>
+		
+		<div id="searchlog" role="identification" class="identification">
+			<div class="identification-form-submit">
+				<p class="medicine-text">找不到您的药品名称？没关系</p>
+				<a class="circular" href="javascript:;">继续添加计划</a>
+			</div>
+	    </div>	
+	    <div class="me-loading">
+	    	<img src="../img/loading.gif"  />
+	    </div>
+	    <input type="hidden" id="msklTreatplanId" value="">
+
+	    <!--model层-->
+		<div id="longModel">
+		    <div class="modelBody">
+		        <div class="modelContext" id="modelContext">
+		            <p>添加成功！</p>
+		            <p>是否去完善药品信息？</p>
+		        </div>
+		        <div class="modelFooter">
+		            <a href="javascript:;" class="btnRes">取消</a>
+		            <a href="javascript:;" class="btnOk">确定</a>
+		        </div>
+		    </div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<!--<script src="../js/mui.indexedlist.js"></script>-->
+		<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+		<script src="../js/fx.js"></script>
+		<script src="../js/zepto.scroll.js"></script>
+		<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/cookie.js"></script>
+		<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/medicine.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui.ready(function() {
+				var header = document.querySelector('header.mui-bar');
+				var list = document.getElementById('list');
+				//calc hieght
+				list.style.height = (document.body.offsetHeight - header.offsetHeight-100) + 'px';
+				//create
+//				window.indexedList = new mui.IndexedList(list);
+			});
+		</script>
+	</body>
+
+</html>

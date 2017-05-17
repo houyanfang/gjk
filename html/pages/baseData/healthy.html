@@ -1,0 +1,149 @@
+<div class="panel admin-panel suffererDIV">
+	<div class="padding border-bottom">
+		<form id="msklDiseaseFrom">
+			<ul class="search heard_search" style="padding-left:10px;">
+				<li>
+					<label>问题编号 :</label>
+					<select name="diseaseName" class="input">
+					</select>
+					<label>启用状态：</label>
+					<select name="isDelete" class="input">
+						<option value=''>全部</option>
+						<option value='1'>已启用</option>
+						<option value='2'>未启用</option>
+					</select>
+					<a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklDiseaseSearch"> 搜索</a>
+					<button type="button" class="button border-yellow addDiseaseView"><span class="icon-plus-square-o"></span> 添加</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+
+	<table class="table table-hover text-center  table-bordered">
+		<tr style="border-bottom:1px solid #ddd">
+			<td colspan="9">
+				<span style="padding-left:10px;float:left">问卷记录：<span class="sum">0</span>条</span>
+			</td>
+		</tr>
+		<tr>
+			<th>题目编号</th>
+			<th>题目内容</th>
+			<th>题目类型</th>
+			<th>题目级别</th>
+			<th>是否启用</th>
+			<th>编辑时间</th>
+			<th>修改</th>
+			<th>删除</th>
+			<th>选项</th>
+		</tr>
+		<tbody class="mskldiseaseList"></tbody>
+		<tr>
+			<td colspan="9">
+				<div class="pagelist" id="pagination"></div>
+			</td>
+		</tr>
+	</table>
+
+	<button class="dialogs hidden show_open_view" data-toggle="click" data-target="#show_healthy_open" data-mask="1" data-width="50%"></button>
+	<div id="show_healthy_open">
+		<div class="dialog">
+			<div class="dialog-head">
+				<span class="close"></span><strong class="plan_type">题目内容</strong>
+			</div>
+			<div class="dialog-body">
+
+				<form class="form-x" id="codeAddForm">
+					<div class="form-group">
+						<div class="label">
+							<label>题目编号：</label>
+						</div>
+						<div class="field">
+							<input type="text" class="input" name="channelLinkman" placeholder="请输入渠道负责人" data-validate="required:请输入渠道负责人" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="label">
+							<label>是否启用：</label>
+						</div>
+						<div class="field">
+
+							<input type="radio" name="isDelete" value="1" /> 是
+							<input type="radio" name="isDelete" value="0" /> 否
+
+							<div class="tips"></div>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="label">
+							<label>题目内容：</label>
+						</div>
+						<div class="field">
+							<textarea name="" rows="15" cols="300" style="height: 60px;" class="input"></textarea>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="label">
+							<label>题目级别：</label>
+						</div>
+						<div class="field">
+							<select name="isDelete" class="input">
+						<option value='1'>一级</option>
+						<option value='2'>二级</option>
+						<option value='3'>三级</option>
+					</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="label">
+							<label>关联父题：</label>
+						</div>
+						<div class="field">
+							<select name="isDelete" class="input">
+						<option value='1'>一级</option>
+					
+					</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="label">
+							<label>题目类型：</label>
+						</div>
+						<div class="field">
+							<select name="isDelete" class="input">
+						<option value='1'>单选</option>
+						<option value='2'>多选</option>
+						<option value='3'>填空</option>
+					
+					</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="label">
+							<label></label>
+						</div>
+						<div class="field">
+							<input type="button" class="button bg-main icon-check-square-o addCode" value="确定" />
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<button class="dialog-close hidden check_close"></button>
+			<script type="text/javascript" src="js/base.js"></script>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="js/pintuer.js"></script>
+<script type="text/javascript" src="js/constant.js"></script>
+<script type="text/javascript" src="js/pagejs/baseData/healthy.js"></script>
+<script type="text/javascript">
+	$('.suffererDIV').healthy({ init: "init" });
+</script>

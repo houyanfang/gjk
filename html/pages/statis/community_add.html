@@ -1,0 +1,56 @@
+
+
+<div class="panel admin-panel add_community" style="min-height:400px; margin-left:300px;width:400px;">
+  <div class="panel-head" style="    text-align: center;"><strong>添加社区发帖数量</strong></div>
+  <div class="body-content">
+    <form  class="form-x" id="communityfrom">
+          <input type="hidden" id="id" name="id" />       
+      <div class="form-group">
+        <div class="label w40">
+          <label for="sitename">日期：</label>
+        </div>
+        <div class="field">
+          <input type="text" class="input w100" name="communityDate" size="50" placeholder="请选择日期" data-validate="required:请选择日期,twice:该日期已存在" />       
+        </div>
+      </div>      
+      <div class="form-group">
+        <div class="label">
+          <label for="sitename">数量：</label>
+        </div>
+        <div class="field">
+          <input type="text" maxlength="10" class="input w100" name="communityCount" size="50" placeholder="请输入数量" data-validate="required:请输入数量,number:只能输入数字" />         
+        </div>
+      </div>
+      <!-- <div class="form-group">
+          <div class="label">
+            <label>类型：</label>
+          </div>
+          <div class="field">
+            <select name="communityType" id="type" class="input w50" data-validate="twice:该类型的日期已存在">
+            	<option value='1'>主贴</option>
+            	<option value='2'>回复</option>
+            </select>
+            <div class="tips"></div>
+          </div>
+        </div> -->
+      <div class="form-group">
+        <div class="label">
+          <label></label>
+        </div>
+        <div class="field">
+          <input class="button bg-main" id="addCommunity" type="button" value=" 提交 " />   
+        </div>
+      </div>      
+    </form>
+  </div>
+</div>
+<script type="text/javascript" src="js/base.js"></script>
+
+<script type="text/javascript" src="js/pagejs/statis/community.js"></script>
+<script>
+	$(".add_community").community({});
+	$('input[name="communityDate"]').datetimepicker({
+		format:'Y-m-d H:i:s',
+		step:30
+	});
+</script>

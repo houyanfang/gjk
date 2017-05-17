@@ -1,0 +1,110 @@
+  <div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="msklCodeFrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+	          	<label>渠道：</label><input  type="text" placeholder="渠道" name="channelName" class="input" />
+                <label>邀请码：</label><input type="text" placeholder="邀请码" name="channelCode" class="input" />
+	      		<label>渠道负责人：</label> <input type="text" placeholder="渠道负责人" name="channelLinkman" class="input" />
+	    		<label>注册时间： </label><input type="text" placeholder="起始时间" name="startTime" class="input" />
+	        		-- <input type="text" placeholder="结束时间" name="endTime" class="input" />
+            </li>
+	        <li>
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklCodesearch" > 搜索</a>
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="mskladdCode" > 添加</a>
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklExport" > 导出</a>
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    
+    <table class="table table-hover text-center  table-bordered">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="6">
+	    	<span style="padding-left:10px;float:left">邀请码记录：<span class="sum">0</span>条</span>
+		</td>
+    </tr> 
+      <tr>
+        <th>序号</th>
+        <th>添加时间</th>       
+        <th>邀请码</th>       
+        <th>渠道</th>       
+        <th>渠道负责人</th>       
+        <th>用户数量</th>
+      </tr> 
+		<tbody  class="msklInvitationCodelist"></tbody>    
+      <tr>
+        <td colspan="6"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+    
+    
+    
+    <button class="dialogs hidden check_bank_open" data-toggle="click" data-target="#check_bank" data-mask="1" data-width="50%"></button>
+<div id="check_bank">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong class="plan_type">添加邀请码</strong>
+		</div>
+		<div class="dialog-body">
+		
+		
+		
+		 <form class="form-x" id="codeAddForm" enctype="multipart/form-data">
+	      <div class="form-group">
+	        <div class="label">
+	          <label>邀请码渠道：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="channelName" placeholder="请输入邀请码渠道" data-validate="required:请输入邀请码渠道,twice:名称已存在" />
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>渠道负责人：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="channelLinkman"  placeholder="请输入渠道负责人" data-validate="required:请输入渠道负责人"/>
+	        </div>
+	      </div>
+	      
+	      <div class="form-group">
+	        <div class="label">
+	          <label>邀请码：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="channelCode" placeholder="请输入邀请码" data-validate="required:请输入邀请码"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label></label>
+	        </div>
+	        <div class="field">
+	          <input type="button" class="button bg-main icon-check-square-o addCode" value="添加" />
+	        </div>
+	      </div>
+	    </form>
+		      
+		      
+		      
+		</div>
+		<button class="dialog-close hidden check_close"></button>
+ 		<script type="text/javascript" src="js/base.js" ></script>
+	</div>
+</div>
+    
+    
+    
+  </div>
+  
+ <script type="text/javascript" src="js/pintuer.js" ></script>
+ <script type="text/javascript" src="js/toexcel.js" ></script>
+<script type="text/javascript" src="js/pagejs/operate/invitationcode.js"></script>
+<script type="text/javascript">
+Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+$('.suffererDIV').invitationcode({init:"init"});
+</script>

@@ -1,0 +1,150 @@
+<div class="panel admin-panel addActivity">
+  <div class="panel-head"><strong><span></span> + 添加活动</strong></div>
+  <div class="body-content">
+  	<div>
+  		<form class="form-x" id="activityAddFrom" enctype="multipart/form-data">
+	    	<input type="hidden" name="id"  />
+	      <div class="form-group">
+	        <div class="label">
+	          <label>活动名称：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="promotionName" placeholder="请输入活动名称" data-validate="required:请输入活动名称,twice:名称已存在" />
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>banner图片(720*300)：</label>
+	        </div>
+	        <div class="field">
+	        	<div class="files">上传图片  <input class="margin-left" type="file" name="file" /></div><br/>
+	        	<input type="hidden" name="bannerUrl" />
+	        	<img class="logoimg" src="images/tmbg-white.png" alt="" width="250" height="120">
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>链接地址：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="contentUrl"  placeholder="请输入链接地址" data-validate="required:请输入链接地址"/>
+	        </div>
+	      </div>
+	      
+	      <div class="form-group">
+	        <div class="label">
+	          <label>排列顺序：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" maxlength="2" name="sort" placeholder="请输入排列顺序" data-validate="required:请输入排列顺序"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>活动类型：</label>
+	        </div>
+	        <div class="field">
+	          <select name="promotionType" class="input w50 upmenu">
+	            	<option value='0'>现金活动</option>
+	            	<option value='1'>专场活动</option>
+	            </select>
+	            <div class="tips"></div>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>坚持服药天数：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="takendays" placeholder="请输入坚持服药天数" data-validate="required:请输入坚持服药天数"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>允许漏服天数：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" maxlength="3" name="lostdaysMax" placeholder="请输入允许漏服天数" data-validate="required:请输入允许漏服天数"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label> 活动奖金/人：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="reward" placeholder="请输入活动奖金/人" data-validate="required:请输入活动奖金/人"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>报名上线：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="promotionMaxNum" placeholder="请输入报名上线" data-validate="required:请输入报名上线"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>活动简介：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="intro" placeholder="请输入活动简介" data-validate="required:请输入活动简介"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label>活动规则：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="regulation" placeholder="请输入活动规则" data-validate="required:请输入活动规则"/>
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	       <div class="form-group">
+	          <div class="label">
+	            <label>活动状态：</label>
+	          </div>
+	          <div class="field">
+	            <select name="status" class="input w50 upmenu">
+	            	<option value='0'>活动未开始</option>
+	            	<option value='1'>进行中</option>
+	            	<option value='2'>已结束</option>
+	            	<option value='3'>已删除</option>
+	            	<option value='4'>草稿</option>
+	            </select>
+	            <div class="tips"></div>
+	          </div>
+	        </div>
+	        
+	        
+	      
+	      <div class="form-group">
+	        <div class="label">
+	          <label></label>
+	        </div>
+	        <div class="field">
+	          <input type="button" class="button bg-main icon-check-square-o addActivity" value="提交" />
+	        </div>
+	      </div>
+	      
+	    </form>
+  	</div>
+    
+  </div>
+</div>
+
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/operate/activity.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript">
+$('.addActivity').activity({});
+</script>

@@ -1,0 +1,31 @@
+<div class="panel admin-panel userDIV">
+	<div class="panel-head"><strong> 用户管理</strong></div>
+	<div class="padding border-bottom">
+		<ul class="search">
+			<li>
+				<button type="button" class="button border-yellow addUserHtml"><span class="icon-plus-square-o"></span> 添加用户</button></li>
+		</ul>
+	</div>
+	<table class="table table-hover text-center">
+		<tr>
+			<th width="120">序号</th>
+			<th>用户名</th>
+			<th>真实姓名</th>
+			<th>手机</th>
+			<th>创建人</th>
+			<th>操作</th>
+		</tr>
+		<tbody class="userlist"></tbody>
+		<tr>
+			<td colspan="6">
+				<div class="pagelist" id="pagination"></div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<script type="text/javascript" src="js/pagination/jquery.pagination.js"></script>
+<script type="text/javascript" src="js/pagejs/user.js"></script>
+<script type="text/javascript">
+	$('.userDIV').user({});
+</script>

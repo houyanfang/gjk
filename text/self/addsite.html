@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<script type="text/javascript">
+			(function(w, d) {
+				function setREM() {
+					var __h = d.documentElement,
+						__b = d.body;
+					__w = __h.clientWidth || __b.clientWidth;
+					var __f = __w / 18.75;
+					__h.style.fontSize = __f + 'px';
+				}
+				setREM()
+				w.onresize = function() {
+					setTimeout(function() {
+						setREM()
+					}, 100)
+				}
+			})(window, window.document)
+		</script>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" href="../css/personal.css" />
+		<link rel="stylesheet" type="text/css" href="../css/newtheme.css" />
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+	</head>
+
+	<body class="hasNav fullscreen">
+
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				<div class="pull-right">
+				</div>
+				<div role="navtitle" class="navtitle">
+					新建收货地址
+				</div>
+			</div>
+		</div>
+
+		<div class="upload-box lists">
+			<p>
+				<b>收货人:</b><input type="text" class="name" onkeyup="funlen(this,'请输入收货人')" placeholder=""/>
+			</p>
+			<p>
+				<b>联系方式:</b><input type="text" class="phone" onkeyup="this.value=this.value.replace(/[^\d]/g,'');funlen(this,'请输入手机号')"/>
+			</p>
+			<p>
+				<div class="row citys">
+					<input class="pull-left card-label" type="text" value="所在地区:" style="color: #333; font-weight: normal;" readonly="" onkeyup="funlen(this,'请选择')"/>
+					<i class="pull-right inlink glyphicon glyphicon-menu-right"></i>
+					<input class="pull-right text-right card-input text-color brnone" type="text" id="city-picker" placeholder="" value="" />
+				</div>
+
+			</p>
+			<p>
+				<b>收货地址:</b><input type="text" class="address" onkeyup="funlen(this,'请输入收货地址')" />
+			</p>
+		</div>
+		<div role="identification" class="identification saass">
+			<div class="identification-form-view">
+				<div class="identification-form-submit">
+					<a class="circular">保存</a>
+				</div>
+			</div>
+		</div>
+		<!--提示框-->
+		<div id="reminder">
+		    <div class="reminderBody">
+		        <div class="reminderContext">
+		            <div><span id="msg"></span></div>
+		        </div>
+		    </div>
+		</div>
+
+		<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+		<script src="../js/swiper-3.4.2.min.js"></script>
+		<script src="../js/fx.js"></script>
+		<script type="text/javascript" src="../js/sm.js" charset="utf-8"></script>
+		<script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+		<script src="../js/zepto.scroll.js"></script>
+		<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/cookie.js"></script>
+		<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function funlen(name,txt){
+				if($(name).val().length<=0){
+					$(name).attr("placeholder",txt)
+				}
+			}
+			(function($) {
+				setAddress();
+				function GetRequest() {
+					var url = location.search; //获取url中"?"符后的字串
+					var theRequest = new Object();
+					if(url.indexOf("?") != -1) {
+						var str = url.substr(1);
+						strs = str.split("&");
+						for(var i = 0; i < strs.length; i++) {
+							theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+						}
+					}
+					return theRequest;
+				}
+				var str = GetRequest();
+				var idNum = "";
+				$.each(str, function(key, val) {
+					idNum = key
+				})
+				var __url = "order/convert/" + idNum ;
+				var _data = {};
+				var _success = function(obj) {
+					console.log(obj);
+					if(obj.success == true&& obj.data.linkMobile != null && obj.data.linkName != null && obj.data.userAddressConntent != null) {
+						var arr = obj.data.userAddressConntent.split(";");
+						$(".name").val(obj.data.linkName);
+						$(".phone").val(obj.data.linkMobile);
+						$("#city-picker").val(arr[0].split(",").join(" "));
+						$(".address").val(arr[1]);
+						$(".removeaddress").removeClass("hide");
+					}
+				};
+				var _error = function(obj) {
+					console.log(obj.message);
+				};
+				$.gjk.ajax.postAjax(__url, _data, _success, _error, function() {}, "POST", "addsite");
+
+				function setAddress() {
+					$("#city-picker").cityPicker({
+						toolbarTemplate: '<header class="bar bar-nav">\
+									<button class="button button-link pull-left close-picker button-no recovery-picker-address">取消</button>\
+									<button class="button button-link pull-right close-picker button-yes">确定</button>\
+									</header>',
+        				recovery: '.recovery-picker-address'
+					});
+					
+				}
+				//查询收获地址详情
+				var _addressId = getAddress();
+				function getAddress(){
+					var _url = "address/info/" + idNum;
+					var _data = {};
+					var _success = function(obj){
+						console.log(obj);
+						if(obj.success == true && obj.data != null){
+							_addressId = obj.data.addressId;
+						}else{
+							_addressId = "";
+						}
+						return _addressId;
+					}
+					var _error = function(){}
+					var _complete = function(){}
+					$.gjk.ajax.postAjax(_url,_data,_success,_error,_complete,"POST","addsite");
+				}
+				//提交保存地址信息
+				$(".circular").on("click", function() {
+					var city = $("#city-picker").val();
+			    	var address = $(".address").val();
+					var name = $(".name").val();
+					var phone = $(".phone").val();
+					var reg = /^1[3|4|5|7|8][0-9]{9}$/;
+						if(reg.test(phone)){
+							$(".phone").val(phone);
+						}else{
+							$(".phone").val("请输入正确的手机号")
+							return;
+						}
+					if(name.length < 1) {
+						alert("请输入用户名")
+					} else if(phone.length < 1) {
+						alert("请输入手机号");
+						
+					} else if(city.length < 1) {
+						alert("请选择地址")
+					} else if(address.length < 1) {
+						alert("请输入详细地址")
+					} else {
+						var arr = city.split(" ");
+						if(arr.length == 2){
+							_province = arr[0];
+							_city = arr[0];
+							_area = arr[1];
+						}
+						if(arr.length == 3){
+							_province = arr[0];
+							_city = arr[1];
+							_area = arr[2];
+						}
+						var _userAddress = address;
+						var __url = "address/addOrUpdate";
+						var _data = {
+							"addressId": _addressId,
+							"linkName": name,
+							"linkMobile": phone,
+							"province": _province,
+							"city": _city,
+							"area": _area,
+							"userAddressConntent":_userAddress
+						};
+						var _success = function(obj) {
+							console.log(obj);
+							window.location.href=  $.gjk.path_url + "self/pointdetail.html?" + idNum;
+
+						};
+						var _error = function(obj) {
+							console.log(obj.message);
+						};
+						$.gjk.ajax.postAjax(__url, _data, _success, _error, function() {}, "POST", "addsite");
+						
+					}
+				})
+
+			})(Zepto)
+		</script>
+	</body>
+
+</html>
+
+<script>
+	
+</script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>我的公益红包</title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<script>
+			  (function (doc, win) {
+		        var docEl = doc.documentElement,
+		            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		            recalc = function () {
+		                var clientWidth = docEl.clientWidth;
+		                if (!clientWidth) return;
+		                docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+		            };
+		        if (!doc.addEventListener) return;
+		        win.addEventListener(resizeEvt, recalc, false);
+		        doc.addEventListener('DOMContentLoaded', recalc, false);
+		    })(document, window);
+		</script>
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		
+		<link rel="stylesheet" href="css/style.css"  />
+	</head>
+	<body class="fullscreen">
+		<div class="main">
+			<div class="mypic">
+				<img src="images/photo_03.png"  />
+			</div>
+			<p class="main-text">我的余额</p>
+			<p class="money-left">￥<span>50.00</span></p>
+			<div class="btn-box">
+				<a class="btn green-btn">提现</a>
+			</div>
+			<div class="btn-box">
+				<a class="btn gray-btn">助力明细</a>
+			</div>
+			<div class="tips-title">
+				<a href="javascript:;">
+					<!--<img  src="images/heart_03.png" />-->
+					<div class="tips-text">公益，需要分享，邀请战友领取红包</div>
+					<span>></span>
+				</a>
+			</div>
+			<p class="offers">本活动由柑橘客提供</p>
+		</div>
+	</body>
+</html>

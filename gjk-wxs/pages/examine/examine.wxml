@@ -1,0 +1,51 @@
+<view class="container">
+  <view class="user-infor">
+     <view class="list">
+         <view class="user-item">
+            <text class="black-text">姓名</text>
+            <view class="width-half">
+             <text class="gray-text">{{userName}}</text>
+            </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">手机号</text>
+             <view class="width-half">
+               <text class="gray-text">{{phone}}</text>
+             </view>
+          </view>
+          <view class="user-item"  bindtap="planView">
+            <text class="black-text">健康计划执行情况</text>
+             <view class="width-half"> 
+               <text class="icon-go">></text>
+             </view>
+          </view>
+     </view>
+     <view class="text-title bluet">购药信息</view>
+     <view class="list">
+         <view class="user-item">
+            <text class="black-text">阿莫西林颗粒</text>
+            <view class="width-half">
+               <text class="gray-text paddingrt">2017-03-29</text>
+               <text class="icon-go">></text>
+            </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">感冒灵颗粒</text>
+            <view class="width-half">
+                <text class="gray-text paddingrt">2017-04-23</text>
+                <text class="icon-go">></text>
+            </view>
+          </view>
+          <view class="user-item">
+            <text class="black-text">小儿止咳糖浆</text>
+            <view class="width-half">
+              <text class="gray-text paddingrt">2017-04-23</text>
+              <text class="icon-go">></text>
+            </view>
+          </view>
+         <view class="user-item">
+           <button size="mini" class="add-mini" bindtap="searchMedicine">+添加</button>
+          </view>
+     </view>
+  </view>
+</view>

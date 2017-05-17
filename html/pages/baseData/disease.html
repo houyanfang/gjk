@@ -1,0 +1,111 @@
+  <div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="msklDiseaseFrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+	          	<label>疾病名称 :</label><select name="searchId" class="input" >
+					            </select>
+      			 <label>启用状态：</label><select name="isDelete" class="input" >
+							           	<option value='' >全部</option>
+							           	<option value='1' >已启用</option>
+							           	<option value='2'>未启用</option>
+							           </select>
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklDiseaseSearch" > 搜索</a>
+	           <button type="button" class="button border-yellow addDiseaseView" ><span class="icon-plus-square-o"></span> 添加</button>
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    <table class="table table-hover text-center  table-bordered">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="6">
+	    	<span style="padding-left:10px;float:left">疾病类型：<span class="sum">0</span>种</span>
+		</td>
+    </tr> 
+      <tr>
+        <th>疾病名称</th>
+        <th>所属疾病类型</th>
+        <th>编辑时间</th>       
+        <th>是否启用</th>       
+        <th>修改</th>       
+        <th>删除</th>
+      </tr> 
+		<tbody  class="mskldiseaseList"></tbody>    
+      <tr>
+        <td colspan="6"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+    
+    
+    
+    
+    
+    <button class="dialogs hidden show_open_view" data-toggle="click" data-target="#show_disease_open" data-mask="1" data-width="50%"></button>
+<div id="show_disease_open">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong class="plan_type">疾病详情</strong>
+		</div>
+		<div class="dialog-body">
+		
+		
+		
+		 <form class="form-x"  id="addDiseaseForm" >
+		 <input name="id" type="hidden">
+	      <div class="form-group">
+	        <div class="label">
+	          <label>疾病名称：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="diseaseName"  placeholder="请输入疾病名称" data-validate="required:请输入疾病名称,ajax#/baseData/disease/disease_list.htm?diseaseName=:名称已存在"/>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	          <div class="label">
+	            <label>所属上级疾病：</label>
+	          </div>
+	          <div class="field">
+	            <select name="pId" class="input w50 upmenu">
+	            </select>
+	            <div class="tips"></div>
+	          </div>
+	        </div>
+	      <div class="form-group">
+	          <div class="label">
+	            <label>是否启用：</label>
+	          </div>
+	          <div class="field">
+	             <input  name="isDelete" type="radio" checked value="1" /> 是
+	         	 <input name="isDelete" type="radio" value="2" /> 否
+	            <div class="tips"></div>
+	          </div>
+	        </div>
+	      
+	      <div class="form-group">
+	        <div class="label">
+	          <label></label>
+	        </div>
+	        <div class="field">
+	          <input type="button" class="button bg-main icon-check-square-o addDisease" value="提交" />
+	        </div>
+	      </div>
+	    </form>
+		      
+		      
+		      
+ 		<script type="text/javascript" src="js/base.js" ></script>
+		</div>
+		<button class="dialog-close hidden check_close"></button>
+	</div>
+</div>
+    
+    
+  </div>
+  
+<script type="text/javascript" src="js/pintuer.js" ></script>
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/baseData/disease.js"></script>
+<script type="text/javascript">
+$('.suffererDIV').disease({init:"init"});
+</script>

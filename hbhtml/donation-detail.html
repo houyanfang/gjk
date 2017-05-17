@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>助力明细</title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<script>
+			  (function (doc, win) {
+		        var docEl = doc.documentElement,
+		            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+		            recalc = function () {
+		                var clientWidth = docEl.clientWidth;
+		                if (!clientWidth) return;
+		                docEl.style.fontSize = 20 * (clientWidth / 375) + 'px';
+		            };
+		        if (!doc.addEventListener) return;
+		        win.addEventListener(resizeEvt, recalc, false);
+		        doc.addEventListener('DOMContentLoaded', recalc, false);
+		    })(document, window);
+		</script>
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		
+		<link rel="stylesheet" href="css/style.css"  />
+	</head>
+	<body class="hasFoot">
+		<div class="gray-bg">
+			<div class="gray-pic"><img src="images/detail_03.png" /></div>
+			<p class="main-text">阿亮共收到</p>
+			<p class="money-left">803.00</p>
+			<div class="full-width clearfix">
+				<div class="half-width">
+					<p class="big-text">170</p>
+					<p>助力人数</p>
+				</div>
+				<div class="half-width">
+					<p class="big-text">50</p>
+					<p>成功人数</p>
+				</div>
+			</div>
+		</div>
+		<div class="main">
+			<div class="btn-box">
+				<div class="list">
+					<div class="item clearfix">
+						<div class="left">庆达</div>
+						<div class="right">5元</div>
+					</div>
+					<p class="time-box">50-17</p>
+				</div>
+				<div class="list">
+					<div class="item clearfix">
+						<div class="left">庆达</div>
+						<div class="right">5元</div>
+					</div>
+					<p class="time-box">50-17</p>
+				</div>
+				<div class="list">
+					<div class="item clearfix">
+						<div class="left">庆达</div>
+						<div class="right">5元</div>
+					</div>
+					<p class="time-box">50-17</p>
+				</div>
+				<div class="list">
+					<div class="item clearfix">
+						<div class="left">庆达</div>
+						<div class="right">5元</div>
+					</div>
+					<p class="time-box">50-17</p>
+				</div>
+				<div class="list">
+					<div class="item clearfix">
+						<div class="left">庆达</div>
+						<div class="right">5元</div>
+					</div>
+					<p class="time-box">50-17</p>
+				</div>
+				<div class="list">
+					<div class="item clearfix">
+						<div class="left">庆达</div>
+						<div class="right">5元</div>
+					</div>
+					<p class="time-box">50-17</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

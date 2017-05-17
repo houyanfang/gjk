@@ -1,0 +1,53 @@
+<div class="padding-big-left">
+	<h2 style="margin-top:20px;">添加用户</h2>
+	<div class="padding">
+		<form id="msklDiseaseFrom">
+			<p class="padding-big-top"><span class="float-left" style="width: 10%;text-align: right;">手机号码：</span><input type="text" class="input w25" /><input type="button" value="发送验证码" class="button margin-big-left"></p>
+			<p class="padding-big-top"><span  class="float-left"  style="width: 10%;text-align: right;">验证码：</span><input type="text"class="input w25" /></p>
+			<p class="w100 padding-big-top"><span class="float-left"  style="width: 10%;text-align: right;">密    码：</span><input type="text"class="input w25" /></p>
+			<div class="w100">
+				<div class="pres-panel" style="padding-left: 60px;">
+					<table class="pres-table">
+						<tr>
+							<td>
+								<label class="pres-label">处方照片 :</label>
+							</td>
+							<td>
+							    <div class="img-panel">
+								    <img src="../images/img.jpg" />
+							    </div>
+							</td>
+						    <td>
+							    <div class="img-panel">
+								    <img src="../images/img.jpg" />
+							    </div>
+							</td>
+						    <td>
+							    <div class="img-panel">
+								    <img src="../images/img.jpg" />
+							    </div>
+							</td>
+						   <td>
+							    <div class="img-panel">
+								    <img src="../images/img.jpg" />
+							    </div>
+							</td>
+						    <td>
+								<div  class="pres-img">+<input class="opacity-input" type="file" name="file" /></div>
+				 		   </td>
+						</tr>
+					</table>
+		     	</div>		
+			</div>
+			<p class="w100 padding-big-top"><input type="button" class="button bg-main icon-check-square-o addCode margin-big-left" style="width: 100px; margin-left: 18%;" value="保存"/></p>
+		</form>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="js/pintuer.js"></script>
+<script type="text/javascript" src="js/constant.js"></script>
+<script type="text/javascript" src="js/pagejs/drugstore/user.js"></script>
+<script type="text/javascript">
+	$('.suffererDIV').user({ init: "init" });
+</script>

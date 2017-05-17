@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style type="text/css">
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @-o-viewport {
+            width: device-width;
+        }
+
+        @viewport {
+            width: device-width;
+        }
+    </style>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script>
+        // Copyright 2014-2015 Twitter, Inc.
+        // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    '@-ms-viewport{width:auto!important}'
+                )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <link rel="stylesheet" href="../css/addplan.css"/>
+</head>
+
+<body class="hasNav">
+
+<div role="navigation" class="navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="pull-left">
+            <a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+        </div>
+        <div class="pull-right">
+            <a href="javascript:void();"></a>
+        </div>
+        <div role="navtitle">
+            设置提醒
+        </div>
+    </div>
+</div>
+
+<div class="parentMain">
+    <div role="superintendent-set" class="superintendent-set">
+        <div class="superintendent-view"></div>
+        <div class="superintendent-title">暂无提醒</div>
+        <p>请提示您的监督对象添加健康计划！</p>
+    </div>
+
+    <div role="superintendent-form" class="superintendent-form">
+        <div class="tip-warn">
+        <span>
+            您好，如果对方在设定时间未完成相应计划，我们会给您发送消息提醒，您可以设置是否接受提醒！
+        </span>
+        </div>
+        <div class="superintendent-form-list">
+            <div class="list-block list-theme"  id="switchHtml">
+                <ul class="nobg">
+                    <li class="item-content" style="display: none">
+                        <div class="item-inner nobg">
+                            <div class="col-50" style="text-align: left;font-size: 14px;">
+                                <span>服药</span>
+                            </div>
+                            <div class="col-50">
+                                <div class="item-switch" style="text-align: right;">
+                                    <label class="label-switch" id="treatPlan" data-state="0">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="item-content" style="display: none">
+                        <div class="item-inner nobg">
+                            <div class="col-50 input-wrapper" style="text-align: left;font-size: 14px;">
+                                <span>运动</span>
+                            </div>
+                            <div class="col-50">
+                                <div class="item-switch" style="text-align: right;">
+                                    <label class="label-switch" id="sportPlan" data-state="0">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--<li class="item-content">-->
+                    <!--<div class="item-inner nobg">-->
+                    <!--<div class="col-50 input-wrapper" style="text-align: left;font-size: 14px;">-->
+                    <!--<span>饮食</span>-->
+                    <!--</div>-->
+                    <!--<div class="col-50">-->
+                    <!--<div class="item-switch" style="text-align: right;">-->
+                    <!--<label class="label-switch">-->
+                    <!--<input type="checkbox">-->
+                    <!--<div class="checkbox"></div>-->
+                    <!--</label>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</li>-->
+                    <!--<li class="item-content">-->
+                    <!--<div class="item-inner nobg">-->
+                    <!--<div class="col-50 input-wrapper" style="text-align: left;font-size: 14px;">-->
+                    <!--<span>生活方式</span>-->
+                    <!--</div>-->
+                    <!--<div class="col-50">-->
+                    <!--<div class="item-switch" style="text-align: right;">-->
+                    <!--<label class="label-switch">-->
+                    <!--<input type="checkbox">-->
+                    <!--<div class="checkbox"></div>-->
+                    <!--</label>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script src="../js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/base.js"></script>
+<script>
+    $(document).ready(function () {
+//        var $superintendentSet = $('.superintendent-set');
+        //检测用户有哪些计划
+        detectionUserList();
+        function detectionUserList() {
+            var option = {
+                url: 'dailyRecord/findLogByYesterDayPlan',
+                data: {},
+                success: function (res) {
+                    console.log(res);
+//                    createBtnState(res)
+                },
+                error: function (res) {
+
+                }
+            };
+            $.gjk.ajax.requestPostOrder(option.url, option.data, option.success, option.error, function () {
+            }, "POST", "findLogByYesterDayPlan")
+        }
+        //绘制页面原始状态
+        drowPageData();
+        function drowPageData() {
+            var option = {
+                url: 'mskluser/findUserRemind',
+                data: {},
+                success: function (res) {
+                    console.log(res);
+                    if(res.success == 'true'){
+                        $('.superintendent-set').hide();
+                        $('.superintendent-form').show();
+                        createBtnState(res)
+                    }else {
+                        $('.superintendent-form').hide();
+                        $('.superintendent-set').show();
+                    }
+                },
+                error: function (res) {
+
+                }
+            };
+            $.gjk.ajax.postAjax(option.url, option.data, option.success, option.error, function () {
+            }, "POST", "findUserRemind")
+        }
+        //绘制页面数据
+        function createBtnState(obj) {
+            if(obj.data){
+
+            }
+            var $treatPlan = $('#treatPlan');
+            var $sportPlan = $('#sportPlan');
+            if (obj.data.sportPlan == 1) {
+                stateToDo($sportPlan)
+            }
+            if (obj.data.treatPlan == 1) {
+                stateToDo($treatPlan)
+            }
+        }
+        
+        function stateToDo(parent) {
+            parent.attr('data-state', "1");
+            parent.find('input').attr('checked', 'checked')
+        }
+
+        //改变状态值
+        changeBtnStates2();
+//        $('#switchHtml').on('click', '.label-switch', function () {
+//            var state = $(this).attr('data-state');
+//            if (state == 0) {
+//                $(this).attr('data-state', 1)
+//            } else {
+//                $(this).attr('data-state', 0)
+//            }
+////            sendStateToServer()
+//        });
+        function sendStateToServer() {
+            var $treatPlan = $('#treatPlan');
+            var $sportPlan = $('#sportPlan');
+            var option = {
+                url:'mskluser/setRemind',
+                data:{
+                    "sportPlan":$sportPlan.attr("data-state"),
+                    "treatPlan":$treatPlan.attr("data-state")
+                },
+                success:function (res) {
+                    console.log(res)
+                },
+                error:function (res) {
+
+                }
+            };
+            $.gjk.ajax.requestPostOrder(option.url, option.data, option.success, option.error, function () {}, "POST", "setRemind")
+        }
+    })
+</script>
+</body>
+
+</html>

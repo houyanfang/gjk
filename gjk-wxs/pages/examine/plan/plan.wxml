@@ -1,0 +1,77 @@
+<view class="container">
+  <view class="plan-box" wx:for="{{plan.treat}}" data-id="{{index}}" wx:for-item="list" wx:if="{{list.planStatus == 0}}">
+    <view class="plan-title">
+      <image src="../../../images/me-icon_03.png"></image>
+      <text class="plan-name">服药计划({{list.planData.medicalName}})</text>
+      <text class="plan-status">{{list.pregress}}</text>
+      <image src="../../../images/up.png"></image>
+    </view>
+    <view class="plan-tab">
+      <view class="plan-item">
+        <text class="item-title gray-text">药品名称：</text>
+        <text class="item-content yellow-text">{{list.planData.normalName}}({{list.planData.medicalName}})</text>
+        <text class="item-title gray-text"></text>
+        <text class="item-times black-text"></text>
+      </view>
+      <view class="plan-item">
+        <text class="item-title gray-text">开始时间：</text>
+        <text class="item-content black-text">{{list.planData.startDate}}</text>
+        <text class="item-title gray-text">每次用量：</text>
+        <text class="item-times black-text">{{list.planData.dose}}{{list.planData.mediniceInit}}</text>
+      </view>
+      <view class="plan-item">
+        <text class="item-title gray-text">结束时间：</text>
+        <text class="item-content black-text">{{list.planData.endDate}}</text>
+        <text class="item-title gray-text">每日次数：</text>
+        <text class="item-times black-text">{{list.planData.dailyTimes}}次</text>
+      </view>
+    </view>
+    <view class="plan-result">
+      <view class="result">
+        <text class="black-text">漏执行天数</text>
+        <text class="black-text">{{list.leakDay}}天</text>
+      </view>
+      <view class="result black-text">{{list.pregress}}</view>
+    </view>
+  </view>
+  <view class="plan-box {{index == openId ? '' : showAndHide}}" wx:for="{{plan.treat}}" data-id="{{index}}" wx:for-item="list" wx:if="{{list.planStatus == 1}}" bindtap="showAndHideInner">
+    <view class="plan-title">
+      <image src="../../../images/me-icon_03.png"></image>
+      <text class="plan-name">服药计划({{list.planData.medicalName}})</text>
+      <text class="plan-status">{{list.pregress}}</text>
+      <image src="../../../images/up.png"></image>
+    </view>
+    <view class="planListInner">
+      <view class="plan-tab">
+        <view class="plan-item">
+          <text class="item-title gray-text">药品名称：</text>
+          <text class="item-content yellow-text">{{list.planData.normalName}}({{list.planData.medicalName}})</text>
+          <text class="item-title gray-text"></text>
+          <text class="item-times black-text"></text>
+        </view>
+        <view class="plan-item">
+          <text class="item-title gray-text">开始时间：</text>
+          <text class="item-content black-text">{{list.planData.startDate}}</text>
+          <text class="item-title gray-text">每次用量：</text>
+          <text class="item-times black-text">{{list.planData.dose}}{{list.planData.mediniceInit}}</text>
+        </view>
+        <view class="plan-item">
+          <text class="item-title gray-text">结束时间：</text>
+          <text class="item-content black-text">{{list.planData.endDate}}</text>
+          <text class="item-title gray-text">每日次数：</text>
+          <text class="item-times black-text">{{list.planData.dailyTimes}}次</text>
+        </view>
+      </view>
+      <view class="plan-result">
+        <view class="result">
+          <text class="black-text">漏执行天数</text>
+          <text class="black-text">{{list.leakDay}}天</text>
+        </view>
+        <view class="result black-text">{{list.pregress}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="hasNoPlanList" wx:if="{{hasNoPlan}}">
+    <image src="../../../images/1.png"></image>
+  </view>
+</view>

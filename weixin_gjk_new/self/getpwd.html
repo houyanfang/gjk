@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<style type="text/css">
+			@-ms-viewport {
+				width: device-width;
+			}
+			
+			@-o-viewport {
+				width: device-width;
+			}
+			
+			@viewport {
+				width: device-width;
+			}
+		</style>
+		<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<script>
+			// Copyright 2014-2015 Twitter, Inc.
+			// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+			if(navigator.userAgent.match(/IEMobile\/10\.0/)) {
+				var msViewportStyle = document.createElement('style')
+				msViewportStyle.appendChild(
+					document.createTextNode(
+						'@-ms-viewport{width:auto!important}'
+					)
+				)
+				document.querySelector('head').appendChild(msViewportStyle)
+			}
+		</script>
+		<link rel="stylesheet" href="../css/boot.css" />
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/newtheme.css" />
+	</head>
+
+	<body class="hasNav hasFoot fullscreen">
+		
+		<div role="navigation" class="navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="pull-left">
+					<a role="backlink" class="glyphicon glyphicon-menu-left" href="javascript:history.go(-1);"></a>
+				</div>
+				<div class="pull-right">
+					<a  href="javascript:void();"></a>
+				</div>
+				<div role="navtitle">
+					找回提现密码
+				</div>
+			</div>
+		</div>
+		
+		<div role="identification" class="identification">
+				
+			<div class="form-input-box" style="margin-top:15px;">
+				<div class="form-input">
+					<input type="tel" class="form-control no-border form-text  mobile-number"placeholder="手机号"/>
+				</div>
+				<div class="form-input">
+					<div class="clearfix"  >
+						<div class="pull-left">
+							<input type="text" class="form-control form-text no-border verification-code" style="width: 220%;border-top: 1px solid #eee;;" placeholder="输入验证码" />
+						</div>
+						<div class="pull-right" >
+							<button class="countdown-time">获取验证码</button>
+						</div>
+					</div>
+				</div>
+				<div class="form-input" style="margin-top:15px;">
+					<input type="password" class="form-control no-border form-text new-password" style="border-bottom: 1px solid #eee;" placeholder="输入新密码"/>
+				</div>
+				<div class="form-input" style="margin: 0;">
+					<input type="password" class="form-control no-border form-text confirm-password" placeholder="确认新密码"/>
+				</div>
+				<div class="identification-form-submit">
+					<a class="circular submit">完成</a>
+				</div>
+			</div>
+		</div>
+		<!--提醒弹出层-->
+		<div id="reminder">
+		    <div class="reminderBody">
+		        <div class="reminderContext">
+		            <div><span id="msg"></span></div>
+		        </div>
+		    </div>
+		</div>
+		<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+		<script src="../js/underscore.js"></script>
+		<script src="../js/cookie.js"></script>	
+		<script src="../js/gjk.js"></script>
+		<script>
+			$(function(){
+				var time, interval, _mobile, _verificationCode;
+				function countdown(target) {
+					if(time == 0) {
+						clearInterval(interval);
+						target.removeAttribute("disabled");
+						$(target).text("获取验证码");
+						return false;
+					} else {
+						time--;
+						$(target).text("重新发送(" + time + ")");				
+					}
+				}
+				function getUserInfor(){
+					var _url = "mskluser/userInfos";
+    				var _data = {};
+    				var _success=function(obj){
+    					console.log(obj);
+    					console.log(obj.data);
+    					if(obj.success == true){
+    						var teleNum = obj.data.mobile;
+    				 		return teleNum;
+    					}
+    				};
+    				var _complete = function(){
+						$('.me-loading').hide();
+					};
+					var _error = function(){
+						var $msg = $('#msg');
+				        var $reminder = $('#reminder');
+				        $reminder.show();
+				        $msg.text(obj.message);
+				        setTimeout(function () {
+				             $reminder.hide();
+				        }, 2000);
+				        return;
+					};
+					
+    				$.gjk.ajax.postAjax(_url, _data, _success, _error, _complete, "POST", "getpwd");
+
+				}
+				$(".countdown-time").click(function(){
+					var _this = this;
+					var _teleNum = 	getUserInfor();
+					var mobile = $(".mobile-number").val();
+					if(!mobile || mobile != _teleNum)
+					{
+						var $msg = $('#msg');
+				        var $reminder = $('#reminder');
+				        $reminder.show();
+				        $msg.text("请输入正确的手机号！");
+				        setTimeout(function () {
+				             $reminder.hide();
+				        }, 2000);
+						return;
+					}
+					_mobile = mobile;
+					var _url = "verificationCode/register";
+					var _data = {mobile: mobile};
+					var _success = function(obj){
+						console.log(obj.data);
+						if(obj.success)
+						{
+							_verificationCode = obj.data;
+							time = 60;					
+							_this.setAttribute("disabled", "disabled");
+							$(_this).text("重新发送(" + time + ")");
+							interval = setInterval(countdown, 1000, _this);
+						}
+					};
+					var _complete = function(){
+						$('.me-loading').hide();
+					};
+					var _error = function(){
+						var $msg = $('#msg');
+				        var $reminder = $('#reminder');
+				        $reminder.show();
+				        $msg.text(obj.message);
+				        setTimeout(function () {
+				             $reminder.hide();
+				        }, 2000);
+				        return;
+					};
+					$.gjk.ajax.request(_url,_data,_success,_error,_complete,"POST","getpwd");
+				});
+								
+				$(".submit").click(function(){
+					var verificationCode = $(".verification-code").val();
+					if(!verificationCode || verificationCode != _verificationCode )
+					{
+						var $msg = $('#msg');
+				        var $reminder = $('#reminder');
+				        $reminder.show();
+				        $msg.text("请输入正确的验证码");
+				        setTimeout(function () {
+				             $reminder.hide();
+				        }, 2000);
+						return;
+					}
+					
+					//var mobile = $(".mobile-number").val();
+					var newPassword = $(".new-password").val();
+					var confirmPassword = $(".confirm-password").val();
+					if(!newPassword || !confirmPassword)
+					{
+						var $msg = $('#msg');
+				        var $reminder = $('#reminder');
+				        $reminder.show();
+				        $msg.text("请输入密码！");
+				        setTimeout(function () {
+				             $reminder.hide();
+				        }, 2000);
+						return;
+					}
+					if(newPassword != confirmPassword)
+					{
+						var $msg = $('#msg');
+				        var $reminder = $('#reminder');
+				        $reminder.show();
+				        $msg.text("两次输入密码不一致！");
+				        setTimeout(function () {
+				             $reminder.hide();
+				        }, 2000);
+						return;
+					}
+					
+					var _url = "userTrade/tradePassword/retrieve";
+					var _data = {"mobile": _mobile, "verificationCode": verificationCode, "password": confirmPassword,"userTradePwdStrength":""};
+					
+					var _success = function(obj){
+						console.log(obj);
+						if(obj.data){
+							window.location.href = $.gjk.path_url + 'self/myaccount.html';
+						}
+					};
+					var _complete = function(){
+						$('.me-loading').hide();
+					};
+					var _error = function(){
+						var $msg = $('#msg');
+				        var $reminder = $('#reminder');
+				        $reminder.show();
+				        $msg.text(obj.message);
+				        setTimeout(function () {
+				             $reminder.hide();
+				        }, 2000);
+				        return;
+					};
+					$.gjk.ajax.postAjax(_url,_data,_success,_error,_complete,"POST","getpwd");
+				});
+			});
+		</script>
+	</body>
+
+</html>

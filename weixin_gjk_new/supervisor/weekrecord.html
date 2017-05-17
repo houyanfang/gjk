@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style type="text/css">
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @-o-viewport {
+            width: device-width;
+        }
+
+        @viewport {
+            width: device-width;
+        }
+    </style>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script>
+        // Copyright 2014-2015 Twitter, Inc.
+        // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+            var msViewportStyle = document.createElement('style')
+            msViewportStyle.appendChild(
+                document.createTextNode(
+                    '@-ms-viewport{width:auto!important}'
+                )
+            )
+            document.querySelector('head').appendChild(msViewportStyle)
+        }
+    </script>
+    <link rel="stylesheet" href="../css/boot.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+</head>
+
+<body class="hasNav">
+
+<div role="navigation" class="navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="pull-left">
+            <a role="backlink" id="goBackPack" class="glyphicon glyphicon-menu-left"
+               href="javascript:history.go(-1);"></a>
+        </div>
+        <div class="pull-right">
+            <a href="javascript:;" class="back-btn">回本周</a>
+        </div>
+        <div role="navtitle">
+            周评估
+        </div>
+
+    </div>
+</div>
+
+<div role="weekrecord" class="">
+    <div role="week" class="container-fluid">
+        <div role="datepicker" class="row">
+            <div role="datepicker-right" id="yearRight" class="pull-right selectpicker element"></div>
+            <div role="datepicker-left" id="yearLeft" class="pull-left selectpicker element"></div>
+            <div class="dateview">2016年</div>
+        </div>
+        <div role="weekpicker" class="row">
+            <div class="pull-right next">
+                下一周
+            </div>
+            <div class="pull-left prev">
+                上一周
+            </div>
+            <div class="weekview">
+                <h1>第23周</h1>
+                <div>
+                    <span>12-12至12-18</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="recordpanel" class="container-fluid" id="weekListTest">
+
+        <div class="chart-record" id="chartRecord">
+        </div>
+
+        <div class="record-content">
+            <div class="record-content-caption">
+                根据您本周填写的健康计划数据，您的身体状况控制的不错，请保持/优化现在的生活方式；
+            </div>
+            <div class="record-content-title">
+                <p>各项生活建议：</p>
+            </div>
+            <div class="record-content-list" id="recordContentList"></div>
+        </div>
+    </div>
+    <div id="hasNoWeekList">
+        <img src="../img/noplan_03.png">
+        <p>暂无计划和建议</p>
+    </div>
+    <div class="addPlanBtn" id="addPlanBtn">
+        <button type="button">添加计划</button>
+    </div>
+</div>
+<div class="loadingImg" style="display: none">
+    <img src="../img/loading.gif">
+</div>
+<script src="../js/underscore.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+<script src="../js/cookie.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/touch.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/gjk.js" type="text/javascript" charset="utf-8"></script>
+<!--<script src="../js/calendarsuper.js" type="text/javascript" charset="utf-8"></script>-->
+<script src="../js/base.js"></script>
+<script>
+    $(document).ready(function () {
+
+        //判断从哪里进入
+        var state = getUrlParams().state;
+        if(state === 0){
+            $('#addPlanBtn').hide();
+        }
+        //加载页面数据
+        getPageData(getYear(), theWeek());
+
+        function getPageData(year, weeks) {
+            var option = {
+                _url: 'wardRemind/weekReport',
+                _data: {
+                    "years": year,
+                    "weekNum": weeks
+                },
+                _success: function (res) {
+                    console.log(res)
+                    if (res.success == true) {
+                        $('.loadingImg').hide();
+                        //缓存数据
+                        if (!res.data) {
+                            //是否显示按钮
+                            if (compareWeeks(res)) {
+                                $('#addPlanBtn').hide();
+                            } else {
+                                if(getUrlParams().state == 0){
+                                    $('#addPlanBtn').hide();
+                                }else {
+                                    $('#addPlanBtn').show();
+                                }
+                            }
+                            $('#hasNoWeekList').show();
+                            $('#weekListTest').hide();
+                            addAndpopWeek(res);
+                            createWeekAndDate(res);
+                        } else {
+                            //是否显示按钮
+                            if (compareWeeks(res)) {
+                                $('#addPlanBtn').hide();
+                                $('#weekListTest').show();
+                                $('#hasNoWeekList').hide();
+                                drowPageData(res);
+                                addAndpopWeek(res);
+                                createWeekAndDate(res);
+                            } else {
+                                if(getUrlParams().state == 0){
+                                    $('#addPlanBtn').hide();
+                                }else {
+                                    $('#addPlanBtn').show();
+                                }
+                                $('#weekListTest').hide();
+                                $('#hasNoWeekList').show();
+                                drowPageData(res);
+                                addAndpopWeek(res);
+                                createWeekAndDate(res);
+                            }
+                        }
+                    } else {
+                        $('.loadingImg').hide();
+                        $('#weekListTest').hide();
+                        addAndpopWeek(res)
+                    }
+                },
+                _error: function (res) {
+                }
+            };
+            if (getUrlParams().state == 1) {
+                $.gjk.ajax.postAjax(option._url, option._data, option._success, option._error, function () {
+                }, "POST", "weekrecord")
+            } else {
+                $.gjk.ajax.requestPostOrder(option._url, option._data, option._success, option._error, function () {
+                }, "POST", "weekrecord")
+            }
+        }
+
+        //生成对应的周数和日期
+        function createWeekAndDate(obj) {
+            var $weekView = $('.weekview');
+            var $weeks = $weekView.find('h1');
+            var $date = $weekView.find('span');
+            var $dateview = $('.dateview');
+
+            var year = obj.otherdata.split(',')[0];
+            var weeks = obj.otherdata.split(',')[1];
+            var date1 = obj.otherdata.split(',')[2].slice(5);
+            var date2 = obj.otherdata.split(',')[3].slice(5);
+            $dateview.html(year + "年");
+            $weeks.html("第" + weeks + "周");
+            $date.html(date1 + "至" + date2);
+        }
+
+        //绘制页面数据
+        function drowPageData(obj) {
+            var $chartRecord = $('#chartRecord');
+            var $recordContentList = $('#recordContentList');
+            var timeDate = obj.otherdata.split(',');
+            $chartRecord.html('');
+            $recordContentList.html('')
+            createTime(timeDate);
+
+            for (var i = 0; i < obj.data.length; i++) {
+                //生成对应的状态条
+                var html = '<div class="char-record-item container-fluid">' +
+                    '<div class="row">' +
+                    '<div class="char-field pull-left">' + obj.data[i].planName + '：</div>' +
+                    '<div class="progress">' +
+                    '<div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="' + obj.data[i].rates + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + obj.data[i].rates + '%; background-color: ' + judegPlan(obj.data[i].rates) + '">' +
+                    '</div>' +
+                    '</div><span class="text" style="color: ' + judegPlan(obj.data[i].rates) + '">' + obj.data[i].rates + '%</span>' +
+                    '</div>' +
+                    '</div>';
+
+                //生成提醒话术
+                var planSuggest = '<div class="record-content-item">' +
+                    '<h1>' + productAbout(obj.data[i]).title + '：</h1>' +
+                    productAbout(obj.data[i]).msg +
+                    '</div>';
+                $chartRecord.append($(html));
+                $recordContentList.append($(planSuggest));
+            }
+        }
+
+        //生成对应的时间
+        function createTime(list) {
+            $('.dateview').html(list[0] + '年');
+            $('.weekview').find('h1').html('第' + list[1] + '周');
+            $('.weekview').find('span').html(list[2].slice(5) + '至' + list[3].slice(5));
+        }
+
+        //生成对应的颜色值
+        function judegPlan(item) {
+            var plan;
+            if (item <= 25) {
+                plan = '#f32d12';
+            } else if (item <= 40) {
+                plan = '#f89923';
+            } else if (item <= 80) {
+                plan = '#f8cd33';
+            } else if (item <= 100) {
+                plan = '#adf71e';
+            }
+            return plan;
+        }
+
+        //生成对应的话术
+        function productAbout(obj) {
+            var about = {};
+            switch (obj.planType) {
+                case "treat":
+                    about.title = '服药建议';
+                    about.msg = showMessage(obj.planAssess, obj.planType);
+                    break;
+                case "diet":
+                    about.title = '饮食建议';
+                    about.msg = showMessage(obj.planAssess, obj.planType);
+                    break;
+                case "rest":
+                    about.title = '作息建议';
+                    about.msg = showMessage(obj.planAssess, obj.planType);
+                    break;
+                case "sport":
+                    about.title = '运动建议';
+                    about.msg = showMessage(obj.planAssess, obj.planType);
+                    break;
+                case "smok":
+                    about.title = '戒烟建议';
+                    about.msg = showMessage(obj.planAssess, obj.planType);
+                    break;
+                case "abstinence":
+                    about.title = '戒酒建议';
+                    about.msg = showMessage(obj.planAssess, obj.planType);
+                    break;
+            }
+            return about;
+        }
+
+        function showMessage(state, type) {
+            var html = '';
+            var msg = {
+                "treat": [
+                    ['记录不全'], ['上周您一直坚持按时服药，非常棒，继续加油！'], ['上周您出现了漏服药的现象，漏服药物会影响治疗效果哦，容易引起病情反复。乙肝抗病毒治疗好比一场马拉松，一旦开始就一定要坚持到底呀！', '不过也不要着急和沮丧，一切都还来得及，追悔过去最没有意义的，记得设置好服药提醒，我们一直都为您的健康助力哦！期待着您下周的优秀表现，加油！^_^']
+                ],
+                "diet": [
+                    ['记录不全'], ['上周您的饮食习惯非常好，请长期坚持。可适宜多进食', '1）富含高蛋白而热量低的食物：如鸡蛋、牛奶、去皮鸡肉、豆腐、鱼等。', '2）蔬菜类：如卷心菜、花椰菜、白菜、洋葱、大蒜等'], ['上周对您健康不利的食物吃的太多啦，霉变、腌制、高糖高盐高脂、剩菜剩饭、熏腊烧烤类、辛辣刺激等食品均对肝脏健康不利，一定要少吃或不吃。', '适宜多进食一些富含高蛋白而热量低的食物：如鸡蛋、牛奶、去皮鸡肉、豆腐、鱼等。此外，十字花科蔬菜如卷心菜、花椰菜、白菜等，有利于肝脏健康，可适当常吃。', '洋葱、大蒜等富含硫化物的蔬菜对肝脏也是十分有利的，能辅助肝脏起到解毒抗衰老的作用。', '富含花青素和多酚的蓝莓和草莓等浆果，有抗氧化作用，利于人体健康。']
+                ],
+                "rest": [
+                    ['记录不全'], ['您上周作息良好，继续坚持，会越来越健康哒！'], ['您上周有熬夜现象，需要引起重视，坚持在11:00点前入睡，这样更有利于肝脏健康！'], ['您上周熬夜现象很严重，请一定加以重视！长期熬夜将严重影响肝脏健康。从今天开始早点睡觉吧！']
+                ],
+                "sport": [
+                    ['记录不全'], ['您上周在运动方面做的很棒！运动时的小提醒如下：', '1）运动前后安排5-10分钟的热身。', '2）运动时应穿宽松、舒适、吸汗的棉质衣服和袜子。', '3）运动时避免高强度、重负荷的运动,如举重过重、短距离的快跑等，运动过程中如有不适，需立即停止运动。', '4）运动前不宜饱餐，运动后也不宜立即就餐。', '5）注意补充水分，建议运动前半小时喝800毫升水。如果户外运动时间超过30分钟以上，一定要带水，以及时补充体内水分。', '6）运动过程中或运动后若出现不适症状要暂停或减少运动量！'], ['肝功能正常的肝病朋友应长期坚持运动，这样可有效增强身体抵抗力，利于恢复！建议如下：', '1） 运动方式选择：', '建议有氧运动，如快走、慢跑、打太极拳、跳舞、骑自行车等。', '2） 运动强度：', '正常人运动强度靶心率=170-年龄，建议强度以个人自身微微出汗，不劳累为宜。', '3） 运动时间：', '争取坚持次运动半小时，频率达到每周5次为宜。', '4） 运动注意事项：', '运动前后应各安排5-10分钟的热身和放松活动。', '运动时应穿宽松、舒适、吸汗的棉质衣服和袜子。', '运动时避免高强度、重负荷的运动,如举重过重、短距离的快跑等，运动过程中如有不适，需立即停止运动。', '运动前不宜饱餐，运动后也不宜立即就餐。', '注意补充水分，建议运动前半小时喝800毫升水。如果户外运动时间超过30分钟以上，一定要带水，以及时补充体内水分。']
+                ],
+                "smok": [
+                    ['记录不全'], ['您上周吸烟总量完成计划，继续加油，同时也要避免吸入二手烟！'], ['您上周离计划成功差了一步哟！还需要努力，吸烟对肝脏健康不利，坚持就是胜利，相信自己！']
+                ],
+                "abstinence": [
+                    ['记录不全'], ['您上周饮酒量控制很好，请继续加油！争取早日戒酒！会越来越健康的！'], ['您上周饮酒未达标！酒精主要在肝脏代谢，饮酒可加重肝脏代谢负担，导致肝细胞大量坏死，进而加重病情。为了自己的健康，请继续努力！']
+                ]
+            };
+
+            for (var i = 0; i < msg[type][state].length; i++) {
+                html += '<p>' + msg[type][state][i] + '</p>'
+            }
+            return html;
+        }
+
+        //点击按钮事件
+        function addAndpopWeek(d) {
+            var data = d;
+            var $prev = $('div.prev');
+            var $next = $('div.next');
+            var year = data.otherdata.split(',')[0];
+            var weeks = data.otherdata.split(',')[1];
+            var thisYearWeeks = data.otherdata.split(',')[4];
+            var prevMaxWeeks = data.otherdata.split(',')[5];
+            var topYear = $('.dateview');
+            var $yearRight = $('#yearRight');
+            var $yearLeft = $('#yearLeft');
+            $next.unbind("click");
+            $next.click(function () {
+                addWeek(year, weeks, 0)
+            });
+            $prev.unbind("click");
+            $prev.click(function () {
+                popWeek(year, weeks, 0)
+            });
+            $yearRight.unbind("click");
+            $yearRight.click(function () {
+                var years = parseInt(topYear.html());
+                years++;
+                topYear.html(years + '年');
+                addWeek(years, weeks, 1)
+            });
+            $yearLeft.unbind("click");
+            $yearLeft.click(function () {
+                var years = parseInt(topYear.html());
+                years--;
+                topYear.html(years + '年');
+                popWeek(years, weeks, 1)
+            });
+            function popWeek(year, week, state) {
+                if (state == 0) {
+                    week--;
+                    if (week <= 0) {
+                        week = prevMaxWeeks;
+                        year--;
+                    }
+                    $('.loadingImg').show();
+                    getPageData(year, week);
+                } else {
+                    getPageData(year, week);
+                }
+
+            }
+
+            function addWeek(year, week, state) {
+                if (state == 0) {
+                    week++;
+                    if (week > thisYearWeeks) {
+                        week = 1;
+                        year++;
+                    }
+                    $('.loadingImg').show();
+                    getPageData(year, week);
+                } else {
+                    getPageData(year, week);
+                }
+
+            }
+        }
+
+        goToThisWeek();
+        function goToThisWeek() {
+            $('a.back-btn').click(function () {
+                console.log($(this))
+                getPageData(getYear(), theWeek());
+            })
+        }
+
+        //判断服务器给的周数和当前周数的大小
+        function compareWeeks(obj) {
+            var weeksInServer = obj.otherdata.split(',')[1];
+            if (weeksInServer > theWeek()) {
+                return false;
+            }
+            return true
+        }
+
+        //添加计划按钮点击事件
+        function addPlanClick() {
+            $('body').on('click', '#addPlanBtn button', function () {
+                window.location.href = '../plan/plusplans.html'
+            })
+        }
+
+        addPlanClick();
+        //判断当前日期是一年中的第几周
+        function theWeek() {
+            var totalDays = 0;
+            now = new Date();
+            years = now.getYear();
+            if (years < 1000)
+                years += 1900;
+            var days = new Array(12);
+            days[0] = 31;
+            days[2] = 31;
+            days[3] = 30;
+            days[4] = 31;
+            days[5] = 30;
+            days[6] = 31;
+            days[7] = 31;
+            days[8] = 30;
+            days[9] = 31;
+            days[10] = 30;
+            days[11] = 31;
+
+            //判断是否为闰年，针对2月的天数进行计算
+            if (Math.round(now.getYear() / 4) == now.getYear() / 4) {
+                days[1] = 29
+            } else {
+                days[1] = 28
+            }
+
+            if (now.getMonth() == 0) {
+                totalDays = totalDays + now.getDate();
+            } else {
+                var curMonth = now.getMonth();
+                for (var count = 1; count <= curMonth; count++) {
+                    totalDays = totalDays + days[count - 1];
+                }
+                totalDays = totalDays + now.getDate();
+            }
+            //得到第几周
+            var week = Math.round(totalDays / 7);
+            return week;
+        }
+
+        //获取当前年份
+        function getYear() {
+            var date = new Date().getFullYear();
+            return date;
+        }
+    })
+</script>
+</body>
+
+</html>

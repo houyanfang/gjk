@@ -1,0 +1,160 @@
+<div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="msklDiseaseFrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li class="new-height">
+					<label class="label-width">昵称 :</label><input type="text" class="input" />
+					<label class="label-width">用户名 :</label><input type="text" class="input" />
+					<label>手机号码 :</label><input type="text" class="input" />
+					<label>疾病类型：</label>
+					<select name="isDelete" class="input" >
+	           	<option value='' >全部</option>
+	           	<option value='1' >药店1</option>
+	           	<option value='2'>药店1</option>
+	        </select>
+					<label>复购次数：</label>
+					<select name="isDelete" class="input" >
+	           	<option value='' >全部</option>
+	           	<option value='1' >药店1</option>
+	           	<option value='2'>药店1</option>
+	        </select>
+	        
+	        <label>是否绑定手机号码：</label>
+	        <select name="isDelete" class="input" >
+	           	<option value='1' >是</option>
+	           	<option value='' >否</option>
+	        </select>
+	        <br />
+	        <label>所在地区：</label>
+					<select name="isDelete" class="input" >
+	           	<option value='' >省</option>
+	           	<option value='1' >河南</option>
+	           	<option value='2'>山东</option>
+	        </select>
+	        <select name="isDelete" class="input" >
+	           	<option value='' >市</option>
+	           	<option value='1' >保定</option>
+	           	<option value='2'>郑州</option>
+	        </select>
+	        <select name="isDelete" class="input" >
+	           	<option value='' >区/县</option>
+	           	<option value='1' >海淀</option>
+	           	<option value='2'>林县</option>
+	        </select>
+	        <label>剩余天数：</label>
+					<select name="isDelete" class="input" >
+	           	<option value='' >全部</option>
+	           	<option value='1' >河南</option>
+	           	<option value='2'>山东</option>
+	        </select>
+	        <label>是否咨询：</label>
+	        <select name="isDelete" class="input" >
+	           	<option value='' >全部</option>
+	           	<option value='1' >河南</option>
+	           	<option value='2'>山东</option>
+	        </select>
+	        <label class="label-width">药品名 :</label><input type="text" placeholder="药品名称/通用名称" class="input" />
+	        <label class="label-width">厂商名称 :</label><input type="text" placeholder="" class="input" />
+	        <label>是否上传处方：</label>
+	        <select name="isDelete" class="input" >
+	           	<option value='1' >是</option>
+	           	<option value='' >否</option>
+	        </select>
+     			<a href="javascript:void(0)" class="button border-main icon-search buttons" id="msklDiseaseSearch">查询</a>
+					
+					<a href="javascript:void(0)" class="button border-main buttons" id="msklDiseaseSearch" style="padding: 5px 17px;">发送消息</a>
+					<a href="javascript:void(0)" class="button border-main buttons" id="msklDiseaseSearch" style="padding: 5px 17px;">发送短信</a>
+				</li>
+	     </ul>
+     </form>
+     </div>
+    
+    <table class="table table-hover text-center  table-bordered">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="12">
+	    	<span style="padding-left:10px;float:left">用户数量：共<span class="sum">20</span>人</span>
+		</td>
+    </tr> 
+      <tr class="newtab-head">
+        <th>选择</th>
+        <th>用户名</th>       
+        <th>昵称</th>       
+        <th>手机号</th>       
+        <th>商品剩余天数</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>疾病类型</th>
+        <th>所属药店名称</th>
+        <th>购药</th>
+        <th>健康计划</th>
+        <th>健康档案</th>
+      </tr> 
+		<tbody  class="mskldiseaseList"></tbody>    
+      <tr>
+        <td colspan="12"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+    
+    
+    
+    
+    
+    <button class="dialogs hidden check_bank_open" data-toggle="click" data-target="#check_bank" data-mask="1" data-width="50%"></button>
+<div id="check_bank">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong class="plan_type">疾病详情</strong>
+		</div>
+		<div class="dialog-body">
+		
+		
+		
+		 <form class="form-x" id="codeAddForm" >
+	      <div class="form-group">
+	        <div class="label">
+	          <label>疾病名称：</label>
+	        </div>
+	        <div class="field">
+	          <input type="text" class="input w50" name="channelLinkman"  placeholder="请输入渠道负责人" data-validate="required:请输入渠道负责人"/>
+	        </div>
+	      </div>
+	      
+	      <div class="form-group">
+	        <div class="label">
+	          <label>是否启用：</label>
+	        </div>
+	        <div class="field">
+	        
+	          <input type="radio" name="isDelete" value="1" /> 是
+	          <input type="radio" name="isDelete" value="0" /> 否
+	          
+	          <div class="tips"></div>
+	        </div>
+	      </div>
+	      <div class="form-group">
+	        <div class="label">
+	          <label></label>
+	        </div>
+	        <div class="field">
+	          <input type="button" class="button bg-main icon-check-square-o addCode" value="添加" />
+	        </div>
+	      </div>
+	    </form>
+		      
+		      
+		      
+		</div>
+		<button class="dialog-close hidden check_close"></button>
+ 		<script type="text/javascript" src="js/base.js" ></script>
+	</div>
+</div>
+    
+    
+  </div>
+  
+<script type="text/javascript" src="js/pintuer.js" ></script>
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/drugstore/user.js"></script>
+<script type="text/javascript">
+$('.suffererDIV').user({init:"init"});
+</script>

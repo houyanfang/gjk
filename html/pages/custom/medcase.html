@@ -1,0 +1,87 @@
+  <div class="panel admin-panel suffererDIV">
+      <div class="padding border-bottom">
+      <form id="medcasefrom">
+	      <ul class="search heard_search" style="padding-left:10px;">
+	        <li>
+                <label>手机号：</label><input type="text" placeholder="手机号" name="mobile" class="input" />
+             	<label>昵称：</label><input type="text" placeholder=" 昵称" name="userNickName" class="input" />
+      			 <label>审核状态：</label><select name="status" class="input" >
+								           	<option value='' >全部</option>
+								           	<option value='1' >审核中</option>
+								           	<option value='2'>审核成功</option>
+								           	<option value='3'>审核被驳回</option>
+							           </select>
+	    		<label>注册时间： </label><input type="text" placeholder="起始时间" name="startTime" class="input" />
+	        		-- <input type="text" placeholder="结束时间" name="endTime" class="input" />
+	           <a href="javascript:void(0)" class="button border-main icon-search buttons" id="medcaseSearch" > 搜索</a>
+            </li>
+	     </ul>
+     </form>
+     </div>
+    
+    
+    <table class="table table-hover text-center  table-bordered">
+    <tr style="border-bottom:1px solid #ddd">
+	    <td  colspan="5">
+	    	<span style="padding-left:10px;float:left">病例记录：<span class="sum">0</span></span>
+		</td>
+    </tr> 
+      <tr>
+        <th>昵称</th>       
+        <th>手机号码</th>
+        <th>提交日期</th>       
+        <th>审核状态</th>
+        <th>操作</th>
+      </tr> 
+		<tbody  class="medcaselist"></tbody>    
+      <tr>
+        <td colspan="5"><div class="pagelist" id="pagination"></div></td>
+      </tr>
+    </table>
+  </div>
+  
+  
+  <button class="dialogs hidden check_mendcase_open" data-toggle="click" data-target="#check_medcase" data-mask="1" data-width="90%" ></button>
+<div id="check_medcase">
+	<div class="dialog">
+		<div class="dialog-head">
+			<span class="close"></span><strong class="plan_type">病例审核</strong>
+		</div>
+		<div class="dialog-body">
+		
+			 <form class="form-x" id="medcaseFrom">
+			      <ul class="search heard_search" style="padding-left:10px;">
+			        <li>
+			    		 <label class="label320">处方照片： </label>
+			    		 <div class="display_inline medphoto">
+			    		 </div>
+			             <div class="divs25">
+				             <label class="label320">患者姓名：</label><input type="text" placeholder="真实姓名" name="userRealName" class="input topinput" />
+				             <br /><label class="label320">审核状态：</label><span class="med-status">已通过</span>
+				             <br /><label class="label320">疾病类型：</label><select name="medRecordType" class="input" >
+														           </select>
+						 </div>
+		            </li>
+			      	<li class="ischecked">
+			      		<div class="divstext">
+				           <a href="javascript:void(0)" class="button border-main icon icon-check buttons medCasePass" > 审核通过</a>
+				           <a href="javascript:void(0)" class="button border-main icon icon-times buttons medCaseUnPass" > 审核失败</a>
+				           <a href="javascript:void(0)" class="button border-main icon icon-times buttons medCaseUpdate" > 修改</a>
+		            	</div>
+		            </li>
+			        </ul>
+		        </form>
+		
+		</div>
+		<button class="dialog-close hidden check_close"></button>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="js/pintuer.js" ></script>
+<script type="text/javascript" src="js/constant.js" ></script>
+<script type="text/javascript" src="js/pagejs/custom/medcase.js"></script>
+<script type="text/javascript">
+Base.initTwoDate('input[name="startTime"]','input[name="endTime"]');
+$('.suffererDIV').medcase({init:"init"});
+</script>
